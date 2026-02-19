@@ -1632,11 +1632,17 @@
 
         .side-panel {
             min-height: 0;
-            display: grid;
-            grid-template-rows: auto auto auto auto;
-            gap: 12px;
+            display: block;
             padding: 14px;
             overflow: auto;
+        }
+
+        .side-panel > section {
+            margin-bottom: 14px;
+        }
+
+        .side-panel > section:last-child {
+            margin-bottom: 0;
         }
 
         .section-title {
@@ -1939,9 +1945,8 @@
         }
 
         .city-list-wrap {
-            min-height: 0;
-            height: 320px;
-            max-height: 420px;
+            min-height: 280px;
+            max-height: 460px;
             overflow: auto;
             border: 1px solid #d8e3dd;
             border-radius: 10px;
@@ -1950,41 +1955,95 @@
 
         .city-section {
             min-height: 0;
-            display: grid;
-            grid-template-rows: auto auto minmax(220px, auto);
-            gap: 8px;
         }
 
         .city-section .muted-text {
-            margin-bottom: 2px;
+            margin-bottom: 6px;
         }
 
-        .city-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.82rem;
-        }
+        .summary-section {}
 
-        .city-table thead th {
-            position: static;
-            background: #f0f6f3;
-            text-align: left;
+        .city-structure-grid {
+            display: grid;
+            gap: 8px;
             padding: 8px;
-            border-bottom: 1px solid #dce7e1;
-            font-size: 0.77rem;
-            text-transform: uppercase;
-            letter-spacing: 0.03em;
-            color: #35505b;
         }
 
-        .city-table tbody td {
-            padding: 7px 8px;
-            border-bottom: 1px solid #edf2ef;
-            vertical-align: middle;
+        .city-structure-card {
+            border: 1px solid #dde8e3;
+            border-radius: 9px;
+            background: #fdfefe;
+            padding: 8px 9px;
         }
 
-        .city-table tbody tr:hover {
-            background: #f8fbf9;
+        .city-structure-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+
+        .city-structure-head h3 {
+            margin: 0;
+            font-family: "Exo 2", "Segoe UI", sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #173843;
+        }
+
+        .city-structure-meta {
+            display: grid;
+            gap: 1px;
+            text-align: right;
+            font-size: 0.74rem;
+            color: #4f6673;
+            white-space: nowrap;
+        }
+
+        .city-structure-meta strong {
+            font-family: "Exo 2", "Segoe UI", sans-serif;
+            font-size: 0.8rem;
+            color: #1a3f4a;
+        }
+
+        .city-group-row {
+            border-top: 1px dashed #e2ece7;
+            padding-top: 6px;
+            margin-top: 6px;
+        }
+
+        .city-group-row:first-of-type {
+            border-top: 0;
+            margin-top: 0;
+            padding-top: 0;
+        }
+
+        .city-group-head {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 5px 7px;
+        }
+
+        .city-group-head small {
+            color: #56707b;
+            font-size: 0.73rem;
+        }
+
+        .city-group-list {
+            margin-top: 2px;
+            font-size: 0.8rem;
+            line-height: 1.3;
+            color: #2f4a56;
+        }
+
+        .city-empty {
+            margin: 0;
+            padding: 12px 10px;
+            text-align: center;
+            color: #5b6f7b;
+            font-size: 0.83rem;
         }
 
         .badge-class {
@@ -2066,12 +2125,7 @@
             }
 
             .side-panel {
-                grid-template-rows: auto auto auto auto;
-            }
-
-            .city-list-wrap {
-                height: 280px;
-                max-height: 360px;
+                display: block;
             }
         }
 
@@ -2106,11 +2160,6 @@
 
             .kpi-disclaimer {
                 text-align: left;
-            }
-
-            .city-list-wrap {
-                height: 250px;
-                max-height: 320px;
             }
 
             .map-toolbar {
@@ -2220,24 +2269,13 @@
 
                 <section class="city-section">
                     <h2 class="section-title">Cidades por Batalhão</h2>
-                    <p class="muted-text">Filtragem sincronizada com o mapa para leitura rápida do gestor.</p>
+                    <p class="muted-text">Visão estrutural por status e efetivo, sincronizada com o filtro do mapa.</p>
                     <div class="city-list-wrap">
-                        <table class="city-table">
-                            <thead>
-                                <tr>
-                                    <th>Cidade</th>
-                                    <th>Efetivo</th>
-                                    <th>Classificação</th>
-                                    <th>Dist. Sede</th>
-                                    <th>Observação</th>
-                                </tr>
-                            </thead>
-                            <tbody id="city-table-body"></tbody>
-                        </table>
+                        <div id="city-structure-view" class="city-structure-grid"></div>
                     </div>
                 </section>
 
-                <section>
+                <section class="summary-section">
                     <h2 class="section-title">Resumo Executivo</h2>
                     <p class="executive-text">
                         <strong>Elaboração institucional:</strong> estudo produzido pela Seção de Estatística e Análise
@@ -10919,30 +10957,94 @@
             }
 
             function renderTabelaMunicipios(rows) {
-                const tbody = document.getElementById("city-table-body");
-                if (!tbody) return;
+                const container = document.getElementById("city-structure-view");
+                if (!container) return;
 
                 if (!rows.length) {
-                    tbody.innerHTML =
-                        "<tr><td colspan='5' style='text-align:center; color:#5b6f7b;'>Sem municípios no filtro selecionado.</td></tr>";
+                    container.innerHTML = "<p class='city-empty'>Sem municípios no filtro selecionado.</p>";
                     return;
                 }
 
-                tbody.innerHTML = rows
-                    .map((row) => {
-                        const distancia = row.distanciaKm === null || Number.isNaN(row.distanciaKm)
-                            ? "n/d"
-                            : row.distanciaKm.toFixed(1).replace(".", ",") + " km";
-                        const efetivo = typeof row.efetivo === "number" ? row.efetivo.toLocaleString("pt-BR") : "n/d";
+                const classSequence = ["Sede", "Companhia", "Pelotão", "Cia Independente"];
+                const groupedByBatalhao = new Map();
+
+                rows.forEach((row) => {
+                    if (!groupedByBatalhao.has(row.batalhao)) {
+                        groupedByBatalhao.set(row.batalhao, {
+                            totalMunicipios: 0,
+                            totalEfetivo: 0,
+                            byClass: {
+                                "Sede": [],
+                                "Companhia": [],
+                                "Pelotão": [],
+                                "Cia Independente": [],
+                                "Outro": [],
+                            },
+                        });
+                    }
+
+                    const bucket = groupedByBatalhao.get(row.batalhao);
+                    const rowClass = Object.prototype.hasOwnProperty.call(bucket.byClass, row.classificacao)
+                        ? row.classificacao
+                        : "Outro";
+
+                    bucket.byClass[rowClass].push(row);
+                    bucket.totalMunicipios += 1;
+                    if (typeof row.efetivo === "number") {
+                        bucket.totalEfetivo += row.efetivo;
+                    }
+                });
+
+                const batalhoes = [...groupedByBatalhao.keys()].sort((a, b) => {
+                    return a.localeCompare(b, "pt-BR", { numeric: true });
+                });
+
+                function renderCityGroup(classificacao, items) {
+                    if (!items.length) return "";
+
+                    const efetivoGrupo = items.reduce((acc, item) => {
+                        return acc + (typeof item.efetivo === "number" ? item.efetivo : 0);
+                    }, 0);
+
+                    const listaCidades = items
+                        .map((item) => item.cidade)
+                        .sort((a, b) => a.localeCompare(b, "pt-BR"))
+                        .map((cidade) => escapeHtml(cidade))
+                        .join(", ");
+
+                    const qtd = items.length;
+                    const qtdLabel = `${qtd} município${qtd > 1 ? "s" : ""}`;
+
+                    return `
+                        <div class="city-group-row">
+                            <div class="city-group-head">
+                                <span class="badge-class ${getClassBadge(classificacao)}">${escapeHtml(classificacao)}</span>
+                                <small>${qtdLabel} · efetivo ${efetivoGrupo.toLocaleString("pt-BR")}</small>
+                            </div>
+                            <div class="city-group-list">${listaCidades}</div>
+                        </div>
+                    `;
+                }
+
+                container.innerHTML = batalhoes
+                    .map((batalhao) => {
+                        const info = groupedByBatalhao.get(batalhao);
+                        const classBlocks = classSequence
+                            .map((classificacao) => renderCityGroup(classificacao, info.byClass[classificacao]))
+                            .join("");
+                        const outros = renderCityGroup("Outro", info.byClass["Outro"]);
 
                         return `
-                            <tr>
-                                <td>${escapeHtml(row.cidade)}</td>
-                                <td>${efetivo}</td>
-                                <td><span class="badge-class ${getClassBadge(row.classificacao)}">${escapeHtml(row.classificacao)}</span></td>
-                                <td>${distancia}</td>
-                                <td>${row.observacao ? escapeHtml(row.observacao) : "—"}</td>
-                            </tr>
+                            <article class="city-structure-card">
+                                <div class="city-structure-head">
+                                    <h3>${escapeHtml(batalhao)}</h3>
+                                    <div class="city-structure-meta">
+                                        <span>${info.totalMunicipios} municípios</span>
+                                        <strong>Efetivo ${info.totalEfetivo.toLocaleString("pt-BR")}</strong>
+                                    </div>
+                                </div>
+                                ${classBlocks}${outros}
+                            </article>
                         `;
                     })
                     .join("");
