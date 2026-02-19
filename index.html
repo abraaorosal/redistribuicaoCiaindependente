@@ -1548,7 +1548,7 @@
         .dashboard-main {
             min-height: 0;
             display: grid;
-            grid-template-columns: minmax(0, 1.8fr) minmax(340px, 0.95fr);
+            grid-template-columns: minmax(0, 1.65fr) minmax(420px, 1.15fr);
             gap: 14px;
         }
 
@@ -1633,10 +1633,10 @@
         .side-panel {
             min-height: 0;
             display: grid;
-            grid-template-rows: auto auto minmax(0, 1fr) auto;
+            grid-template-rows: auto auto auto auto;
             gap: 12px;
             padding: 14px;
-            overflow: hidden;
+            overflow: auto;
         }
 
         .section-title {
@@ -1826,13 +1826,137 @@
             color: #56707c;
         }
 
+        .distance-list {
+            margin-top: 8px;
+            display: grid;
+            gap: 6px;
+            border-top: 1px dashed #d8e4dd;
+            padding-top: 7px;
+        }
+
+        .distance-list-title {
+            font-size: 0.73rem;
+            color: #516a76;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            font-weight: 700;
+        }
+
+        .distance-list-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 8px;
+            font-size: 0.79rem;
+            line-height: 1.25;
+            color: #2f4b57;
+        }
+
+        .distance-list-item b {
+            font-family: "Exo 2", "Segoe UI", sans-serif;
+            font-size: 0.83rem;
+            color: #1b3641;
+            white-space: nowrap;
+        }
+
+        .distance-ranking {
+            display: grid;
+            gap: 4px;
+            margin-top: 2px;
+        }
+
+        .distance-full-wrap {
+            margin-top: 8px;
+            border: 1px solid #d8e3dd;
+            border-radius: 9px;
+            background: #fff;
+            max-height: 430px;
+            min-height: 240px;
+            overflow: auto;
+        }
+
+        .distance-full-title {
+            position: static;
+            background: #eaf3ee;
+            border-bottom: 1px solid #d8e4dd;
+            color: #2f4a56;
+            font-size: 0.73rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            font-weight: 700;
+            padding: 6px 7px;
+        }
+
+        .distance-full-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.8rem;
+        }
+
+        .distance-full-table thead th {
+            position: static;
+            background: #f0f6f3;
+            text-align: left;
+            padding: 6px 7px;
+            border-bottom: 1px solid #dce7e1;
+            font-size: 0.71rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #35505b;
+        }
+
+        .distance-full-table thead th.sortable {
+            cursor: pointer;
+            user-select: none;
+            transition: color 0.14s ease;
+        }
+
+        .distance-full-table thead th.sortable:hover {
+            color: #15404c;
+        }
+
+        .distance-full-table thead th.sortable::after {
+            content: " ↕";
+            color: #7b919d;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+
+        .distance-full-table thead th.sortable.sort-asc::after {
+            content: " ↑";
+            color: #1e5d73;
+        }
+
+        .distance-full-table thead th.sortable.sort-desc::after {
+            content: " ↓";
+            color: #1e5d73;
+        }
+
+        .distance-full-table tbody td {
+            padding: 6px 7px;
+            border-bottom: 1px solid #edf2ef;
+            vertical-align: middle;
+        }
+
         .city-list-wrap {
             min-height: 0;
-            max-height: 100%;
+            height: 320px;
+            max-height: 420px;
             overflow: auto;
             border: 1px solid #d8e3dd;
             border-radius: 10px;
             background: #fff;
+        }
+
+        .city-section {
+            min-height: 0;
+            display: grid;
+            grid-template-rows: auto auto minmax(220px, auto);
+            gap: 8px;
+        }
+
+        .city-section .muted-text {
+            margin-bottom: 2px;
         }
 
         .city-table {
@@ -1842,8 +1966,7 @@
         }
 
         .city-table thead th {
-            position: sticky;
-            top: 0;
+            position: static;
             background: #f0f6f3;
             text-align: left;
             padding: 8px;
@@ -1945,6 +2068,11 @@
             .side-panel {
                 grid-template-rows: auto auto auto auto;
             }
+
+            .city-list-wrap {
+                height: 280px;
+                max-height: 360px;
+            }
         }
 
         @media (max-width: 780px) {
@@ -1978,6 +2106,11 @@
 
             .kpi-disclaimer {
                 text-align: left;
+            }
+
+            .city-list-wrap {
+                height: 250px;
+                max-height: 320px;
             }
 
             .map-toolbar {
@@ -2067,10 +2200,25 @@
                         </div>
                         <div class="distance-metrics" id="distance-metrics"></div>
                         <div class="distance-bars" id="distance-bars"></div>
+                        <div class="distance-list" id="distance-list"></div>
+                        <div class="distance-full-wrap">
+                            <div class="distance-full-title">Relação Completa de Municípios</div>
+                            <table class="distance-full-table">
+                                <thead>
+                                    <tr>
+                                        <th class="sortable" data-sort-key="cidade">Município</th>
+                                        <th class="sortable" data-sort-key="classificacao">Status</th>
+                                        <th class="sortable" data-sort-key="distanciaKm">Distância</th>
+                                        <th>Observação</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="distance-full-body"></tbody>
+                            </table>
+                        </div>
                     </div>
                 </section>
 
-                <section style="min-height: 0; display: grid; grid-template-rows: auto auto minmax(0, 1fr);">
+                <section class="city-section">
                     <h2 class="section-title">Cidades por Batalhão</h2>
                     <p class="muted-text">Filtragem sincronizada com o mapa para leitura rápida do gestor.</p>
                     <div class="city-list-wrap">
@@ -10430,6 +10578,8 @@
             };
 
             let filtroAtual = "Todos";
+            let distanceTableSort = { key: "distanciaKm", dir: "desc" };
+            let distanceTableRowsCache = [];
 
             function escapeHtml(value) {
                 return String(value ?? "")
@@ -10840,22 +10990,115 @@
                 return sortedValues[clamped];
             }
 
+            function updateDistanceSortHeaders() {
+                const headers = document.querySelectorAll(".distance-full-table thead th.sortable");
+                headers.forEach((th) => {
+                    const isActive = th.dataset.sortKey === distanceTableSort.key;
+                    th.classList.toggle("sort-asc", isActive && distanceTableSort.dir === "asc");
+                    th.classList.toggle("sort-desc", isActive && distanceTableSort.dir === "desc");
+                });
+            }
+
+            function sortDistanceRows(rows) {
+                const dir = distanceTableSort.dir === "asc" ? 1 : -1;
+                const key = distanceTableSort.key;
+                const sorted = [...rows];
+
+                sorted.sort((a, b) => {
+                    if (key === "distanciaKm") {
+                        const aValid = typeof a.distanciaKm === "number" && !Number.isNaN(a.distanciaKm);
+                        const bValid = typeof b.distanciaKm === "number" && !Number.isNaN(b.distanciaKm);
+                        if (aValid && bValid) return (a.distanciaKm - b.distanciaKm) * dir;
+                        if (aValid) return -1;
+                        if (bValid) return 1;
+                        return a.cidade.localeCompare(b.cidade, "pt-BR");
+                    }
+
+                    if (key === "classificacao") {
+                        const aRank = classOrder[a.classificacao] ?? 999;
+                        const bRank = classOrder[b.classificacao] ?? 999;
+                        if (aRank !== bRank) return (aRank - bRank) * dir;
+                        return a.cidade.localeCompare(b.cidade, "pt-BR");
+                    }
+
+                    if (key === "cidade") {
+                        return a.cidade.localeCompare(b.cidade, "pt-BR") * dir;
+                    }
+
+                    return 0;
+                });
+
+                return sorted;
+            }
+
+            function renderDistanceFullTable(rows) {
+                const fullBodyEl = document.getElementById("distance-full-body");
+                if (!fullBodyEl) return;
+
+                if (!rows.length) {
+                    fullBodyEl.innerHTML = "<tr><td colspan='4' style='text-align:center; color:#5b6f7b;'>Sem municípios no filtro selecionado.</td></tr>";
+                    updateDistanceSortHeaders();
+                    return;
+                }
+
+                const orderedList = sortDistanceRows(rows);
+                fullBodyEl.innerHTML = orderedList
+                    .map((item) => {
+                        return `
+                            <tr>
+                                <td>${escapeHtml(item.cidade)}</td>
+                                <td><span class="badge-class ${getClassBadge(item.classificacao)}">${escapeHtml(item.classificacao)}</span></td>
+                                <td>${formatKm(item.distanciaKm)}</td>
+                                <td>${item.observacao ? escapeHtml(item.observacao) : "—"}</td>
+                            </tr>
+                        `;
+                    })
+                    .join("");
+
+                updateDistanceSortHeaders();
+            }
+
+            function initDistanceTableSorting() {
+                const headers = document.querySelectorAll(".distance-full-table thead th.sortable");
+                headers.forEach((th) => {
+                    th.addEventListener("click", () => {
+                        const key = th.dataset.sortKey;
+                        if (!key) return;
+
+                        if (distanceTableSort.key === key) {
+                            distanceTableSort.dir = distanceTableSort.dir === "asc" ? "desc" : "asc";
+                        } else {
+                            distanceTableSort.key = key;
+                            distanceTableSort.dir = key === "distanciaKm" ? "desc" : "asc";
+                        }
+
+                        renderDistanceFullTable(distanceTableRowsCache);
+                    });
+                });
+
+                updateDistanceSortHeaders();
+            }
+
             function renderDistanceStats(rows, filtro) {
                 const contextEl = document.getElementById("distance-context");
                 const totalEl = document.getElementById("distance-total-cities");
                 const metricsEl = document.getElementById("distance-metrics");
                 const barsEl = document.getElementById("distance-bars");
-                if (!contextEl || !totalEl || !metricsEl || !barsEl) return;
+                const listEl = document.getElementById("distance-list");
+                if (!contextEl || !totalEl || !metricsEl || !barsEl || !listEl) return;
 
                 const label = filtro === "Todos" ? "Consolidado (2º ao 5º BPRAIO)" : filtro;
                 contextEl.textContent = label;
+                distanceTableRowsCache = [...rows];
+                renderDistanceFullTable(distanceTableRowsCache);
 
                 const distRows = rows.filter((item) => typeof item.distanciaKm === "number" && !Number.isNaN(item.distanciaKm));
-                totalEl.textContent = `${distRows.length} municípios`;
+                totalEl.textContent = `${rows.length} municípios`;
 
                 if (!distRows.length) {
                     metricsEl.innerHTML = "";
                     barsEl.innerHTML = "<p class='distance-empty'>Sem dados de distância para o filtro selecionado.</p>";
+                    listEl.innerHTML = "<p class='distance-empty'>Sem estatística de distância para este filtro.</p>";
                     return;
                 }
 
@@ -10874,6 +11117,9 @@
                 const countModerada = values.filter((v) => v >= 40 && v <= 80).length;
                 const countDistante = values.filter((v) => v > 80).length;
                 const countCritica = values.filter((v) => v > 150).length;
+                const topDistantes = [...distRows]
+                    .sort((a, b) => b.distanciaKm - a.distanciaKm)
+                    .slice(0, 5);
 
                 const pct = (count) => total ? (count / total) * 100 : 0;
                 const pctText = (count) => pct(count).toFixed(1).replace(".", ",") + "%";
@@ -10905,6 +11151,20 @@
                         <span class="bar-label">Crítica &gt;150</span>
                         <div class="distance-bar-track"><span class="distance-bar-fill distance-fill-critical" style="width:${pct(countCritica)}%"></span></div>
                         <span class="distance-bar-value">${countCritica} · ${pctText(countCritica)}</span>
+                    </div>
+                `;
+
+                listEl.innerHTML = `
+                    <div class="distance-list-title">Modelo Lista (Resumo)</div>
+                    <div class="distance-list-item"><span>Próxima (&lt;40 km)</span><b>${countProxima} municípios (${pctText(countProxima)})</b></div>
+                    <div class="distance-list-item"><span>Moderada (40-80 km)</span><b>${countModerada} municípios (${pctText(countModerada)})</b></div>
+                    <div class="distance-list-item"><span>Distante (&gt;80 km)</span><b>${countDistante} municípios (${pctText(countDistante)})</b></div>
+                    <div class="distance-list-item"><span>Crítica (&gt;150 km)</span><b>${countCritica} municípios (${pctText(countCritica)})</b></div>
+                    <div class="distance-ranking">
+                        <div class="distance-list-title">Top 5 Mais Distantes</div>
+                        ${topDistantes
+                            .map((item) => `<div class="distance-list-item"><span>${escapeHtml(item.cidade)}</span><b>${formatKm(item.distanciaKm)}</b></div>`)
+                            .join("")}
                     </div>
                 `;
             }
@@ -10972,6 +11232,7 @@
                 }
             }
 
+            initDistanceTableSorting();
             aplicarFiltroBatalhao(filtroAtual);
             setTimeout(() => map_475b15caff0728b3dc42d0d1917fd2d6.invalidateSize(), 150);
 
