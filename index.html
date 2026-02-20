@@ -1591,6 +1591,47 @@
             justify-content: flex-end;
         }
 
+        .municipio-hover-tooltip-v3 {
+            background: rgba(255, 255, 255, 0.99);
+            border: 1px solid #b7cdc3;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(10, 42, 44, 0.16);
+            color: #16343f;
+            white-space: normal !important;
+            max-width: none !important;
+        }
+
+        .municipio-hover-tooltip-v3,
+        .municipio-hover-tooltip-v3 * {
+            writing-mode: horizontal-tb !important;
+            text-orientation: mixed !important;
+            white-space: normal !important;
+            word-break: normal !important;
+            overflow-wrap: break-word !important;
+        }
+
+        .municipio-hover-tooltip-v3:before {
+            border-top-color: #c9ddd4;
+        }
+
+        .leaflet-tooltip.municipio-hover-tooltip-v3 .leaflet-tooltip-content {
+            margin: 7px 10px;
+            width: min(360px, calc(100vw - 34px)) !important;
+            min-width: 260px !important;
+            max-width: min(360px, calc(100vw - 34px)) !important;
+            font-size: 0.74rem;
+            line-height: 1.3;
+            display: block !important;
+        }
+
+        .hover-title {
+            margin: 0 0 5px;
+            font-family: "Exo 2", "Segoe UI", sans-serif;
+            font-size: 0.86rem;
+            font-weight: 800;
+            color: #133845;
+        }
+
         .chip-btn {
             border: 1px solid #c8d9d5;
             background: #ffffff;
@@ -10757,108 +10798,508 @@
                     sede: ["Caucaia"],
                     companhias: [
                         "Maracanaú",
-                        "Eusébio",
                         "Horizonte",
                         "São Gonçalo do Amarante",
+                        "Eusébio",
                         "Maranguape",
                         "Aquiraz",
                         "Pacajus",
                         "Pacatuba",
                     ],
-                    pelotoes: ["Itaitinga", "Trairi", "Cascavel", "Paracuru", "Guaiúba", "Chorozinho", "Paraipaba"],
+                    pelotoes: ["Itaitinga", "Chorozinho", "Paracuru", "Paraipaba", "Trairi", "Guaiúba", "Cascavel"],
                     independentes: [],
+                    subordinacao: {
+                        "Maracanaú": ["Itaitinga"],
+                        "Horizonte": ["Chorozinho"],
+                        "São Gonçalo do Amarante": ["Paracuru", "Paraipaba", "Trairi"],
+                        "Maranguape": ["Guaiúba"],
+                        "Aquiraz": ["Cascavel"],
+                        "Eusébio": [],
+                        "Pacajus": [],
+                        "Pacatuba": [],
+                    },
                     observacoes: {},
                 },
                 "3º BPRAIO": {
                     sede: ["Russas"],
-                    companhias: ["Aracati", "Quixadá", "Limoeiro do Norte", "Quixeramobim"],
+                    companhias: ["Limoeiro do Norte", "Aracati", "Quixeramobim"],
                     pelotoes: [
                         "Morada Nova",
-                        "Pedra Branca",
                         "Tabuleiro do Norte",
-                        "Beberibe",
                         "Jaguaruana",
-                        "Baturité",
                         "Jaguaribe",
+                        "Beberibe",
                         "Icapuí",
                         "Ocara",
-                        "Senador Pompeu",
                         "Redenção",
                         "Aracoiaba",
+                        "Senador Pompeu",
+                        "Baturité",
+                        "Boa Viagem",
+                        "Pedra Branca",
                     ],
-                    independentes: ["Boa Viagem"],
+                    independentes: ["Quixadá"],
+                    subordinacao: {
+                        "Limoeiro do Norte": ["Morada Nova", "Tabuleiro do Norte", "Jaguaruana", "Jaguaribe"],
+                        "Aracati": ["Beberibe", "Icapuí"],
+                        "Quixeramobim": ["Ocara", "Redenção", "Aracoiaba", "Senador Pompeu", "Baturité"],
+                        "Quixadá": ["Boa Viagem", "Pedra Branca"],
+                    },
                     observacoes: {
-                        "Pedra Branca": "Subordinado operacionalmente à Cia Independente de Boa Viagem.",
-                        "Boa Viagem": "Outlier por distância (Análise de Outliers do 3º BPRAIO).",
+                        "Quixadá": "Companhia Independente definida para o 3º BPRAIO (substitui Boa Viagem).",
                     },
                 },
                 "4º BPRAIO": {
                     sede: ["Sobral"],
-                    companhias: ["Tianguá", "Canindé", "Camocim"],
+                    companhias: ["Tianguá", "Canindé", "Camocim", "Acaraú", "Ipu"],
                     pelotoes: [
-                        "Massapê",
-                        "Viçosa do Ceará",
-                        "Santa Quitéria",
-                        "Granja",
-                        "Itapajé",
-                        "Santana do Acaraú",
                         "São Benedito",
-                        "Bela Cruz",
-                        "Acaraú",
-                        "Marco",
-                        "Itarema",
-                        "Forquilha",
-                        "Guaraciaba do Norte",
-                        "Ipu",
-                        "Amontada",
-                        "Pentecoste",
+                        "Viçosa do Ceará",
                         "Ubajara",
                         "Ibiapina",
+                        "Guaraciaba do Norte",
+                        "Santa Quitéria",
+                        "Granja",
+                        "Forquilha",
+                        "Massapê",
+                        "Santana do Acaraú",
+                        "Marco",
+                        "Itarema",
+                        "Bela Cruz",
                         "Cruz",
+                        "Amontada",
+                        "Itapajé",
+                        "Pentecoste",
                     ],
                     independentes: ["Itapipoca"],
+                    subordinacao: {
+                        "Tianguá": ["São Benedito", "Viçosa do Ceará", "Ubajara", "Ibiapina", "Guaraciaba do Norte"],
+                        "Canindé": ["Santa Quitéria"],
+                        "Camocim": ["Granja"],
+                        "Sobral": ["Forquilha", "Massapê", "Santana do Acaraú"],
+                        "Acaraú": ["Marco", "Itarema", "Bela Cruz", "Cruz", "Amontada"],
+                        "Ipu": [],
+                        "Itapipoca": ["Itapajé", "Pentecoste"],
+                    },
                     observacoes: {
+                        "Sobral": "Sede com função de apoio tático de companhia.",
                         "Itapipoca": "Outlier por impacto demográfico e centralidade logística (4º BPRAIO).",
                     },
                 },
                 "5º BPRAIO": {
                     sede: ["Juazeiro do Norte"],
-                    companhias: ["Crato", "Iguatu", "Tauá", "Barbalha"],
+                    companhias: ["Crato", "Barbalha", "Iguatu", "Tauá", "Brejo Santo"],
                     pelotoes: [
-                        "Brejo Santo",
-                        "Acopiara",
-                        "Parambu",
-                        "Tamboril",
-                        "Mauriti",
-                        "Icó",
-                        "Mombaça",
-                        "Nova Russas",
                         "Jardim",
-                        "Várzea Alegre",
+                        "Missão Velha",
+                        "Acopiara",
+                        "Icó",
                         "Lavras da Mangabeira",
+                        "Cedro",
+                        "Mombaça",
+                        "Várzea Alegre",
+                        "Parambu",
+                        "Campos Sales",
+                        "Mauriti",
+                        "Milagres",
+                        "Tamboril",
+                        "Nova Russas",
                         "Novo Oriente",
                         "Ipueiras",
-                        "Missão Velha",
-                        "Campos Sales",
-                        "Cedro",
                         "Independência",
-                        "Milagres",
                     ],
                     independentes: ["Crateús"],
+                    subordinacao: {
+                        "Crato": [],
+                        "Barbalha": ["Jardim", "Missão Velha"],
+                        "Iguatu": ["Acopiara", "Icó", "Lavras da Mangabeira", "Cedro", "Mombaça", "Várzea Alegre"],
+                        "Tauá": ["Parambu", "Campos Sales"],
+                        "Brejo Santo": ["Mauriti", "Milagres"],
+                        "Crateús": ["Tamboril", "Nova Russas", "Novo Oriente", "Ipueiras", "Independência"],
+                    },
                     observacoes: {
-                        "Acopiara": "Subordinado à Companhia de Iguatu.",
-                        "Parambu": "Subordinado à Companhia de Tauá.",
-                        "Tamboril": "Subordinado à Cia Independente de Crateús.",
-                        "Icó": "Subordinado à Companhia de Iguatu.",
-                        "Nova Russas": "Subordinado à Cia Independente de Crateús.",
-                        "Novo Oriente": "Subordinado à Cia Independente de Crateús.",
-                        "Ipueiras": "Subordinado à Cia Independente de Crateús.",
-                        "Campos Sales": "Subordinado à Companhia de Tauá.",
-                        "Independência": "Subordinado à Cia Independente de Crateús.",
+                        "Várzea Alegre": "Subordinado operacionalmente à Companhia de Iguatu.",
                         "Crateús": "Outlier por distância crítica (Análise de Outliers do 5º BPRAIO).",
                     },
                 },
             };
+
+            function keyByBatalhaoCidade(batalhao, cidade) {
+                return `${batalhao}::${normalizeCityKey(cidade)}`;
+            }
+
+            function clampNumber(value, min, max) {
+                return Math.min(Math.max(value, min), max);
+            }
+
+            function wrapHue(value) {
+                const hue = value % 360;
+                return hue < 0 ? hue + 360 : hue;
+            }
+
+            function colorToCss(colorObj) {
+                return `hsl(${Math.round(colorObj.h)}, ${Math.round(colorObj.s)}%, ${Math.round(colorObj.l)}%)`;
+            }
+
+            function adjustColor(colorObj, lightDelta, satDelta) {
+                return {
+                    h: wrapHue(colorObj.h),
+                    s: clampNumber(colorObj.s + satDelta, 25, 95),
+                    l: clampNumber(colorObj.l + lightDelta, 18, 88),
+                };
+            }
+
+            const baseColorByBatalhao = {
+                "2º BPRAIO": { h: 8, s: 66, l: 45 },
+                "3º BPRAIO": { h: 140, s: 56, l: 43 },
+                "4º BPRAIO": { h: 206, s: 60, l: 44 },
+                "5º BPRAIO": { h: 272, s: 52, l: 46 },
+            };
+
+            const hueShiftCycle = [0, 2, -2, 4, -4, 6, -6, 8, -8, 10, -10];
+            const satShiftCycle = [0, -3, 3, -5, 5, -7, 7, -9, 9, -11, 11];
+            const lightShiftCycle = [0, 7, -7, 12, -12, 16, -16, 20, -20, 24, -24];
+            const parentPaletteCache = {};
+            const subordinacaoCache = {
+                parentByKey: {},
+                parentTypeByKey: {},
+            };
+
+            Object.entries(distribuicaoOficial).forEach(([batalhao, bloco]) => {
+                const sedeList = bloco.sede || [];
+                const ciaList = bloco.companhias || [];
+                const indepList = bloco.independentes || [];
+
+                const parentCandidates = [...sedeList, ...ciaList, ...indepList];
+                parentCandidates.forEach((cidade) => {
+                    const key = keyByBatalhaoCidade(batalhao, cidade);
+                    subordinacaoCache.parentByKey[key] = cidade;
+                    subordinacaoCache.parentTypeByKey[key] = indepList.includes(cidade)
+                        ? "Cia Independente"
+                        : (sedeList.includes(cidade) ? "Sede" : "Companhia");
+                });
+
+                Object.entries(bloco.subordinacao || {}).forEach(([parent, children]) => {
+                    const parentType = indepList.includes(parent)
+                        ? "Cia Independente"
+                        : (sedeList.includes(parent) ? "Sede" : "Companhia");
+                    const parentKey = keyByBatalhaoCidade(batalhao, parent);
+                    subordinacaoCache.parentByKey[parentKey] = parent;
+                    subordinacaoCache.parentTypeByKey[parentKey] = parentType;
+
+                    (children || []).forEach((child) => {
+                        const childKey = keyByBatalhaoCidade(batalhao, child);
+                        subordinacaoCache.parentByKey[childKey] = parent;
+                        subordinacaoCache.parentTypeByKey[childKey] = parentType;
+                    });
+                });
+            });
+
+            let municipioMetaByBatalhaoCidade = {};
+
+            function getBatalhaoBaseColor(batalhao) {
+                return baseColorByBatalhao[batalhao] || { h: 200, s: 55, l: 45 };
+            }
+
+            function getParentColor(batalhao, parentCidade) {
+                const parentKey = normalizeCityKey(parentCidade);
+                if (!parentPaletteCache[batalhao]) {
+                    const base = getBatalhaoBaseColor(batalhao);
+                    const bloco = distribuicaoOficial[batalhao] || {};
+                    const roots = [...(bloco.sede || []), ...(bloco.companhias || []), ...(bloco.independentes || [])];
+                    const palette = {};
+
+                    roots.forEach((root, index) => {
+                        const i = index % hueShiftCycle.length;
+                        palette[normalizeCityKey(root)] = {
+                            h: wrapHue(base.h + hueShiftCycle[i]),
+                            s: clampNumber(base.s + satShiftCycle[i], 40, 78),
+                            l: clampNumber(base.l + lightShiftCycle[i], 30, 62),
+                        };
+                    });
+
+                    parentPaletteCache[batalhao] = palette;
+                }
+
+                return parentPaletteCache[batalhao][parentKey] || {
+                    ...getBatalhaoBaseColor(batalhao),
+                };
+            }
+
+            function getParentCidade(batalhao, cidade) {
+                const key = keyByBatalhaoCidade(batalhao, cidade);
+                return subordinacaoCache.parentByKey[key] || cidade;
+            }
+
+            function getParentTipo(batalhao, cidade) {
+                const key = keyByBatalhaoCidade(batalhao, cidade);
+                return subordinacaoCache.parentTypeByKey[key] || "Companhia";
+            }
+
+            function getSubordinacaoLabel(batalhao, cidade) {
+                const parent = getParentCidade(batalhao, cidade);
+                if (normalizeCityKey(parent) === normalizeCityKey(cidade)) return "";
+
+                const parentTipo = getParentTipo(batalhao, cidade);
+                const prefixo = parentTipo === "Cia Independente"
+                    ? "Cia Independente de "
+                    : "Companhia de ";
+                return `${prefixo}${parent}`;
+            }
+
+            function getObservacaoCidade(batalhao, bloco, cidade, classificacao) {
+                const observacoes = bloco.observacoes || {};
+                if (observacoes[cidade]) return observacoes[cidade];
+
+                if (classificacao === "Pelotão") {
+                    const subordinacao = getSubordinacaoLabel(batalhao, cidade);
+                    if (subordinacao) return `Subordinado operacionalmente à ${subordinacao}.`;
+                }
+
+                return "";
+            }
+
+            function extrairCidadeDoLayer(layer) {
+                if (layer && layer.feature && layer.feature.properties && layer.feature.properties.name) {
+                    return layer.feature.properties.name;
+                }
+
+                if (layer && typeof layer.eachLayer === "function") {
+                    let cidade = "";
+                    layer.eachLayer((subLayer) => {
+                        if (!cidade && subLayer && subLayer.feature && subLayer.feature.properties) {
+                            cidade = subLayer.feature.properties.name || "";
+                        }
+                    });
+                    return cidade;
+                }
+
+                return "";
+            }
+
+            function resolveMunicipioStyle(batalhao, cidade, classificacao) {
+                const baseColor = getBatalhaoBaseColor(batalhao);
+
+                if (classificacao === "Sede") {
+                    return {
+                        color: colorToCss(adjustColor(baseColor, -30, 8)),
+                        fillColor: colorToCss(adjustColor(baseColor, -18, 2)),
+                        fillOpacity: 0.9,
+                        weight: 3.1,
+                    };
+                }
+
+                if (classificacao === "Companhia") {
+                    return {
+                        color: colorToCss(adjustColor(baseColor, -14, 4)),
+                        fillColor: colorToCss(adjustColor(baseColor, -4, 0)),
+                        fillOpacity: 0.75,
+                        weight: 2.25,
+                    };
+                }
+
+                if (classificacao === "Cia Independente") {
+                    return {
+                        color: "#17212a",
+                        fillColor: colorToCss(adjustColor(baseColor, 6, -4)),
+                        fillOpacity: 0.84,
+                        weight: 3.15,
+                        dashArray: "10 4",
+                    };
+                }
+
+                if (classificacao === "Pelotão") {
+                    return {
+                        color: colorToCss(adjustColor(baseColor, -8, -6)),
+                        fillColor: colorToCss(adjustColor(baseColor, 24, -20)),
+                        fillOpacity: 0.64,
+                        weight: 1.9,
+                        dashArray: "5 5",
+                    };
+                }
+
+                return {
+                    color: "#21343d",
+                    fillColor: "#cfd9d5",
+                    fillOpacity: 0.55,
+                    weight: 1.2,
+                };
+            }
+
+            function atualizarPopupComDistribuicao(layer, batalhao, info) {
+                if (!layer || !layer.getPopup || !info) return;
+
+                const popup = layer.getPopup();
+                if (!popup) return;
+
+                const content = popup.getContent();
+                const html = typeof content === "string"
+                    ? content
+                    : (content && typeof content.innerHTML === "string" ? content.innerHTML : "");
+                if (!html) return;
+
+                let atualizado = html;
+                if (/Classifica[çc][ãa]o:\s*[^<]+<br>/i.test(atualizado)) {
+                    atualizado = atualizado.replace(
+                        /Classifica[çc][ãa]o:\s*[^<]+<br>/i,
+                        `Classificação: ${info.classificacao}<br>`
+                    );
+                } else if (/Batalh[ãa]o:\s*[^<]+<br>/i.test(atualizado)) {
+                    atualizado = atualizado.replace(
+                        /(Batalh[ãa]o:\s*[^<]+<br>)/i,
+                        `$1Classificação: ${info.classificacao}<br>`
+                    );
+                }
+
+                const subordinacaoLabel = getSubordinacaoLabel(batalhao, info.cidade);
+                atualizado = atualizado.replace(/Subordina[çc][ãa]o:\s*[^<]+<br>/i, "");
+                if (subordinacaoLabel) {
+                    if (/Justificativa:\s*/i.test(atualizado)) {
+                        atualizado = atualizado.replace(
+                            /Justificativa:\s*/i,
+                            `Subordinação: ${subordinacaoLabel}<br>     Justificativa: `
+                        );
+                    } else if (/Densidade:\s*[^<]+<br>/i.test(atualizado)) {
+                        atualizado = atualizado.replace(
+                            /(Densidade:\s*[^<]+<br>)/i,
+                            `$1Subordinação: ${subordinacaoLabel}<br>`
+                        );
+                    }
+                }
+
+                if (atualizado !== html) {
+                    popup.setContent(atualizado);
+                }
+            }
+
+            function extrairCamposDoHtmlPopup(html) {
+                const campos = {};
+                if (!html) return campos;
+
+                const pairRegex = /(?:^|<br>\s*)([^:<]+):\s*([^<]+)/gi;
+                let match;
+                while ((match = pairRegex.exec(html)) !== null) {
+                    const label = String(match[1] || "").trim();
+                    const value = String(match[2] || "").trim();
+                    if (!label || !value) continue;
+                    campos[label] = value;
+                }
+
+                return campos;
+            }
+
+            function montarTooltipDetalhadoHtml(layer, parentLayer, info, batalhao, cidadeFallback) {
+                const popupHtml = extrairHtmlPopup(layer, parentLayer);
+                const cityFromPopup = popupHtml.match(/<b>\s*([^<]+)\s*<\/b>/i);
+                const cidade = (cityFromPopup && cityFromPopup[1] ? cityFromPopup[1].trim() : "") || cidadeFallback || "Município";
+                const campos = extrairCamposDoHtmlPopup(popupHtml);
+
+                if (!campos["Batalhão"]) campos["Batalhão"] = batalhao;
+                if (!campos["Classificação"] && info && info.classificacao) campos["Classificação"] = info.classificacao;
+
+                const subordinacao = info ? getSubordinacaoLabel(batalhao, info.cidade || cidade) : "";
+                if (subordinacao && !campos["Subordinação"]) campos["Subordinação"] = subordinacao;
+
+                if (info && typeof info.efetivo === "number" && !Number.isNaN(info.efetivo)) {
+                    campos["Efetivo"] = info.efetivo.toLocaleString("pt-BR");
+                }
+
+                if (info && info.observacao && !campos["Observação"]) {
+                    campos["Observação"] = info.observacao;
+                }
+
+                const ordemPreferida = [
+                    "Batalhão",
+                    "Classificação",
+                    "Subordinação",
+                    "População",
+                    "IDH",
+                    "PIB per capita",
+                    "Densidade",
+                    "Distância à sede",
+                    "Efetivo",
+                    "Justificativa",
+                    "Observação",
+                ];
+
+                const usados = new Set();
+                const linhasOrdenadas = [];
+
+                ordemPreferida.forEach((label) => {
+                    if (!Object.prototype.hasOwnProperty.call(campos, label)) return;
+                    usados.add(label);
+                    linhasOrdenadas.push([label, campos[label]]);
+                });
+
+                Object.entries(campos).forEach(([label, value]) => {
+                    if (usados.has(label)) return;
+                    linhasOrdenadas.push([label, value]);
+                });
+
+                const camposBloco = new Set(["Subordinação", "Justificativa", "Observação"]);
+                const linhasDetalhe = linhasOrdenadas.map(([label, value]) => {
+                    const blockStyle = camposBloco.has(label)
+                        ? "border-top:1px dashed #d4e0db; padding-top:4px; margin-top:4px;"
+                        : "";
+                    return `
+                        <div style="display:block; margin:2px 0; color:#1f3d49; ${blockStyle}">
+                            <span style="font-weight:700; color:#3a5966;">${escapeHtml(label)}:</span>
+                            <span style="color:#1f3d49;">${escapeHtml(value)}</span>
+                        </div>
+                    `;
+                });
+
+                return `
+                    <div style="max-width:360px; min-width:260px; display:block;">
+                        <h4 class="hover-title">${escapeHtml(cidade)}</h4>
+                        ${linhasDetalhe.join("")}
+                    </div>
+                `;
+            }
+
+            function aplicarEsquemaVisualMunicipios() {
+                Object.entries(batalhaoLayers).forEach(([batalhao, group]) => {
+                    group.eachLayer((layer) => {
+                        const cidade = extrairCidadeDoLayer(layer);
+                        if (!cidade) return;
+
+                        const key = keyByBatalhaoCidade(batalhao, cidade);
+                        const info = municipioMetaByBatalhaoCidade[key];
+                        if (!info) return;
+
+                        if (layer && typeof layer.setStyle === "function") {
+                            layer.options.style = (feature) => {
+                                const nome = feature && feature.properties ? feature.properties.name : cidade;
+                                return resolveMunicipioStyle(batalhao, nome || cidade, info.classificacao);
+                            };
+                            layer.setStyle(layer.options.style);
+                        }
+
+                        atualizarPopupComDistribuicao(layer, batalhao, info);
+
+                        if (layer && typeof layer.bindTooltip === "function") {
+                            if (typeof layer.unbindTooltip === "function") {
+                                layer.unbindTooltip();
+                            }
+                            layer.bindTooltip(
+                                (featureLayer) => {
+                                    const cidadeLayer = extrairCidadeDoLayer(featureLayer) || cidade;
+                                    const keyLayer = keyByBatalhaoCidade(batalhao, cidadeLayer);
+                                    const infoLayer = municipioMetaByBatalhaoCidade[keyLayer] || info;
+                                    return montarTooltipDetalhadoHtml(featureLayer, layer, infoLayer, batalhao, cidadeLayer);
+                                },
+                                {
+                                    sticky: false,
+                                    direction: "top",
+                                    offset: [0, -10],
+                                    opacity: 0.97,
+                                    className: "municipio-hover-tooltip-v3",
+                                }
+                            );
+                        }
+                    });
+                });
+            }
 
             function extrairHtmlPopup(layer, parentLayer) {
                 const popupLayer = layer && layer.getPopup ? layer.getPopup() : null;
@@ -10907,7 +11348,7 @@
                 const rows = [];
                 const distancias = coletarDistanciasDoMapa();
 
-                function adicionarLista(batalhao, lista, classificacao, observacoes) {
+                function adicionarLista(batalhao, bloco, lista, classificacao) {
                     lista.forEach((cidade) => {
                         rows.push({
                             cidade,
@@ -10915,17 +11356,16 @@
                             batalhao,
                             classificacao,
                             distanciaKm: Object.prototype.hasOwnProperty.call(distancias, cidade) ? distancias[cidade] : null,
-                            observacao: observacoes[cidade] || "",
+                            observacao: getObservacaoCidade(batalhao, bloco, cidade, classificacao),
                         });
                     });
                 }
 
                 Object.entries(distribuicaoOficial).forEach(([batalhao, bloco]) => {
-                    const observacoes = bloco.observacoes || {};
-                    adicionarLista(batalhao, bloco.sede || [], "Sede", observacoes);
-                    adicionarLista(batalhao, bloco.companhias || [], "Companhia", observacoes);
-                    adicionarLista(batalhao, bloco.pelotoes || [], "Pelotão", observacoes);
-                    adicionarLista(batalhao, bloco.independentes || [], "Cia Independente", observacoes);
+                    adicionarLista(batalhao, bloco, bloco.sede || [], "Sede");
+                    adicionarLista(batalhao, bloco, bloco.companhias || [], "Companhia");
+                    adicionarLista(batalhao, bloco, bloco.pelotoes || [], "Pelotão");
+                    adicionarLista(batalhao, bloco, bloco.independentes || [], "Cia Independente");
                 });
 
                 rows.sort((a, b) => {
@@ -11295,6 +11735,10 @@
             }
 
             const municipiosData = montarMunicipiosDaDistribuicao();
+            municipioMetaByBatalhaoCidade = {};
+            municipiosData.forEach((item) => {
+                municipioMetaByBatalhaoCidade[keyByBatalhaoCidade(item.batalhao, item.cidade)] = item;
+            });
 
             function aplicarFiltroBatalhao(target) {
                 filtroAtual = target;
@@ -11335,6 +11779,7 @@
             }
 
             initDistanceTableSorting();
+            aplicarEsquemaVisualMunicipios();
             aplicarFiltroBatalhao(filtroAtual);
             setTimeout(() => map_475b15caff0728b3dc42d0d1917fd2d6.invalidateSize(), 150);
 
