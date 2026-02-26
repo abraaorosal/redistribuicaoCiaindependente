@@ -2330,6 +2330,8 @@
                         <strong>Síntese do anexo:</strong> o cenário ampliado não altera o total de policiais por
                         batalhão, mas redistribui <strong>+143</strong> policiais para Companhias Independentes
                         (3º: +33, 4º: +82, 5º: +28), reduzindo a massa de efetivo das Companhias convencionais.
+                        As Companhias Independentes (notavelmente em Itapipoca, Crateús e agora em formato exclusivo
+                        regional em Quixadá) concentram a autonomia operacional regional do cenário ampliado.
                     </p>
                 </section>
             </aside>
@@ -4478,7 +4480,7 @@
 
         
             
-                var html_6f211229bf1a99ce638fd4df931409bb = $(`<div id="html_6f211229bf1a99ce638fd4df931409bb" style="width: 100.0%; height: 100.0%;">     <div style='font-size:12px;'>     <b>Boa Viagem</b><br>     Batalhão: 3º BPRAIO<br>     Classificação: Cia Independente<br>     População: 55,000 hab.<br>     IDH: 0.598<br>     PIB per capita: n/d<br>     Densidade: Baixa<br>     Distância à sede: 187.4 km<br>     Justificativa: Isolado e distante; outlier logístico.     </div>     </div>`)[0];
+                var html_6f211229bf1a99ce638fd4df931409bb = $(`<div id="html_6f211229bf1a99ce638fd4df931409bb" style="width: 100.0%; height: 100.0%;">     <div style='font-size:12px;'>     <b>Boa Viagem</b><br>     Batalhão: 3º BPRAIO<br>     Classificação: Pelotão<br>     População: 55,000 hab.<br>     IDH: 0.598<br>     PIB per capita: n/d<br>     Densidade: Baixa<br>     Distância à sede: 230 km<br>     Justificativa: Distância mitigada via subordinação operacional à Cia Quixeramobim, otimizando recursos.     </div>     </div>`)[0];
                 popup_247486cca6f7339ac80430608fdec7cf.setContent(html_6f211229bf1a99ce638fd4df931409bb);
             
         
@@ -5278,7 +5280,7 @@
 
         
             
-                var html_01107d7c604fd332e673476b95b4c47e = $(`<div id="html_01107d7c604fd332e673476b95b4c47e" style="width: 100.0%; height: 100.0%;">     <div style='font-size:12px;'>     <b>Quixadá</b><br>     Batalhão: 3º BPRAIO<br>     Classificação: Companhia<br>     População: 89,000 hab.<br>     IDH: 0.659<br>     PIB per capita: n/d<br>     Densidade: Média<br>     Distância à sede: 89.8 km<br>     Justificativa: Cidade universitária com distância significativa.     </div>     </div>`)[0];
+                var html_01107d7c604fd332e673476b95b4c47e = $(`<div id="html_01107d7c604fd332e673476b95b4c47e" style="width: 100.0%; height: 100.0%;">     <div style='font-size:12px;'>     <b>Quixadá</b><br>     Batalhão: 3º BPRAIO<br>     Classificação: Cia Independente<br>     População: 89,000 hab.<br>     IDH: 0.659<br>     PIB per capita: n/d<br>     Densidade: Média<br>     Distância à sede: 120 km<br>     Justificativa: Única Cia. Independente do Batalhão. Polo regional com comando autônomo.     </div>     </div>`)[0];
                 popup_f37e02c92e94c712b8c039e471aa41b5.setContent(html_01107d7c604fd332e673476b95b4c47e);
             
         
@@ -10698,6 +10700,125 @@
                     .toUpperCase();
             }
 
+            const distanciasOficiaisPorBatalhao = {
+                "2º BPRAIO": {
+                    "Caucaia": 0,
+                    "Maracanaú": 25,
+                    "Eusébio": 45,
+                    "Horizonte": 60,
+                    "São Gonçalo do Amarante": 45,
+                    "Maranguape": 35,
+                    "Aquiraz": 55,
+                    "Pacajus": 65,
+                    "Pacatuba": 35,
+                    "Itaitinga": 45,
+                    "Trairi": 120,
+                    "Cascavel": 80,
+                    "Paracuru": 80,
+                    "Guaiúba": 45,
+                    "Chorozinho": 80,
+                    "Paraipaba": 90,
+                },
+                "3º BPRAIO": {
+                    "Russas": 0,
+                    "Aracati": 90,
+                    "Quixadá": 120,
+                    "Limoeiro do Norte": 45,
+                    "Quixeramobim": 160,
+                    "Morada Nova": 40,
+                    "Boa Viagem": 230,
+                    "Pedra Branca": 260,
+                    "Tabuleiro do Norte": 60,
+                    "Beberibe": 110,
+                    "Jaguaruana": 50,
+                    "Baturité": 140,
+                    "Jaguaribe": 160,
+                    "Icapuí": 140,
+                    "Ocara": 110,
+                    "Senador Pompeu": 200,
+                    "Redenção": 130,
+                    "Aracoiaba": 120,
+                },
+                "4º BPRAIO": {
+                    "Sobral": 0,
+                    "Itapipoca": 130,
+                    "Tianguá": 130,
+                    "Canindé": 180,
+                    "Camocim": 150,
+                    "Massapê": 25,
+                    "Viçosa do Ceará": 160,
+                    "Santa Quitéria": 85,
+                    "Granja": 130,
+                    "Itapajé": 100,
+                    "Santana do Acaraú": 45,
+                    "São Benedito": 120,
+                    "Bela Cruz": 110,
+                    "Acaraú": 120,
+                    "Marco": 100,
+                    "Itarema": 140,
+                    "Forquilha": 20,
+                    "Guaraciaba do Norte": 110,
+                    "Ipu": 100,
+                    "Amontada": 140,
+                    "Pentecoste": 160,
+                    "Ubajara": 115,
+                    "Ibiapina": 125,
+                    "Cruz": 135,
+                },
+                "5º BPRAIO": {
+                    "Juazeiro do Norte": 0,
+                    "Crato": 15,
+                    "Iguatu": 150,
+                    "Tauá": 280,
+                    "Crateús": 340,
+                    "Barbalha": 12,
+                    "Brejo Santo": 75,
+                    "Acopiara": 180,
+                    "Parambu": 330,
+                    "Tamboril": 380,
+                    "Mauriti": 100,
+                    "Icó": 140,
+                    "Mombaça": 240,
+                    "Nova Russas": 400,
+                    "Jardim": 55,
+                    "Várzea Alegre": 65,
+                    "Lavras da Mangabeira": 90,
+                    "Novo Oriente": 360,
+                    "Ipueiras": 420,
+                    "Missão Velha": 25,
+                    "Campos Sales": 140,
+                    "Cedro": 100,
+                    "Independência": 360,
+                    "Milagres": 55,
+                },
+            };
+
+            const distanciasOficiaisNormalizadas = {};
+            Object.entries(distanciasOficiaisPorBatalhao).forEach(([batalhao, cidades]) => {
+                const bucket = {};
+                Object.entries(cidades || {}).forEach(([cidade, km]) => {
+                    const distanciaKm = Number(km);
+                    if (!Number.isNaN(distanciaKm)) {
+                        bucket[normalizeCityKey(cidade)] = distanciaKm;
+                    }
+                });
+                distanciasOficiaisNormalizadas[batalhao] = bucket;
+            });
+
+            function getDistanciaOficial(batalhao, cidade) {
+                const bucket = distanciasOficiaisNormalizadas[batalhao];
+                if (!bucket) return null;
+                const distanciaKm = bucket[normalizeCityKey(cidade)];
+                return typeof distanciaKm === "number" && !Number.isNaN(distanciaKm) ? distanciaKm : null;
+            }
+
+            function formatPopupKm(value) {
+                if (typeof value !== "number" || Number.isNaN(value)) return null;
+                const rounded = Math.round(value * 10) / 10;
+                if (Number.isInteger(rounded)) return `${rounded} km`;
+                return `${rounded.toFixed(1)} km`;
+            }
+
             const efetivoPorCidade = {
                 "CAUCAIA": 144,
                 "AQUIRAZ": 53,
@@ -10842,11 +10963,12 @@
                     subordinacao: {
                         "Limoeiro do Norte": ["Morada Nova", "Tabuleiro do Norte", "Jaguaruana", "Jaguaribe"],
                         "Aracati": ["Beberibe", "Icapuí"],
-                        "Quixeramobim": ["Ocara", "Redenção", "Aracoiaba", "Senador Pompeu", "Baturité"],
-                        "Quixadá": ["Boa Viagem", "Pedra Branca"],
+                        "Quixeramobim": ["Senador Pompeu", "Boa Viagem", "Pedra Branca"],
+                        "Quixadá": ["Baturité", "Ocara", "Redenção", "Aracoiaba"],
                     },
                     observacoes: {
-                        "Quixadá": "Companhia Independente definida para o 3º BPRAIO (substitui Boa Viagem).",
+                        "Boa Viagem": "Distância mitigada via subordinação operacional à Cia Quixeramobim, otimizando recursos.",
+                        "Quixadá": "Única Cia. Independente do Batalhão. Polo regional com comando autônomo.",
                     },
                 },
                 "4º BPRAIO": {
@@ -10881,8 +11003,13 @@
                         "Ipu": [],
                         "Itapipoca": ["Itapajé", "Pentecoste"],
                     },
+                    rotulosSubordinacao: {
+                        "Sobral": "Cia Sobral (Apoio)",
+                        "Acaraú": "Cia Litoral (Acaraú)",
+                    },
                     observacoes: {
-                        "Sobral": "Sede com função de apoio tático de companhia.",
+                        "Sobral": "Sede com núcleo de apoio tático (Cia Sobral - Apoio).",
+                        "Acaraú": "Companhia Litoral (Acaraú) para coordenação regional do setor costeiro.",
                         "Itapipoca": "Outlier por impacto demográfico e centralidade logística (4º BPRAIO).",
                     },
                 },
@@ -11036,15 +11163,22 @@
                 return subordinacaoCache.parentTypeByKey[key] || "Companhia";
             }
 
+            function getRotuloSubordinacao(batalhao, cidade, parentTipo) {
+                const bloco = distribuicaoOficial[batalhao] || {};
+                const rotulos = bloco.rotulosSubordinacao || {};
+                if (rotulos[cidade]) return rotulos[cidade];
+
+                return parentTipo === "Cia Independente"
+                    ? `Cia Independente de ${cidade}`
+                    : `Companhia de ${cidade}`;
+            }
+
             function getSubordinacaoLabel(batalhao, cidade) {
                 const parent = getParentCidade(batalhao, cidade);
                 if (normalizeCityKey(parent) === normalizeCityKey(cidade)) return "";
 
                 const parentTipo = getParentTipo(batalhao, cidade);
-                const prefixo = parentTipo === "Cia Independente"
-                    ? "Cia Independente de "
-                    : "Companhia de ";
-                return `${prefixo}${parent}`;
+                return getRotuloSubordinacao(batalhao, parent, parentTipo);
             }
 
             function getObservacaoCidade(batalhao, bloco, cidade, classificacao) {
@@ -11149,6 +11283,22 @@
                         /(Batalh[ãa]o:\s*[^<]+<br>)/i,
                         `$1Classificação: ${info.classificacao}<br>`
                     );
+                }
+
+                const distanciaOficial = getDistanciaOficial(batalhao, info.cidade);
+                if (typeof distanciaOficial === "number" && !Number.isNaN(distanciaOficial)) {
+                    const distanciaTexto = formatPopupKm(distanciaOficial);
+                    if (/Dist[âa]ncia à sede:\s*[^<]+<br>/i.test(atualizado)) {
+                        atualizado = atualizado.replace(
+                            /Dist[âa]ncia à sede:\s*[^<]+<br>/i,
+                            `Distância à sede: ${distanciaTexto}<br>`
+                        );
+                    } else if (/Densidade:\s*[^<]+<br>/i.test(atualizado)) {
+                        atualizado = atualizado.replace(
+                            /(Densidade:\s*[^<]+<br>)/i,
+                            `$1Distância à sede: ${distanciaTexto}<br>`
+                        );
+                    }
                 }
 
                 const subordinacaoLabel = getSubordinacaoLabel(batalhao, info.cidade);
@@ -11316,28 +11466,36 @@
             function coletarDistanciasDoMapa() {
                 const distancias = {};
 
-                function registrarDistancia(layer, parentLayer) {
+                function registrarDistancia(layer, parentLayer, batalhao) {
                     const html = extrairHtmlPopup(layer, parentLayer);
                     if (!html) return;
 
                     const cityMatch = html.match(/<b>\s*([^<]+)\s*<\/b>/i);
-                    const distMatch = html.match(/Dist[âa]ncia à sede:\s*([0-9]+(?:[.,][0-9]+)?)/i);
-                    if (!cityMatch || !distMatch) return;
+                    if (!cityMatch) return;
 
                     const cidade = cityMatch[1].trim();
+                    const distanciaOficial = getDistanciaOficial(batalhao, cidade);
+                    if (typeof distanciaOficial === "number" && !Number.isNaN(distanciaOficial)) {
+                        distancias[cidade] = distanciaOficial;
+                        return;
+                    }
+
+                    const distMatch = html.match(/Dist[âa]ncia à sede:\s*([0-9]+(?:[.,][0-9]+)?)/i);
+                    if (!distMatch) return;
+
                     const distanciaKm = Number(distMatch[1].replace(",", "."));
                     if (!Number.isNaN(distanciaKm)) {
                         distancias[cidade] = distanciaKm;
                     }
                 }
 
-                Object.values(batalhaoLayers).forEach((group) => {
+                Object.entries(batalhaoLayers).forEach(([batalhao, group]) => {
                     group.eachLayer((layer) => {
                         if (layer && typeof layer.eachLayer === "function") {
-                            layer.eachLayer((subLayer) => registrarDistancia(subLayer, layer));
+                            layer.eachLayer((subLayer) => registrarDistancia(subLayer, layer, batalhao));
                             return;
                         }
-                        registrarDistancia(layer, null);
+                        registrarDistancia(layer, null, batalhao);
                     });
                 });
 
