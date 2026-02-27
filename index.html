@@ -1584,11 +1584,31 @@
             letter-spacing: 0.01em;
         }
 
+        .toolbar-actions {
+            display: grid;
+            justify-items: end;
+            gap: 6px;
+        }
+
         .filters {
             display: flex;
             flex-wrap: wrap;
             gap: 6px;
             justify-content: flex-end;
+        }
+
+        .filters-compact .chip-btn {
+            padding: 4px 10px;
+            font-size: 0.76rem;
+        }
+
+        .scenario-caption {
+            margin: 0;
+            font-size: 0.75rem;
+            line-height: 1.3;
+            color: #44606d;
+            text-align: right;
+            max-width: 520px;
         }
 
         .municipio-hover-tooltip-v3 {
@@ -1719,6 +1739,85 @@
             margin: 0 0 6px;
             font-size: 0.94rem;
             font-weight: 700;
+        }
+
+        .effective-bars {
+            display: grid;
+            gap: 4px;
+            margin-top: 8px;
+            padding-top: 7px;
+            border-top: 1px dashed #deebe5;
+        }
+
+        .effective-bar-row {
+            display: grid;
+            grid-template-columns: 66px minmax(0, 1fr) 68px;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .effective-bar-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #4a6470;
+            font-weight: 700;
+        }
+
+        .effective-bar-track {
+            position: relative;
+            height: 8px;
+            border-radius: 999px;
+            background: #e7efeb;
+            overflow: hidden;
+        }
+
+        .effective-bar-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            border-radius: 999px;
+        }
+
+        .effective-bar-sede {
+            background: #17724f;
+        }
+
+        .effective-bar-cia {
+            background: #d19a16;
+        }
+
+        .effective-bar-pelotao {
+            background: #38906f;
+        }
+
+        .effective-bar-value {
+            font-size: 0.72rem;
+            color: #415a66;
+            text-align: right;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .command-pin {
+            width: 24px;
+            height: 24px;
+            border-radius: 999px;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(18, 36, 47, 0.65);
+            box-shadow: 0 5px 10px rgba(8, 28, 34, 0.28);
+            color: #fff;
+            font-size: 0.72rem;
+        }
+
+        .command-pin-sede {
+            background: #0d6f50;
+        }
+
+        .command-pin-indep {
+            background: #b65b1d;
         }
 
         .effective-row {
@@ -2209,8 +2308,17 @@
                 gap: 8px;
             }
 
+            .toolbar-actions {
+                width: 100%;
+                justify-items: start;
+            }
+
             .filters {
                 justify-content: flex-start;
+            }
+
+            .scenario-caption {
+                text-align: left;
             }
         }
     </style>
@@ -2266,7 +2374,10 @@
             <section class="map-panel">
                 <div class="map-toolbar">
                     <div class="toolbar-title">Mapa Tático dos Municípios</div>
-                    <div class="filters" id="batalhao-filters"></div>
+                    <div class="toolbar-actions">
+                        <div class="filters filters-compact" id="mode-filters"></div>
+                        <div class="filters" id="batalhao-filters"></div>
+                    </div>
                 </div>
                 <div class="map-wrap">
                     <div class="folium-map" id="map_475b15caff0728b3dc42d0d1917fd2d6"></div>
@@ -2281,7 +2392,7 @@
                 </section>
 
                 <section>
-                    <h2 class="section-title">Estatística de Distância até Sede</h2>
+                    <h2 class="section-title">Estatística de Distância ao Polo Operacional</h2>
                     <p class="muted-text">Faixas logísticas: próxima (&lt;40 km), moderada (40-80 km), distante (&gt;80 km).</p>
                     <div class="distance-stats-card">
                         <div class="distance-head">
@@ -10643,12 +10754,21 @@
                 "5º BPRAIO": feature_group_404e9fe4dce35e9dc83a79f0ee799c86,
             };
 
-            const efetivoAnexo = {
+            const efetivoAnexoProposto = {
                 "2º BPRAIO": { "Sede": 0, "Companhias": 0, "Pelotões": 0, "Cias Ind.": 0, "Outros": 0 },
                 "3º BPRAIO": { "Sede": 0, "Companhias": -33, "Pelotões": 0, "Cias Ind.": 33, "Outros": 0 },
                 "4º BPRAIO": { "Sede": 0, "Companhias": -82, "Pelotões": 0, "Cias Ind.": 82, "Outros": 0 },
                 "5º BPRAIO": { "Sede": 0, "Companhias": -28, "Pelotões": 0, "Cias Ind.": 28, "Outros": 0 },
             };
+
+            const efetivoAnexoAtual = {
+                "2º BPRAIO": { "Sede": 0, "Companhias": 0, "Pelotões": 0, "Cias Ind.": 0, "Outros": 0 },
+                "3º BPRAIO": { "Sede": 0, "Companhias": 0, "Pelotões": 0, "Cias Ind.": 0, "Outros": 0 },
+                "4º BPRAIO": { "Sede": 0, "Companhias": 0, "Pelotões": 0, "Cias Ind.": 0, "Outros": 0 },
+                "5º BPRAIO": { "Sede": 0, "Companhias": 0, "Pelotões": 0, "Cias Ind.": 0, "Outros": 0 },
+            };
+
+            let efetivoAnexo = efetivoAnexoProposto;
 
             const classOrder = {
                 "Sede": 0,
@@ -10659,8 +10779,11 @@
             };
 
             let filtroAtual = "Todos";
+            let cenarioAtivo = "proposto";
+            let modoVisualMapa = "hierarquia";
             let distanceTableSort = { key: "distanciaKm", dir: "desc" };
             let distanceTableRowsCache = [];
+            let highlightHoverState = null;
 
             function escapeHtml(value) {
                 return String(value ?? "")
@@ -10812,6 +10935,136 @@
                 return typeof distanciaKm === "number" && !Number.isNaN(distanciaKm) ? distanciaKm : null;
             }
 
+            function getSedeCidade(batalhao) {
+                const bloco = distribuicaoOficial[batalhao] || {};
+                return (bloco.sede || [])[0] || "";
+            }
+
+            function getLayerByBatalhaoCidadeFallback(batalhao, cidade) {
+                const group = batalhaoLayers[batalhao];
+                if (!group || !cidade) return null;
+
+                const keyCidade = normalizeCityKey(cidade);
+                let found = null;
+                group.eachLayer((layer) => {
+                    if (found) return;
+                    const nome = extrairCidadeDoLayer(layer);
+                    if (normalizeCityKey(nome) === keyCidade) {
+                        found = layer;
+                    }
+                });
+                return found;
+            }
+
+            function getLayerByBatalhaoCidadeAny(batalhao, cidade) {
+                return getLayerByBatalhaoCidade(batalhao, cidade) || getLayerByBatalhaoCidadeFallback(batalhao, cidade);
+            }
+
+            function calcularDistanciaEntreCidadesKm(batalhao, cidadeOrigem, cidadeDestino) {
+                const origemLayer = getLayerByBatalhaoCidadeAny(batalhao, cidadeOrigem);
+                const destinoLayer = getLayerByBatalhaoCidadeAny(batalhao, cidadeDestino);
+                const origem = getLayerCenter(origemLayer);
+                const destino = getLayerCenter(destinoLayer);
+                if (!origem || !destino) return null;
+
+                const metros = map_475b15caff0728b3dc42d0d1917fd2d6.distance(origem, destino);
+                const km = metros / 1000;
+                return Number.isFinite(km) ? km : null;
+            }
+
+            function getPoloOperacionalDetalhe(batalhao, cidade, classificacao) {
+                const sedeCidade = getSedeCidade(batalhao);
+                const parentCidade = getParentCidade(batalhao, cidade);
+                const parentTipo = getParentTipo(batalhao, cidade);
+
+                if (classificacao === "Pelotão") {
+                    if (normalizeCityKey(parentCidade) !== normalizeCityKey(cidade)) {
+                        const tipoPolo = parentTipo === "Cia Independente" ? "Cia Independente" : "Companhia";
+                        return {
+                            referenciaCidade: parentCidade,
+                            referenciaTipo: tipoPolo,
+                            poloLabel: getRotuloSubordinacao(batalhao, parentCidade, parentTipo),
+                        };
+                    }
+                    return {
+                        referenciaCidade: sedeCidade || cidade,
+                        referenciaTipo: "Sede",
+                        poloLabel: `Sede de ${batalhao}`,
+                    };
+                }
+
+                if (classificacao === "Companhia") {
+                    return {
+                        referenciaCidade: sedeCidade || cidade,
+                        referenciaTipo: "Sede",
+                        poloLabel: `Sede de ${batalhao}`,
+                    };
+                }
+
+                if (classificacao === "Cia Independente") {
+                    return {
+                        referenciaCidade: cidade,
+                        referenciaTipo: "Cia Independente",
+                        poloLabel: `Cia Independente de ${cidade} (Autossuficiente)`,
+                    };
+                }
+
+                return {
+                    referenciaCidade: sedeCidade || cidade,
+                    referenciaTipo: "Sede",
+                    poloLabel: `Sede de ${batalhao}`,
+                };
+            }
+
+            function getDistanciaOperacionalDetalhe(batalhao, cidade, classificacao) {
+                const key = `${keyByBatalhaoCidade(batalhao, cidade)}::${classificacao || ""}`;
+                if (Object.prototype.hasOwnProperty.call(distanciaOperacionalCache, key)) {
+                    return distanciaOperacionalCache[key];
+                }
+
+                const sedeCidade = getSedeCidade(batalhao);
+                const polo = getPoloOperacionalDetalhe(batalhao, cidade, classificacao);
+
+                let distanciaSedeKm = getDistanciaOficial(batalhao, cidade);
+                if ((typeof distanciaSedeKm !== "number" || Number.isNaN(distanciaSedeKm)) && sedeCidade) {
+                    distanciaSedeKm = calcularDistanciaEntreCidadesKm(batalhao, cidade, sedeCidade);
+                }
+                if (classificacao === "Sede") {
+                    distanciaSedeKm = 0;
+                }
+
+                let distanciaRiscoKm = null;
+                if (classificacao === "Pelotão") {
+                    distanciaRiscoKm = calcularDistanciaEntreCidadesKm(batalhao, cidade, polo.referenciaCidade);
+                } else if (classificacao === "Companhia") {
+                    distanciaRiscoKm = distanciaSedeKm;
+                } else if (classificacao === "Sede") {
+                    distanciaRiscoKm = 0;
+                } else if (classificacao === "Cia Independente") {
+                    distanciaRiscoKm = null;
+                }
+
+                if ((typeof distanciaRiscoKm !== "number" || Number.isNaN(distanciaRiscoKm)) && classificacao !== "Cia Independente") {
+                    distanciaRiscoKm = typeof distanciaSedeKm === "number" && !Number.isNaN(distanciaSedeKm) ? distanciaSedeKm : null;
+                }
+
+                const detalhe = {
+                    distanciaKm: typeof distanciaRiscoKm === "number" && !Number.isNaN(distanciaRiscoKm) ? distanciaRiscoKm : null,
+                    distanciaRiscoKm: typeof distanciaRiscoKm === "number" && !Number.isNaN(distanciaRiscoKm) ? distanciaRiscoKm : null,
+                    distanciaSedeKm: typeof distanciaSedeKm === "number" && !Number.isNaN(distanciaSedeKm) ? distanciaSedeKm : null,
+                    distanciaSortKm: classificacao === "Cia Independente"
+                        ? (typeof distanciaSedeKm === "number" && !Number.isNaN(distanciaSedeKm) ? distanciaSedeKm : null)
+                        : (typeof distanciaRiscoKm === "number" && !Number.isNaN(distanciaRiscoKm) ? distanciaRiscoKm : null),
+                    referenciaCidade: polo.referenciaCidade,
+                    referenciaTipo: polo.referenciaTipo,
+                    poloLabel: polo.poloLabel,
+                    classificacao: classificacao || "",
+                };
+
+                distanciaOperacionalCache[key] = detalhe;
+                return detalhe;
+            }
+
             function formatPopupKm(value) {
                 if (typeof value !== "number" || Number.isNaN(value)) return null;
                 const rounded = Math.round(value * 10) / 10;
@@ -10914,7 +11167,7 @@
                 return typeof efetivo === "number" && !Number.isNaN(efetivo) ? efetivo : null;
             }
 
-            const distribuicaoOficial = {
+            const distribuicaoOficialProposto = {
                 "2º BPRAIO": {
                     sede: ["Caucaia"],
                     companhias: [
@@ -10966,6 +11219,9 @@
                         "Quixeramobim": ["Senador Pompeu", "Boa Viagem", "Pedra Branca"],
                         "Quixadá": ["Baturité", "Ocara", "Redenção", "Aracoiaba"],
                     },
+                    rotulosSubordinacao: {
+                        "Quixadá": "Cia. Independente Quixadá",
+                    },
                     observacoes: {
                         "Boa Viagem": "Distância mitigada via subordinação operacional à Cia Quixeramobim, otimizando recursos.",
                         "Quixadá": "Única Cia. Independente do Batalhão. Polo regional com comando autônomo.",
@@ -11006,6 +11262,8 @@
                     rotulosSubordinacao: {
                         "Sobral": "Cia Sobral (Apoio)",
                         "Acaraú": "Cia Litoral (Acaraú)",
+                        "Itapipoca": "Cia. Independente Itapipoca",
+                        "Ipu": "Cia Ipu",
                     },
                     observacoes: {
                         "Sobral": "Sede com núcleo de apoio tático (Cia Sobral - Apoio).",
@@ -11044,12 +11302,48 @@
                         "Brejo Santo": ["Mauriti", "Milagres"],
                         "Crateús": ["Tamboril", "Nova Russas", "Novo Oriente", "Ipueiras", "Independência"],
                     },
+                    rotulosSubordinacao: {
+                        "Crateús": "Cia. Independente Crateús",
+                    },
                     observacoes: {
                         "Várzea Alegre": "Subordinado operacionalmente à Companhia de Iguatu.",
                         "Crateús": "Outlier por distância crítica (Análise de Outliers do 5º BPRAIO).",
                     },
                 },
             };
+
+            const distribuicaoOficialAtual = JSON.parse(JSON.stringify(distribuicaoOficialProposto));
+            distribuicaoOficialAtual["3º BPRAIO"] = {
+                ...distribuicaoOficialAtual["3º BPRAIO"],
+                companhias: ["Limoeiro do Norte", "Aracati", "Quixeramobim", "Quixadá"],
+                pelotoes: [
+                    "Morada Nova",
+                    "Tabuleiro do Norte",
+                    "Jaguaruana",
+                    "Jaguaribe",
+                    "Beberibe",
+                    "Icapuí",
+                    "Ocara",
+                    "Redenção",
+                    "Aracoiaba",
+                    "Senador Pompeu",
+                    "Baturité",
+                    "Pedra Branca",
+                ],
+                independentes: ["Boa Viagem"],
+                subordinacao: {
+                    "Limoeiro do Norte": ["Morada Nova", "Tabuleiro do Norte", "Jaguaruana", "Jaguaribe"],
+                    "Aracati": ["Beberibe", "Icapuí"],
+                    "Quixeramobim": ["Ocara", "Redenção", "Aracoiaba", "Senador Pompeu", "Baturité"],
+                    "Quixadá": ["Boa Viagem", "Pedra Branca"],
+                },
+                observacoes: {
+                    "Boa Viagem": "Companhia Independente no cenário atual do 3º BPRAIO.",
+                    "Quixadá": "Companhia no cenário atual; torna-se Cia Independente no cenário proposto.",
+                },
+            };
+
+            let distribuicaoOficial = distribuicaoOficialProposto;
 
             function keyByBatalhaoCidade(batalhao, cidade) {
                 return `${batalhao}::${normalizeCityKey(cidade)}`;
@@ -11087,42 +11381,84 @@
             const satShiftCycle = [0, -3, 3, -5, 5, -7, 7, -9, 9, -11, 11];
             const lightShiftCycle = [0, 7, -7, 12, -12, 16, -16, 20, -20, 24, -24];
             const parentPaletteCache = {};
+            const distanciaOperacionalCache = {};
             const subordinacaoCache = {
                 parentByKey: {},
                 parentTypeByKey: {},
             };
+            const layerRefsByBatalhaoCidade = {};
+            const commandLayersByBatalhao = {};
+            const subordinationLayersByBatalhao = {};
+            let municipioMetaByBatalhaoCidade = {};
+            let municipiosData = [];
 
-            Object.entries(distribuicaoOficial).forEach(([batalhao, bloco]) => {
-                const sedeList = bloco.sede || [];
-                const ciaList = bloco.companhias || [];
-                const indepList = bloco.independentes || [];
+            map_475b15caff0728b3dc42d0d1917fd2d6.createPane("command-lines");
+            map_475b15caff0728b3dc42d0d1917fd2d6.getPane("command-lines").style.zIndex = 430;
+            map_475b15caff0728b3dc42d0d1917fd2d6.getPane("command-lines").style.pointerEvents = "none";
 
-                const parentCandidates = [...sedeList, ...ciaList, ...indepList];
-                parentCandidates.forEach((cidade) => {
-                    const key = keyByBatalhaoCidade(batalhao, cidade);
-                    subordinacaoCache.parentByKey[key] = cidade;
-                    subordinacaoCache.parentTypeByKey[key] = indepList.includes(cidade)
-                        ? "Cia Independente"
-                        : (sedeList.includes(cidade) ? "Sede" : "Companhia");
+            map_475b15caff0728b3dc42d0d1917fd2d6.createPane("command-markers");
+            map_475b15caff0728b3dc42d0d1917fd2d6.getPane("command-markers").style.zIndex = 650;
+
+            function clearObject(obj) {
+                Object.keys(obj).forEach((key) => delete obj[key]);
+            }
+
+            function ensureAuxLayerGroups() {
+                Object.keys(batalhaoLayers).forEach((batalhao) => {
+                    if (!subordinationLayersByBatalhao[batalhao]) {
+                        subordinationLayersByBatalhao[batalhao] = L.layerGroup();
+                    }
+                    if (!commandLayersByBatalhao[batalhao]) {
+                        commandLayersByBatalhao[batalhao] = L.layerGroup();
+                    }
                 });
+            }
 
-                Object.entries(bloco.subordinacao || {}).forEach(([parent, children]) => {
-                    const parentType = indepList.includes(parent)
-                        ? "Cia Independente"
-                        : (sedeList.includes(parent) ? "Sede" : "Companhia");
-                    const parentKey = keyByBatalhaoCidade(batalhao, parent);
-                    subordinacaoCache.parentByKey[parentKey] = parent;
-                    subordinacaoCache.parentTypeByKey[parentKey] = parentType;
+            function rebuildScenarioCaches() {
+                clearObject(parentPaletteCache);
+                clearObject(distanciaOperacionalCache);
+                subordinacaoCache.parentByKey = {};
+                subordinacaoCache.parentTypeByKey = {};
 
-                    (children || []).forEach((child) => {
-                        const childKey = keyByBatalhaoCidade(batalhao, child);
-                        subordinacaoCache.parentByKey[childKey] = parent;
-                        subordinacaoCache.parentTypeByKey[childKey] = parentType;
+                Object.entries(distribuicaoOficial).forEach(([batalhao, bloco]) => {
+                    const sedeList = bloco.sede || [];
+                    const ciaList = bloco.companhias || [];
+                    const indepList = bloco.independentes || [];
+
+                    const parentCandidates = [...sedeList, ...ciaList, ...indepList];
+                    parentCandidates.forEach((cidade) => {
+                        const key = keyByBatalhaoCidade(batalhao, cidade);
+                        subordinacaoCache.parentByKey[key] = cidade;
+                        subordinacaoCache.parentTypeByKey[key] = indepList.includes(cidade)
+                            ? "Cia Independente"
+                            : (sedeList.includes(cidade) ? "Sede" : "Companhia");
+                    });
+
+                    Object.entries(bloco.subordinacao || {}).forEach(([parent, children]) => {
+                        const parentType = indepList.includes(parent)
+                            ? "Cia Independente"
+                            : (sedeList.includes(parent) ? "Sede" : "Companhia");
+                        const parentKey = keyByBatalhaoCidade(batalhao, parent);
+                        subordinacaoCache.parentByKey[parentKey] = parent;
+                        subordinacaoCache.parentTypeByKey[parentKey] = parentType;
+
+                        (children || []).forEach((child) => {
+                            const childKey = keyByBatalhaoCidade(batalhao, child);
+                            subordinacaoCache.parentByKey[childKey] = parent;
+                            subordinacaoCache.parentTypeByKey[childKey] = parentType;
+                        });
                     });
                 });
-            });
+            }
 
-            let municipioMetaByBatalhaoCidade = {};
+            function rebuildMunicipiosData() {
+                rebuildScenarioCaches();
+                municipiosData = montarMunicipiosDaDistribuicao();
+                municipioMetaByBatalhaoCidade = {};
+                municipiosData.forEach((item) => {
+                    municipioMetaByBatalhaoCidade[keyByBatalhaoCidade(item.batalhao, item.cidade)] = item;
+                });
+            }
 
             function getBatalhaoBaseColor(batalhao) {
                 return baseColorByBatalhao[batalhao] || { h: 200, s: 55, l: 45 };
@@ -11211,33 +11547,64 @@
                 return "";
             }
 
+            function getRiscoColor(distanciaKm) {
+                if (typeof distanciaKm !== "number" || Number.isNaN(distanciaKm)) {
+                    return { fillColor: "#b4c3ca", borderColor: "#5f7480" };
+                }
+                if (distanciaKm < 40) return { fillColor: "#2ca25f", borderColor: "#13653a" };
+                if (distanciaKm <= 80) return { fillColor: "#e5b13e", borderColor: "#946e14" };
+                if (distanciaKm <= 150) return { fillColor: "#df7b32", borderColor: "#8a4716" };
+                return { fillColor: "#c3382a", borderColor: "#6e1e16" };
+            }
+
             function resolveMunicipioStyle(batalhao, cidade, classificacao) {
                 const baseColor = getBatalhaoBaseColor(batalhao);
+                const distanciaKm = getDistanciaOperacionalDetalhe(batalhao, cidade, classificacao).distanciaKm;
+
+                if (modoVisualMapa === "risco") {
+                    if (classificacao === "Cia Independente") {
+                        return {
+                            color: "#0f6143",
+                            fillColor: "#2fa36f",
+                            fillOpacity: 0.84,
+                            weight: 3.1,
+                            dashArray: "10 4",
+                        };
+                    }
+                    const risco = getRiscoColor(distanciaKm);
+                    return {
+                        color: risco.borderColor,
+                        fillColor: risco.fillColor,
+                        fillOpacity: 0.72,
+                        weight: classificacao === "Sede" || classificacao === "Cia Independente" ? 2.3 : 1.5,
+                        dashArray: classificacao === "Pelotão" ? "4 5" : undefined,
+                    };
+                }
 
                 if (classificacao === "Sede") {
                     return {
-                        color: colorToCss(adjustColor(baseColor, -30, 8)),
-                        fillColor: colorToCss(adjustColor(baseColor, -18, 2)),
+                        color: colorToCss(adjustColor(baseColor, -22, 6)),
+                        fillColor: colorToCss(adjustColor(baseColor, -8, 2)),
                         fillOpacity: 0.9,
-                        weight: 3.1,
+                        weight: 3,
                     };
                 }
 
                 if (classificacao === "Companhia") {
                     return {
-                        color: colorToCss(adjustColor(baseColor, -14, 4)),
-                        fillColor: colorToCss(adjustColor(baseColor, -4, 0)),
-                        fillOpacity: 0.75,
-                        weight: 2.25,
+                        color: colorToCss(adjustColor(baseColor, -14, 1)),
+                        fillColor: colorToCss(adjustColor(baseColor, 2, -3)),
+                        fillOpacity: 0.6,
+                        weight: 2.1,
                     };
                 }
 
                 if (classificacao === "Cia Independente") {
                     return {
-                        color: "#17212a",
+                        color: colorToCss(adjustColor(baseColor, -28, 8)),
                         fillColor: colorToCss(adjustColor(baseColor, 6, -4)),
-                        fillOpacity: 0.84,
-                        weight: 3.15,
+                        fillOpacity: 0.8,
+                        weight: 3.1,
                         dashArray: "10 4",
                     };
                 }
@@ -11246,7 +11613,7 @@
                     return {
                         color: colorToCss(adjustColor(baseColor, -8, -6)),
                         fillColor: colorToCss(adjustColor(baseColor, 24, -20)),
-                        fillOpacity: 0.64,
+                        fillOpacity: 0.3,
                         weight: 1.9,
                         dashArray: "5 5",
                     };
@@ -11285,20 +11652,28 @@
                     );
                 }
 
-                const distanciaOficial = getDistanciaOficial(batalhao, info.cidade);
-                if (typeof distanciaOficial === "number" && !Number.isNaN(distanciaOficial)) {
-                    const distanciaTexto = formatPopupKm(distanciaOficial);
-                    if (/Dist[âa]ncia à sede:\s*[^<]+<br>/i.test(atualizado)) {
-                        atualizado = atualizado.replace(
-                            /Dist[âa]ncia à sede:\s*[^<]+<br>/i,
-                            `Distância à sede: ${distanciaTexto}<br>`
-                        );
-                    } else if (/Densidade:\s*[^<]+<br>/i.test(atualizado)) {
-                        atualizado = atualizado.replace(
-                            /(Densidade:\s*[^<]+<br>)/i,
-                            `$1Distância à sede: ${distanciaTexto}<br>`
-                        );
-                    }
+                const distanciaDetalhe = getDistanciaOperacionalDetalhe(batalhao, info.cidade, info.classificacao);
+                const distanciaLinha = `${getDescricaoDistanciaLogistica(distanciaDetalhe, info.classificacao, "popup")}<br>`;
+                const poloLinha = `Polo Operacional: ${escapeHtml(distanciaDetalhe.poloLabel || `Sede de ${batalhao}`)}<br>`;
+
+                atualizado = atualizado.replace(/Polo Operacional:\s*[^<]+<br>/gi, "");
+
+                if (/Dist[âa]ncia[^:]*:\s*[^<]+<br>/i.test(atualizado)) {
+                    atualizado = atualizado.replace(/Dist[âa]ncia[^:]*:\s*[^<]+<br>/i, distanciaLinha);
+                } else if (/Densidade:\s*[^<]+<br>/i.test(atualizado)) {
+                    atualizado = atualizado.replace(
+                        /(Densidade:\s*[^<]+<br>)/i,
+                        `$1${distanciaLinha}`
+                    );
+                }
+
+                if (/Justificativa:\s*/i.test(atualizado)) {
+                    atualizado = atualizado.replace(/Justificativa:\s*/i, `${poloLinha}Justificativa: `);
+                } else if (/Densidade:\s*[^<]+<br>/i.test(atualizado)) {
+                    atualizado = atualizado.replace(
+                        /(Densidade:\s*[^<]+<br>)/i,
+                        `$1${poloLinha}`
+                    );
                 }
 
                 const subordinacaoLabel = getSubordinacaoLabel(batalhao, info.cidade);
@@ -11340,74 +11715,67 @@
 
             function montarTooltipDetalhadoHtml(layer, parentLayer, info, batalhao, cidadeFallback) {
                 const popupHtml = extrairHtmlPopup(layer, parentLayer);
+                const campos = extrairCamposDoHtmlPopup(popupHtml);
                 const cityFromPopup = popupHtml.match(/<b>\s*([^<]+)\s*<\/b>/i);
                 const cidade = (cityFromPopup && cityFromPopup[1] ? cityFromPopup[1].trim() : "") || cidadeFallback || "Município";
-                const campos = extrairCamposDoHtmlPopup(popupHtml);
-
-                if (!campos["Batalhão"]) campos["Batalhão"] = batalhao;
-                if (!campos["Classificação"] && info && info.classificacao) campos["Classificação"] = info.classificacao;
-
-                const subordinacao = info ? getSubordinacaoLabel(batalhao, info.cidade || cidade) : "";
-                if (subordinacao && !campos["Subordinação"]) campos["Subordinação"] = subordinacao;
-
-                if (info && typeof info.efetivo === "number" && !Number.isNaN(info.efetivo)) {
-                    campos["Efetivo"] = info.efetivo.toLocaleString("pt-BR");
-                }
-
-                if (info && info.observacao && !campos["Observação"]) {
-                    campos["Observação"] = info.observacao;
-                }
-
-                const ordemPreferida = [
-                    "Batalhão",
-                    "Classificação",
-                    "Subordinação",
-                    "População",
-                    "IDH",
-                    "PIB per capita",
-                    "Densidade",
-                    "Distância à sede",
-                    "Efetivo",
-                    "Justificativa",
-                    "Observação",
+                const classificacao = (info && info.classificacao) || campos["Classificação"] || "—";
+                const getCampo = (...labels) => {
+                    for (const label of labels) {
+                        if (campos[label]) return campos[label];
+                    }
+                    return "";
+                };
+                const linhas = [
+                    { label: "Batalhão", value: getCampo("Batalhão") || batalhao },
+                    { label: "Classificação", value: classificacao },
+                    { label: "População", value: getCampo("População") },
+                    { label: "IDH", value: getCampo("IDH") },
+                    { label: "PIB per capita", value: getCampo("PIB per capita") },
+                    { label: "Densidade", value: getCampo("Densidade") },
+                    {
+                        label: "Distância Logística",
+                        value: getCampo(
+                            "Distância até a Companhia (Polo Logístico)",
+                            "Distância até a Sede (Batalhão)",
+                            "Distância à Sede (Batalhão)",
+                            "Distância ao Polo Operacional (Sede/Cia Ind)",
+                            "Distancia ao Polo Operacional (Sede/Cia Ind)",
+                            "Distância operacional",
+                            "Distancia operacional",
+                            "Distância à sede",
+                            "Distancia à sede"
+                        ),
+                    },
+                    { label: "Polo Operacional", value: getCampo("Polo Operacional") },
+                    { label: "Subordinação", value: getCampo("Subordinação", "Subordinacao") },
+                    { label: "Justificativa", value: getCampo("Justificativa") },
                 ];
-
-                const usados = new Set();
-                const linhasOrdenadas = [];
-
-                ordemPreferida.forEach((label) => {
-                    if (!Object.prototype.hasOwnProperty.call(campos, label)) return;
-                    usados.add(label);
-                    linhasOrdenadas.push([label, campos[label]]);
-                });
-
-                Object.entries(campos).forEach(([label, value]) => {
-                    if (usados.has(label)) return;
-                    linhasOrdenadas.push([label, value]);
-                });
-
-                const camposBloco = new Set(["Subordinação", "Justificativa", "Observação"]);
-                const linhasDetalhe = linhasOrdenadas.map(([label, value]) => {
-                    const blockStyle = camposBloco.has(label)
-                        ? "border-top:1px dashed #d4e0db; padding-top:4px; margin-top:4px;"
-                        : "";
-                    return `
-                        <div style="display:block; margin:2px 0; color:#1f3d49; ${blockStyle}">
-                            <span style="font-weight:700; color:#3a5966;">${escapeHtml(label)}:</span>
-                            <span style="color:#1f3d49;">${escapeHtml(value)}</span>
-                        </div>
-                    `;
-                });
+                const linhasHtml = linhas
+                    .filter((item) => item.value)
+                    .map(
+                        (item) => `
+                            <div style="font-size:0.74rem; line-height:1.35; color:#2e4a55;">
+                                <strong style="color:#173a45;">${escapeHtml(item.label)}:</strong>
+                                ${escapeHtml(item.value)}
+                            </div>
+                        `
+                    )
+                    .join("");
 
                 return `
-                    <div style="max-width:360px; min-width:260px; display:block;">
+                    <div style="min-width:260px; max-width:340px; display:block;">
                         <h4 class="hover-title">${escapeHtml(cidade)}</h4>
-                        ${linhasDetalhe.join("")}
+                        ${linhasHtml}
                     </div>
                 `;
             }
 
             function aplicarEsquemaVisualMunicipios() {
+                clearObject(layerRefsByBatalhaoCidade);
+                Object.keys(batalhaoLayers).forEach((batalhao) => {
+                    layerRefsByBatalhaoCidade[batalhao] = {};
+                });
+
                 Object.entries(batalhaoLayers).forEach(([batalhao, group]) => {
                     group.eachLayer((layer) => {
                         const cidade = extrairCidadeDoLayer(layer);
@@ -11447,8 +11815,225 @@
                                 }
                             );
                         }
+
+                        layerRefsByBatalhaoCidade[batalhao][normalizeCityKey(cidade)] = layer;
                     });
                 });
+            }
+
+            function getLayerByBatalhaoCidade(batalhao, cidade) {
+                const bucket = layerRefsByBatalhaoCidade[batalhao] || {};
+                return bucket[normalizeCityKey(cidade)] || null;
+            }
+
+            function getLayerCenter(layer) {
+                if (!layer) return null;
+                if (typeof layer.getLatLng === "function") return layer.getLatLng();
+                if (typeof layer.getBounds === "function") {
+                    const bounds = layer.getBounds();
+                    if (bounds && typeof bounds.isValid === "function" && bounds.isValid()) {
+                        return bounds.getCenter();
+                    }
+                }
+                return null;
+            }
+
+            function createCommandIcon(tipo, titulo) {
+                const isSede = tipo === "Sede";
+                const iconClass = isSede ? "fa-shield-halved" : "fa-star";
+                const typeClass = isSede ? "command-pin-sede" : "command-pin-indep";
+                const safeTitle = escapeHtml(titulo || "");
+                return L.divIcon({
+                    className: "",
+                    iconSize: [24, 24],
+                    iconAnchor: [12, 12],
+                    html: `<div class="command-pin ${typeClass}" title="${safeTitle}"><i class="fa-solid ${iconClass}"></i></div>`,
+                });
+            }
+
+            function rebuildSubordinationVisuals() {
+                ensureAuxLayerGroups();
+
+                Object.keys(batalhaoLayers).forEach((batalhao) => {
+                    subordinationLayersByBatalhao[batalhao].clearLayers();
+                    commandLayersByBatalhao[batalhao].clearLayers();
+                });
+
+                Object.entries(distribuicaoOficial).forEach(([batalhao, bloco]) => {
+                    const lineGroup = subordinationLayersByBatalhao[batalhao];
+                    const markerGroup = commandLayersByBatalhao[batalhao];
+                    if (!lineGroup || !markerGroup) return;
+
+                    const baseColor = getBatalhaoBaseColor(batalhao);
+                    const spiderColor = colorToCss(adjustColor(baseColor, -16, -6));
+                    const usedLinks = new Set();
+
+                    function addSpiderLine(fromCidade, classificacao) {
+                        const polo = getPoloOperacionalDetalhe(batalhao, fromCidade);
+                        const toCidade = polo.referenciaCidade;
+                        if (!toCidade) return;
+                        if (normalizeCityKey(fromCidade) === normalizeCityKey(toCidade)) return;
+
+                        const fromLayer = getLayerByBatalhaoCidadeAny(batalhao, fromCidade);
+                        const toLayer = getLayerByBatalhaoCidadeAny(batalhao, toCidade);
+                        const fromPoint = getLayerCenter(fromLayer);
+                        const toPoint = getLayerCenter(toLayer);
+                        if (!fromPoint || !toPoint) return;
+
+                        const key = `${normalizeCityKey(fromCidade)}->${normalizeCityKey(toCidade)}::spider`;
+                        if (usedLinks.has(key)) return;
+                        usedLinks.add(key);
+
+                        L.polyline([fromPoint, toPoint], {
+                            pane: "command-lines",
+                            color: spiderColor,
+                            weight: classificacao === "Pelotão" ? 1.2 : 1.0,
+                            opacity: 0.34,
+                            dashArray: "4 6",
+                            lineCap: "round",
+                            interactive: false,
+                        }).addTo(lineGroup);
+                    }
+
+                    function addCommandMarker(cidade, tipo) {
+                        const layer = getLayerByBatalhaoCidade(batalhao, cidade);
+                        const center = getLayerCenter(layer);
+                        if (!center) return;
+
+                        const labelTipo = tipo === "Sede" ? "Sede" : "Cia Independente";
+                        L.marker(center, {
+                            pane: "command-markers",
+                            icon: createCommandIcon(tipo, `${labelTipo} · ${cidade}`),
+                            interactive: true,
+                            keyboard: false,
+                        })
+                            .bindTooltip(`${escapeHtml(cidade)} | ${labelTipo} | ${escapeHtml(batalhao)}`, {
+                                sticky: false,
+                                direction: "top",
+                                offset: [0, -8],
+                                opacity: 0.95,
+                                className: "municipio-hover-tooltip-v3",
+                            })
+                            .addTo(markerGroup);
+                    }
+
+                    (bloco.sede || []).forEach((cidade) => addCommandMarker(cidade, "Sede"));
+                    (bloco.independentes || []).forEach((cidade) => addCommandMarker(cidade, "Cia Independente"));
+
+                    municipiosData
+                        .filter((item) => item.batalhao === batalhao)
+                        .forEach((item) => addSpiderLine(item.cidade, item.classificacao));
+                });
+            }
+
+            function applyAuxLayerVisibility(target) {
+                Object.keys(batalhaoLayers).forEach((batalhao) => {
+                    const show = target === "Todos" || target === batalhao;
+                    const lineGroup = subordinationLayersByBatalhao[batalhao];
+                    const markerGroup = commandLayersByBatalhao[batalhao];
+
+                    if (lineGroup) {
+                        if (show && !map_475b15caff0728b3dc42d0d1917fd2d6.hasLayer(lineGroup)) {
+                            map_475b15caff0728b3dc42d0d1917fd2d6.addLayer(lineGroup);
+                        }
+                        if (!show && map_475b15caff0728b3dc42d0d1917fd2d6.hasLayer(lineGroup)) {
+                            map_475b15caff0728b3dc42d0d1917fd2d6.removeLayer(lineGroup);
+                        }
+                    }
+
+                    if (markerGroup) {
+                        if (show && !map_475b15caff0728b3dc42d0d1917fd2d6.hasLayer(markerGroup)) {
+                            map_475b15caff0728b3dc42d0d1917fd2d6.addLayer(markerGroup);
+                        }
+                        if (!show && map_475b15caff0728b3dc42d0d1917fd2d6.hasLayer(markerGroup)) {
+                            map_475b15caff0728b3dc42d0d1917fd2d6.removeLayer(markerGroup);
+                        }
+                    }
+                });
+            }
+
+            function renderScenarioFilters(active) {
+                const container = document.getElementById("scenario-filters");
+                if (!container) return;
+
+                const options = [
+                    { id: "atual", label: "Cenário Atual" },
+                    { id: "proposto", label: "Cenário Proposto" },
+                ];
+
+                container.innerHTML = "";
+                options.forEach((option) => {
+                    const btn = document.createElement("button");
+                    btn.type = "button";
+                    btn.className = "chip-btn" + (option.id === active ? " active" : "");
+                    btn.textContent = option.label;
+                    btn.addEventListener("click", () => {
+                        if (cenarioAtivo !== option.id) {
+                            aplicarCenario(option.id);
+                        }
+                    });
+                    container.appendChild(btn);
+                });
+            }
+
+            function renderModeFilters(active) {
+                const container = document.getElementById("mode-filters");
+                if (!container) return;
+
+                const options = [
+                    { id: "hierarquia", label: "Hierarquia" },
+                    { id: "risco", label: "Risco Logístico" },
+                ];
+
+                container.innerHTML = "";
+                options.forEach((option) => {
+                    const btn = document.createElement("button");
+                    btn.type = "button";
+                    btn.className = "chip-btn" + (option.id === active ? " active" : "");
+                    btn.textContent = option.label;
+                    btn.addEventListener("click", () => {
+                        if (modoVisualMapa !== option.id) {
+                            aplicarModoVisual(option.id);
+                        }
+                    });
+                    container.appendChild(btn);
+                });
+            }
+
+            function updateScenarioCaption() {
+                const el = document.getElementById("scenario-caption");
+                if (!el) return;
+
+                if (cenarioAtivo === "atual") {
+                    el.innerHTML = "<strong>Cenário Atual:</strong> Boa Viagem = Cia Independente | Quixadá = Companhia.";
+                    return;
+                }
+
+                el.innerHTML = "<strong>Cenário Proposto:</strong> Quixadá = Cia Independente | Boa Viagem = Pelotão (subordinado à Cia Quixeramobim).";
+            }
+
+            function aplicarCenario(cenario) {
+                cenarioAtivo = cenario;
+                distribuicaoOficial = cenarioAtivo === "atual" ? distribuicaoOficialAtual : distribuicaoOficialProposto;
+                efetivoAnexo = cenarioAtivo === "atual" ? efetivoAnexoAtual : efetivoAnexoProposto;
+
+                clearRowHoverHighlight();
+                rebuildMunicipiosData();
+                aplicarEsquemaVisualMunicipios();
+                rebuildSubordinationVisuals();
+                renderScenarioFilters(cenarioAtivo);
+                updateScenarioCaption();
+                aplicarFiltroBatalhao(filtroAtual);
+            }
+
+            function aplicarModoVisual(modo) {
+                modoVisualMapa = modo;
+
+                clearRowHoverHighlight();
+                aplicarEsquemaVisualMunicipios();
+                rebuildSubordinationVisuals();
+                renderModeFilters(modoVisualMapa);
+                aplicarFiltroBatalhao(filtroAtual);
             }
 
             function extrairHtmlPopup(layer, parentLayer) {
@@ -11463,57 +12048,21 @@
                 return "";
             }
 
-            function coletarDistanciasDoMapa() {
-                const distancias = {};
-
-                function registrarDistancia(layer, parentLayer, batalhao) {
-                    const html = extrairHtmlPopup(layer, parentLayer);
-                    if (!html) return;
-
-                    const cityMatch = html.match(/<b>\s*([^<]+)\s*<\/b>/i);
-                    if (!cityMatch) return;
-
-                    const cidade = cityMatch[1].trim();
-                    const distanciaOficial = getDistanciaOficial(batalhao, cidade);
-                    if (typeof distanciaOficial === "number" && !Number.isNaN(distanciaOficial)) {
-                        distancias[cidade] = distanciaOficial;
-                        return;
-                    }
-
-                    const distMatch = html.match(/Dist[âa]ncia à sede:\s*([0-9]+(?:[.,][0-9]+)?)/i);
-                    if (!distMatch) return;
-
-                    const distanciaKm = Number(distMatch[1].replace(",", "."));
-                    if (!Number.isNaN(distanciaKm)) {
-                        distancias[cidade] = distanciaKm;
-                    }
-                }
-
-                Object.entries(batalhaoLayers).forEach(([batalhao, group]) => {
-                    group.eachLayer((layer) => {
-                        if (layer && typeof layer.eachLayer === "function") {
-                            layer.eachLayer((subLayer) => registrarDistancia(subLayer, layer, batalhao));
-                            return;
-                        }
-                        registrarDistancia(layer, null, batalhao);
-                    });
-                });
-
-                return distancias;
-            }
-
             function montarMunicipiosDaDistribuicao() {
                 const rows = [];
-                const distancias = coletarDistanciasDoMapa();
 
                 function adicionarLista(batalhao, bloco, lista, classificacao) {
                     lista.forEach((cidade) => {
+                        const detalheDistancia = getDistanciaOperacionalDetalhe(batalhao, cidade, classificacao);
                         rows.push({
                             cidade,
                             efetivo: getEfetivoCidade(cidade),
                             batalhao,
                             classificacao,
-                            distanciaKm: Object.prototype.hasOwnProperty.call(distancias, cidade) ? distancias[cidade] : null,
+                            distanciaKm: detalheDistancia.distanciaRiscoKm,
+                            distanciaSortKm: detalheDistancia.distanciaSortKm,
+                            distanciaTexto: getDescricaoDistanciaLogistica(detalheDistancia, classificacao, "table"),
+                            poloOperacional: detalheDistancia.poloLabel || "",
                             observacao: getObservacaoCidade(batalhao, bloco, cidade, classificacao),
                         });
                     });
@@ -11683,6 +12232,28 @@
                 return value.toFixed(1).replace(".", ",") + " km";
             }
 
+            function getDescricaoDistanciaLogistica(detalhe, classificacao, contexto = "popup") {
+                const kmFmt = contexto === "table" ? formatKm : (value) => formatPopupKm(value) || "n/d";
+
+                if (classificacao === "Pelotão") {
+                    return `Distância até a Companhia (Polo Logístico): ${kmFmt(detalhe.distanciaRiscoKm)}`;
+                }
+
+                if (classificacao === "Companhia") {
+                    return `Distância até a Sede (Batalhão): ${kmFmt(detalhe.distanciaRiscoKm)}`;
+                }
+
+                if (classificacao === "Cia Independente") {
+                    return `Distância à Sede (Batalhão): ${kmFmt(detalhe.distanciaSedeKm)} (Autossuficiente / Risco Mitigado)`;
+                }
+
+                if (classificacao === "Sede") {
+                    return "Distância até a Sede (Batalhão): 0 km";
+                }
+
+                return `Distância até a Sede (Batalhão): ${kmFmt(detalhe.distanciaSedeKm)}`;
+            }
+
             function percentile(sortedValues, p) {
                 if (!sortedValues.length) return null;
                 const index = Math.ceil(sortedValues.length * p) - 1;
@@ -11731,9 +12302,58 @@
                 return sorted;
             }
 
+            function clearRowHoverHighlight() {
+                if (!highlightHoverState) return;
+                const { batalhao, cidade, layer } = highlightHoverState;
+                const meta = municipioMetaByBatalhaoCidade[keyByBatalhaoCidade(batalhao, cidade)];
+                if (layer && meta && typeof layer.setStyle === "function") {
+                    layer.setStyle(resolveMunicipioStyle(meta.batalhao, meta.cidade, meta.classificacao));
+                }
+                highlightHoverState = null;
+            }
+
+            function highlightMunicipioFromTable(batalhao, cidade) {
+                clearRowHoverHighlight();
+
+                const layer = getLayerByBatalhaoCidade(batalhao, cidade);
+                if (!layer || typeof layer.setStyle !== "function") return;
+
+                layer.setStyle({
+                    color: "#ffe84a",
+                    fillColor: "#ffe84a",
+                    fillOpacity: 0.84,
+                    weight: 3.5,
+                    dashArray: null,
+                });
+                if (typeof layer.bringToFront === "function") {
+                    layer.bringToFront();
+                }
+
+                highlightHoverState = { batalhao, cidade, layer };
+            }
+
+            function bindDistanceTableHover() {
+                const fullBodyEl = document.getElementById("distance-full-body");
+                if (!fullBodyEl) return;
+
+                const rows = fullBodyEl.querySelectorAll("tr[data-batalhao][data-cidade]");
+                rows.forEach((row) => {
+                    row.addEventListener("mouseenter", () => {
+                        const batalhao = row.dataset.batalhao || "";
+                        const cidade = row.dataset.cidade || "";
+                        if (!batalhao || !cidade) return;
+                        highlightMunicipioFromTable(batalhao, cidade);
+                    });
+                    row.addEventListener("mouseleave", () => {
+                        clearRowHoverHighlight();
+                    });
+                });
+            }
+
             function renderDistanceFullTable(rows) {
                 const fullBodyEl = document.getElementById("distance-full-body");
                 if (!fullBodyEl) return;
+                clearRowHoverHighlight();
 
                 if (!rows.length) {
                     fullBodyEl.innerHTML = "<tr><td colspan='4' style='text-align:center; color:#5b6f7b;'>Sem municípios no filtro selecionado.</td></tr>";
@@ -11745,7 +12365,7 @@
                 fullBodyEl.innerHTML = orderedList
                     .map((item) => {
                         return `
-                            <tr>
+                            <tr data-batalhao="${escapeHtml(item.batalhao)}" data-cidade="${escapeHtml(item.cidade)}">
                                 <td>${escapeHtml(item.cidade)}</td>
                                 <td><span class="badge-class ${getClassBadge(item.classificacao)}">${escapeHtml(item.classificacao)}</span></td>
                                 <td>${formatKm(item.distanciaKm)}</td>
@@ -11755,6 +12375,7 @@
                     })
                     .join("");
 
+                bindDistanceTableHover();
                 updateDistanceSortHeaders();
             }
 
@@ -11878,6 +12499,22 @@
                     .map((batalhao) => {
                         const info = efetivoAnexo[batalhao];
                         if (!info) return "";
+
+                        const rowsBatalhao = municipiosData.filter((item) => item.batalhao === batalhao);
+                        const sedeEf = rowsBatalhao
+                            .filter((item) => item.classificacao === "Sede")
+                            .reduce((acc, item) => acc + (item.efetivo || 0), 0);
+                        const companhiaEf = rowsBatalhao
+                            .filter((item) => item.classificacao === "Companhia" || item.classificacao === "Cia Independente")
+                            .reduce((acc, item) => acc + (item.efetivo || 0), 0);
+                        const pelotaoEf = rowsBatalhao
+                            .filter((item) => item.classificacao === "Pelotão")
+                            .reduce((acc, item) => acc + (item.efetivo || 0), 0);
+
+                        const totalBase = sedeEf + companhiaEf + pelotaoEf;
+                        const pct = (value) => totalBase > 0 ? (value / totalBase) * 100 : 0;
+                        const pctText = (value) => `${pct(value).toFixed(1).replace(".", ",")}%`;
+
                         return `
                             <div class="effective-card">
                                 <h3>${escapeHtml(batalhao)}</h3>
@@ -11886,20 +12523,32 @@
                                 <div class="effective-row"><span>Pelotões</span><b class="${getDeltaClass(info["Pelotões"])}">${formatDelta(info["Pelotões"])}</b></div>
                                 <div class="effective-row"><span>Cias Ind.</span><b class="${getDeltaClass(info["Cias Ind."])}">${formatDelta(info["Cias Ind."])}</b></div>
                                 <div class="effective-row"><span>Outros</span><b class="${getDeltaClass(info["Outros"])}">${formatDelta(info["Outros"])}</b></div>
+                                <div class="effective-bars">
+                                    <div class="effective-bar-row">
+                                        <span class="effective-bar-label">Sede</span>
+                                        <div class="effective-bar-track"><span class="effective-bar-fill effective-bar-sede" style="width:${pct(sedeEf)}%"></span></div>
+                                        <span class="effective-bar-value">${sedeEf.toLocaleString("pt-BR")} · ${pctText(sedeEf)}</span>
+                                    </div>
+                                    <div class="effective-bar-row">
+                                        <span class="effective-bar-label">Comp.</span>
+                                        <div class="effective-bar-track"><span class="effective-bar-fill effective-bar-cia" style="width:${pct(companhiaEf)}%"></span></div>
+                                        <span class="effective-bar-value">${companhiaEf.toLocaleString("pt-BR")} · ${pctText(companhiaEf)}</span>
+                                    </div>
+                                    <div class="effective-bar-row">
+                                        <span class="effective-bar-label">Pelotão</span>
+                                        <div class="effective-bar-track"><span class="effective-bar-fill effective-bar-pelotao" style="width:${pct(pelotaoEf)}%"></span></div>
+                                        <span class="effective-bar-value">${pelotaoEf.toLocaleString("pt-BR")} · ${pctText(pelotaoEf)}</span>
+                                    </div>
+                                </div>
                             </div>
                         `;
                     })
                     .join("");
             }
 
-            const municipiosData = montarMunicipiosDaDistribuicao();
-            municipioMetaByBatalhaoCidade = {};
-            municipiosData.forEach((item) => {
-                municipioMetaByBatalhaoCidade[keyByBatalhaoCidade(item.batalhao, item.cidade)] = item;
-            });
-
             function aplicarFiltroBatalhao(target) {
                 filtroAtual = target;
+                clearRowHoverHighlight();
 
                 Object.entries(batalhaoLayers).forEach(([batalhao, group]) => {
                     const mostrar = target === "Todos" || target === batalhao;
@@ -11910,6 +12559,7 @@
                         map_475b15caff0728b3dc42d0d1917fd2d6.removeLayer(group);
                     }
                 });
+                applyAuxLayerVisibility(target);
 
                 const filtrado = target === "Todos"
                     ? municipiosData
@@ -11936,8 +12586,14 @@
                 }
             }
 
+            ensureAuxLayerGroups();
+            rebuildMunicipiosData();
             initDistanceTableSorting();
             aplicarEsquemaVisualMunicipios();
+            rebuildSubordinationVisuals();
+            renderScenarioFilters(cenarioAtivo);
+            renderModeFilters(modoVisualMapa);
+            updateScenarioCaption();
             aplicarFiltroBatalhao(filtroAtual);
             setTimeout(() => map_475b15caff0728b3dc42d0d1917fd2d6.invalidateSize(), 150);
 
