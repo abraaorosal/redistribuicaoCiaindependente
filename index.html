@@ -1644,6 +1644,103 @@
             display: block !important;
         }
 
+        .risk-legend {
+            position: absolute;
+            right: 16px;
+            bottom: 16px;
+            z-index: 700;
+            display: none;
+            gap: 8px;
+            min-width: 230px;
+            padding: 12px 14px;
+            border: 1px solid rgba(175, 196, 189, 0.96);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.96);
+            box-shadow: 0 14px 28px rgba(10, 42, 44, 0.18);
+            backdrop-filter: blur(8px);
+            pointer-events: none;
+        }
+
+        .risk-legend.visible {
+            display: grid;
+        }
+
+        .risk-legend-title {
+            font-family: "Exo 2", "Segoe UI", sans-serif;
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: #173a45;
+        }
+
+        .risk-legend-row {
+            display: grid;
+            grid-template-columns: 14px minmax(0, 1fr);
+            align-items: center;
+            gap: 8px;
+            font-size: 0.75rem;
+            line-height: 1.35;
+            color: #2a4651;
+        }
+
+        .risk-legend-swatch {
+            width: 12px;
+            height: 12px;
+            border-radius: 4px;
+            border: 1px solid rgba(18, 36, 47, 0.18);
+        }
+
+        .risk-legend-safe {
+            background: #2ecc71;
+        }
+
+        .risk-legend-mid {
+            background: #f1c40f;
+        }
+
+        .risk-legend-far {
+            background: #e67e22;
+        }
+
+        .risk-legend-critical {
+            background: #e74c3c;
+        }
+
+        .leaflet-tooltip.polo-label {
+            background: transparent;
+            border: 0;
+            border-radius: 0;
+            box-shadow: none;
+            color: #143845;
+            font-family: "Exo 2", "Segoe UI", sans-serif;
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 0.01em;
+            padding: 0;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .leaflet-tooltip.polo-label .leaflet-tooltip-content {
+            margin: 0;
+            padding: 0;
+            background: transparent;
+            white-space: nowrap;
+        }
+
+        .leaflet-tooltip.polo-label:before {
+            display: none;
+        }
+
+        .leaflet-marker-icon.leaflet-awesome-marker-icon,
+        .leaflet-marker-icon.awesome-marker,
+        [class*="awesome-marker-icon-"],
+        .leaflet-marker-shadow {
+            pointer-events: none;
+            user-select: none;
+        }
+
         .hover-title {
             margin: 0 0 5px;
             font-family: "Exo 2", "Segoe UI", sans-serif;
@@ -2381,6 +2478,25 @@
                 </div>
                 <div class="map-wrap">
                     <div class="folium-map" id="map_475b15caff0728b3dc42d0d1917fd2d6"></div>
+                    <div class="risk-legend" id="risk-legend" aria-hidden="true">
+                        <div class="risk-legend-title">Risco Logístico</div>
+                        <div class="risk-legend-row">
+                            <span class="risk-legend-swatch risk-legend-safe"></span>
+                            <span>0 a 40 km · Seguro / Resposta Rápida</span>
+                        </div>
+                        <div class="risk-legend-row">
+                            <span class="risk-legend-swatch risk-legend-mid"></span>
+                            <span>40,1 a 80 km · Moderado</span>
+                        </div>
+                        <div class="risk-legend-row">
+                            <span class="risk-legend-swatch risk-legend-far"></span>
+                            <span>80,1 a 150 km · Atenção</span>
+                        </div>
+                        <div class="risk-legend-row">
+                            <span class="risk-legend-swatch risk-legend-critical"></span>
+                            <span>Acima de 150 km · Crítico</span>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -7055,7 +7171,7 @@
             geo_json_b71e0a3214dbdc78f7a97c6a3050b847
                 .addData(data);
         }
-            geo_json_b71e0a3214dbdc78f7a97c6a3050b847_add({"features": [{"geometry": {"coordinates": [[[-39.6935483895, -3.624126886], [-39.6800859359, -3.6479226765], [-39.6677603111, -3.6453349912], [-39.6532092923, -3.6515378473], [-39.6478029594, -3.6523385986], [-39.6493020665, -3.6470480924], [-39.6353458582, -3.6368594041], [-39.6314060855, -3.6376067741], [-39.6129135145, -3.6411136223], [-39.6214782272, -3.6316031158], [-39.6102141677, -3.6345830932], [-39.6072252227, -3.6353739965], [-39.5998211708, -3.6253377238], [-39.5941489775, -3.6249439612], [-39.5619250632, -3.634037421], [-39.5581702884, -3.6411770427], [-39.557841263, -3.6523616344], [-39.5535270561, -3.6536439962], [-39.5426709063, -3.6545854565], [-39.5360503762, -3.6592671452], [-39.5255425327, -3.6594931336], [-39.5224196453, -3.6547080714], [-39.5201643761, -3.655816386], [-39.5156919725, -3.6572973843], [-39.5142122605, -3.6688456607], [-39.514380827, -3.6756129801], [-39.510861373, -3.6949695493], [-39.5133781181, -3.6974422615], [-39.5098536379, -3.7024779124], [-39.4967361712, -3.7110875218], [-39.4967746686, -3.7152593416], [-39.495497826, -3.721203925], [-39.482031772, -3.7222257384], [-39.4794787074, -3.7264600329], [-39.4733263554, -3.7266470262], [-39.4696762425, -3.7302019391], [-39.4572797458, -3.7416495677], [-39.4563674538, -3.7476452883], [-39.4434380377, -3.7449500458], [-39.4330842815, -3.7641859742], [-39.4357783893, -3.7724929226], [-39.4321140459, -3.7836311814], [-39.4361998839, -3.7911253245], [-39.4295898492, -3.7962945871], [-39.4261518506, -3.8229192052], [-39.4239716157, -3.8255446428], [-39.4172902831, -3.8248210661], [-39.4155985689, -3.832049122], [-39.4290151605, -3.854069314], [-39.4391511417, -3.8529096735], [-39.4567532569, -3.8613188315], [-39.4592001687, -3.8572055665], [-39.4761496663, -3.8572591855], [-39.4796636555, -3.8179851297], [-39.487679595, -3.8130790109], [-39.4882072366, -3.8171246943], [-39.4926010811, -3.8183981975], [-39.492320462, -3.7593242932], [-39.5151764245, -3.7459263724], [-39.5203772711, -3.7677174484], [-39.5357571796, -3.7795605968], [-39.5360442612, -3.7797817326], [-39.5761933562, -3.8107033303], [-39.5782693432, -3.8129479781], [-39.5819205255, -3.8208261628], [-39.5880716141, -3.8226588455], [-39.5935566776, -3.8252670845], [-39.6139238436, -3.8205924135], [-39.6221977346, -3.8242527225], [-39.6236394917, -3.8289503814], [-39.629053192, -3.8256533433], [-39.6344996908, -3.8283120786], [-39.6415095543, -3.8206819522], [-39.6462505615, -3.8018352889], [-39.6518874943, -3.7928918656], [-39.6533659537, -3.7732671425], [-39.6594452731, -3.7640053767], [-39.6775600994, -3.7576037596], [-39.6862570438, -3.7433752836], [-39.6861238987, -3.7426627885], [-39.6856747002, -3.7402675542], [-39.6865870998, -3.7336623465], [-39.686637529, -3.7264663824], [-39.6900983621, -3.7085772093], [-39.6953133217, -3.6995441749], [-39.7067972091, -3.6911833094], [-39.7090168641, -3.6843074407], [-39.7089073072, -3.6832400654], [-39.6972872129, -3.6418102884], [-39.7022573033, -3.6180959282], [-39.7021728389, -3.6179174663], [-39.6982352896, -3.6109959316], [-39.6931167512, -3.6107149208], [-39.6896206448, -3.6141886884], [-39.6935483895, -3.624126886]]], "type": "Polygon"}, "properties": {"description": "Itapag\u00e9", "id": "2306306", "name": "Itapag\u00e9"}, "type": "Feature"}], "type": "FeatureCollection"});
+            geo_json_b71e0a3214dbdc78f7a97c6a3050b847_add({"features": [{"geometry": {"coordinates": [[[-39.6935483895, -3.624126886], [-39.6800859359, -3.6479226765], [-39.6677603111, -3.6453349912], [-39.6532092923, -3.6515378473], [-39.6478029594, -3.6523385986], [-39.6493020665, -3.6470480924], [-39.6353458582, -3.6368594041], [-39.6314060855, -3.6376067741], [-39.6129135145, -3.6411136223], [-39.6214782272, -3.6316031158], [-39.6102141677, -3.6345830932], [-39.6072252227, -3.6353739965], [-39.5998211708, -3.6253377238], [-39.5941489775, -3.6249439612], [-39.5619250632, -3.634037421], [-39.5581702884, -3.6411770427], [-39.557841263, -3.6523616344], [-39.5535270561, -3.6536439962], [-39.5426709063, -3.6545854565], [-39.5360503762, -3.6592671452], [-39.5255425327, -3.6594931336], [-39.5224196453, -3.6547080714], [-39.5201643761, -3.655816386], [-39.5156919725, -3.6572973843], [-39.5142122605, -3.6688456607], [-39.514380827, -3.6756129801], [-39.510861373, -3.6949695493], [-39.5133781181, -3.6974422615], [-39.5098536379, -3.7024779124], [-39.4967361712, -3.7110875218], [-39.4967746686, -3.7152593416], [-39.495497826, -3.721203925], [-39.482031772, -3.7222257384], [-39.4794787074, -3.7264600329], [-39.4733263554, -3.7266470262], [-39.4696762425, -3.7302019391], [-39.4572797458, -3.7416495677], [-39.4563674538, -3.7476452883], [-39.4434380377, -3.7449500458], [-39.4330842815, -3.7641859742], [-39.4357783893, -3.7724929226], [-39.4321140459, -3.7836311814], [-39.4361998839, -3.7911253245], [-39.4295898492, -3.7962945871], [-39.4261518506, -3.8229192052], [-39.4239716157, -3.8255446428], [-39.4172902831, -3.8248210661], [-39.4155985689, -3.832049122], [-39.4290151605, -3.854069314], [-39.4391511417, -3.8529096735], [-39.4567532569, -3.8613188315], [-39.4592001687, -3.8572055665], [-39.4761496663, -3.8572591855], [-39.4796636555, -3.8179851297], [-39.487679595, -3.8130790109], [-39.4882072366, -3.8171246943], [-39.4926010811, -3.8183981975], [-39.492320462, -3.7593242932], [-39.5151764245, -3.7459263724], [-39.5203772711, -3.7677174484], [-39.5357571796, -3.7795605968], [-39.5360442612, -3.7797817326], [-39.5761933562, -3.8107033303], [-39.5782693432, -3.8129479781], [-39.5819205255, -3.8208261628], [-39.5880716141, -3.8226588455], [-39.5935566776, -3.8252670845], [-39.6139238436, -3.8205924135], [-39.6221977346, -3.8242527225], [-39.6236394917, -3.8289503814], [-39.629053192, -3.8256533433], [-39.6344996908, -3.8283120786], [-39.6415095543, -3.8206819522], [-39.6462505615, -3.8018352889], [-39.6518874943, -3.7928918656], [-39.6533659537, -3.7732671425], [-39.6594452731, -3.7640053767], [-39.6775600994, -3.7576037596], [-39.6862570438, -3.7433752836], [-39.6861238987, -3.7426627885], [-39.6856747002, -3.7402675542], [-39.6865870998, -3.7336623465], [-39.686637529, -3.7264663824], [-39.6900983621, -3.7085772093], [-39.6953133217, -3.6995441749], [-39.7067972091, -3.6911833094], [-39.7090168641, -3.6843074407], [-39.7089073072, -3.6832400654], [-39.6972872129, -3.6418102884], [-39.7022573033, -3.6180959282], [-39.7021728389, -3.6179174663], [-39.6982352896, -3.6109959316], [-39.6931167512, -3.6107149208], [-39.6896206448, -3.6141886884], [-39.6935483895, -3.624126886]]], "type": "Polygon"}, "properties": {"description": "Itapaj\u00e9", "id": "2306306", "name": "Itapaj\u00e9"}, "type": "Feature"}], "type": "FeatureCollection"});
 
         
     
@@ -8523,6 +8639,106 @@
             geo_json_401ace776b773157ddc19ddea01da846.addTo(feature_group_404e9fe4dce35e9dc83a79f0ee799c86);
         
     
+        function geo_json_5bpraio_caririacu_placeholder_styler(feature) {
+            switch(feature.properties.id) {
+                default:
+                    return {"color": "black", "fillColor": "#984ea3", "fillOpacity": 0.5, "weight": 1};
+            }
+        }
+        function geo_json_5bpraio_caririacu_placeholder_highlighter(feature) {
+            switch(feature.properties.id) {
+                default:
+                    return {"color": "yellow", "weight": 3};
+            }
+        }
+
+        function geo_json_5bpraio_caririacu_placeholder_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_5bpraio_caririacu_placeholder.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_5bpraio_caririacu_placeholder_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_5bpraio_caririacu_placeholder = L.geoJson(null, {
+                onEachFeature: geo_json_5bpraio_caririacu_placeholder_onEachFeature,
+            
+                style: geo_json_5bpraio_caririacu_placeholder_styler,
+            ...{
+}
+        });
+
+        function geo_json_5bpraio_caririacu_placeholder_add (data) {
+            geo_json_5bpraio_caririacu_placeholder
+                .addData(data);
+        }
+            geo_json_5bpraio_caririacu_placeholder_add({"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"Polygon","coordinates":[[[-39.3402,-7.1086],[-39.2928,-7.1103],[-39.2853,-7.1046],[-39.2811,-7.0927],[-39.2653,-7.0949],[-39.2499,-7.1053],[-39.2441,-7.1183],[-39.2366,-7.1233],[-39.2359,-7.1334],[-39.227,-7.1279],[-39.2203,-7.1292],[-39.2097,-7.1252],[-39.208,-7.1355],[-39.1977,-7.1394],[-39.1926,-7.1443],[-39.1934,-7.1506],[-39.1757,-7.1446],[-39.1626,-7.1326],[-39.1496,-7.1306],[-39.1358,-7.1308],[-39.1263,-7.1239],[-39.1159,-7.1011],[-39.115,-7.0823],[-39.1338,-7.0784],[-39.1573,-7.0336],[-39.1556,-7.0134],[-39.1624,-7.0061],[-39.1615,-6.9995],[-39.1554,-6.9945],[-39.149,-6.9833],[-39.13,-6.9805],[-39.1158,-6.9658],[-39.107,-6.9635],[-39.116,-6.9428],[-39.1666,-6.9358],[-39.2356,-6.9283],[-39.2465,-6.9353],[-39.2718,-6.9358],[-39.2977,-6.9389],[-39.321,-6.9333],[-39.3251,-6.9834],[-39.3312,-6.9807],[-39.3292,-6.9675],[-39.3366,-6.9586],[-39.3406,-6.945],[-39.3466,-6.9363],[-39.3377,-6.9246],[-39.3388,-6.9058],[-39.3657,-6.9168],[-39.3747,-6.9158],[-39.3835,-6.922],[-39.395,-6.9224],[-39.4227,-6.9622],[-39.4356,-6.9634],[-39.4523,-7.0093],[-39.4548,-7.0565],[-39.4531,-7.0677],[-39.4425,-7.0617],[-39.4305,-7.0647],[-39.4203,-7.0604],[-39.4107,-7.0626],[-39.4046,-7.0606],[-39.3616,-7.0576],[-39.3573,-7.066],[-39.3593,-7.0747],[-39.3495,-7.0828],[-39.3489,-7.0904],[-39.337,-7.0995],[-39.3402,-7.1086]]]},"properties":{"codarea":"2303204","description":"Caririaçu","id":"2303204","name":"Caririaçu"}}]});
+
+        
+    
+    geo_json_5bpraio_caririacu_placeholder.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["name"];
+    let aliases = ["Munic\u00edpio:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i].toLocaleString()}</th>
+            
+            <td>${handleObject(layer.feature.properties[v]).toLocaleString()}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+        var popup_5bpraio_caririacu_placeholder = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5bpraio_caririacu_placeholder = $(`<div id="html_5bpraio_caririacu_placeholder" style="width: 100.0%; height: 100.0%;">     <div style='font-size:12px;'>     <b>Caririaçu</b><br>     Batalhão: 5º BPRAIO<br>     Classificação: Pelotão<br>     População: 27,000 hab.<br>     IDH: 0.593<br>     PIB per capita: n/d<br>     Densidade: Média<br>     Distância à sede: 28.0 km<br>     Justificativa: Integração com o núcleo metropolitano do Cariri.     </div>     </div>`)[0];
+                popup_5bpraio_caririacu_placeholder.setContent(html_5bpraio_caririacu_placeholder);
+            
+        
+
+        geo_json_5bpraio_caririacu_placeholder.bindPopup(popup_5bpraio_caririacu_placeholder)
+        ;
+
+        
+    
+    
+            geo_json_5bpraio_caririacu_placeholder.addTo(feature_group_404e9fe4dce35e9dc83a79f0ee799c86);
+        
+    
         function geo_json_f5e7461a09cb662412c6bef9569bb7e1_styler(feature) {
             switch(feature.properties.id) {
                 default:
@@ -8621,6 +8837,106 @@
     
     
             geo_json_f5e7461a09cb662412c6bef9569bb7e1.addTo(feature_group_404e9fe4dce35e9dc83a79f0ee799c86);
+        
+    
+        function geo_json_5bpraio_aurora_placeholder_styler(feature) {
+            switch(feature.properties.id) {
+                default:
+                    return {"color": "black", "fillColor": "#984ea3", "fillOpacity": 0.5, "weight": 1};
+            }
+        }
+        function geo_json_5bpraio_aurora_placeholder_highlighter(feature) {
+            switch(feature.properties.id) {
+                default:
+                    return {"color": "yellow", "weight": 3};
+            }
+        }
+
+        function geo_json_5bpraio_aurora_placeholder_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_5bpraio_aurora_placeholder.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_5bpraio_aurora_placeholder_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_5bpraio_aurora_placeholder = L.geoJson(null, {
+                onEachFeature: geo_json_5bpraio_aurora_placeholder_onEachFeature,
+            
+                style: geo_json_5bpraio_aurora_placeholder_styler,
+            ...{
+}
+        });
+
+        function geo_json_5bpraio_aurora_placeholder_add (data) {
+            geo_json_5bpraio_aurora_placeholder
+                .addData(data);
+        }
+            geo_json_5bpraio_aurora_placeholder_add({"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"Polygon","coordinates":[[[-38.909,-7.0827],[-38.8877,-7.0425],[-38.8562,-6.9775],[-38.8533,-6.9806],[-38.8315,-6.9828],[-38.8255,-6.989],[-38.8064,-6.9895],[-38.7902,-6.9952],[-38.7811,-7.0006],[-38.7733,-7.0009],[-38.765,-6.9939],[-38.7511,-6.9877],[-38.749,-6.9808],[-38.7423,-6.9743],[-38.7481,-6.9667],[-38.7503,-6.9585],[-38.7563,-6.9585],[-38.764,-6.9524],[-38.764,-6.9446],[-38.7557,-6.9401],[-38.7583,-6.9313],[-38.7589,-6.9166],[-38.7652,-6.9109],[-38.7682,-6.9075],[-38.7847,-6.905],[-38.7837,-6.8884],[-38.7758,-6.8846],[-38.7742,-6.8684],[-38.786,-6.8631],[-38.8129,-6.8649],[-38.8197,-6.8567],[-38.8345,-6.8574],[-38.8475,-6.8602],[-38.856,-6.859],[-38.8656,-6.86],[-38.8775,-6.8573],[-38.8911,-6.8572],[-38.9203,-6.8612],[-38.9311,-6.8609],[-38.9507,-6.8673],[-38.9649,-6.862],[-38.9732,-6.8633],[-38.9783,-6.8685],[-38.9888,-6.8686],[-38.999,-6.8738],[-39.0066,-6.8738],[-39.0154,-6.8784],[-39.0211,-6.8902],[-39.0209,-6.8953],[-39.0434,-6.9002],[-39.0428,-6.9062],[-39.0608,-6.9115],[-39.0681,-6.9225],[-39.0868,-6.9373],[-39.1005,-6.9535],[-39.107,-6.9635],[-39.1158,-6.9658],[-39.13,-6.9805],[-39.149,-6.9833],[-39.1554,-6.9945],[-39.1615,-6.9995],[-39.1624,-7.0061],[-39.1556,-7.0134],[-39.1573,-7.0336],[-39.1338,-7.0784],[-39.115,-7.0823],[-39.1159,-7.1011],[-39.1263,-7.1239],[-39.1358,-7.1308],[-39.1293,-7.144],[-39.1224,-7.1425],[-39.1151,-7.1553],[-39.0971,-7.1541],[-39.0898,-7.1574],[-39.0783,-7.1563],[-39.0758,-7.1485],[-39.0676,-7.1471],[-39.0613,-7.1405],[-39.0501,-7.1383],[-39.0412,-7.143],[-39.0381,-7.1495],[-39.0255,-7.1501],[-38.9579,-7.0817],[-38.909,-7.0827]]]},"properties":{"codarea":"2301703","description":"Aurora","id":"2301703","name":"Aurora"}}]});
+
+        
+    
+    geo_json_5bpraio_aurora_placeholder.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["name"];
+    let aliases = ["Munic\u00edpio:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i].toLocaleString()}</th>
+            
+            <td>${handleObject(layer.feature.properties[v]).toLocaleString()}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+        var popup_5bpraio_aurora_placeholder = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5bpraio_aurora_placeholder = $(`<div id="html_5bpraio_aurora_placeholder" style="width: 100.0%; height: 100.0%;">     <div style='font-size:12px;'>     <b>Aurora</b><br>     Batalhão: 5º BPRAIO<br>     Classificação: Pelotão<br>     População: 28,000 hab.<br>     IDH: 0.596<br>     PIB per capita: n/d<br>     Densidade: Baixa<br>     Distância à sede: 70.0 km<br>     Justificativa: Corredor operacional da BR-116 (zona sul do Cariri).     </div>     </div>`)[0];
+                popup_5bpraio_aurora_placeholder.setContent(html_5bpraio_aurora_placeholder);
+            
+        
+
+        geo_json_5bpraio_aurora_placeholder.bindPopup(popup_5bpraio_aurora_placeholder)
+        ;
+
+        
+    
+    
+            geo_json_5bpraio_aurora_placeholder.addTo(feature_group_404e9fe4dce35e9dc83a79f0ee799c86);
         
     
         function geo_json_a2af7df7c42903ee481cc28a31612ea6_styler(feature) {
@@ -10780,10 +11096,13 @@
 
             let filtroAtual = "Todos";
             let cenarioAtivo = "proposto";
-            let modoVisualMapa = "hierarquia";
+            let modoVisualMapa = "territorial";
             let distanceTableSort = { key: "distanciaKm", dir: "desc" };
             let distanceTableRowsCache = [];
             let highlightHoverState = null;
+            const cityKeyAliases = {
+                "ITAPAGE": "ITAPAJE",
+            };
 
             function escapeHtml(value) {
                 return String(value ?? "")
@@ -10815,12 +11134,13 @@
             }
 
             function normalizeCityKey(value) {
-                return String(value || "")
+                const normalized = String(value || "")
                     .normalize("NFD")
                     .replace(/[\u0300-\u036f]/g, "")
                     .replace(/\s+/g, " ")
                     .trim()
                     .toUpperCase();
+                return cityKeyAliases[normalized] || normalized;
             }
 
             const distanciasOficiaisPorBatalhao = {
@@ -10894,8 +11214,10 @@
                     "Iguatu": 150,
                     "Tauá": 280,
                     "Crateús": 340,
+                    "Caririaçu": 28,
                     "Barbalha": 12,
                     "Brejo Santo": 75,
+                    "Aurora": 70,
                     "Acopiara": 180,
                     "Parambu": 330,
                     "Tamboril": 380,
@@ -11075,86 +11397,90 @@
             const efetivoPorCidade = {
                 "CAUCAIA": 144,
                 "AQUIRAZ": 53,
-                "CASCAVEL": 37,
-                "CHOROZINHO": 27,
-                "EUSÉBIO": 39,
-                "GUAIÚBA": 24,
-                "HORIZONTE": 48,
-                "ITAITINGA": 30,
-                "MARACANAÚ": 140,
-                "MARANGUAPE": 44,
+                "CASCAVEL": 35,
+                "CHOROZINHO": 24,
+                "EUSÉBIO": 40,
+                "GUAIÚBA": 25,
+                "HORIZONTE": 40,
+                "ITAITINGA": 32,
+                "MARACANAÚ": 92,
+                "MARANGUAPE": 48,
                 "PACAJUS": 33,
-                "PACATUBA": 35,
-                "PARAIPABA": 23,
+                "PACATUBA": 32,
+                "PARAIPABA": 26,
                 "PARACURU": 29,
                 "SÃO GONÇALO DO AMARANTE": 32,
-                "TRAIRI": 27,
+                "TRAIRI": 28,
                 "RUSSAS": 58,
-                "ARACATI": 46,
-                "BEBERIBE": 30,
+                "ARACATI": 33,
+                "BEBERIBE": 27,
                 "BOA VIAGEM": 28,
-                "LIMOEIRO DO NORTE": 37,
-                "MORADA NOVA": 32,
-                "OCARA": 18,
-                "PEDRA BRANCA": 21,
-                "QUIXADÁ": 41,
-                "QUIXERAMOBIM": 33,
-                "REDENÇÃO": 23,
-                "TABULEIRO DO NORTE": 28,
-                "JAGUARIBE": 26,
-                "JAGUARUANA": 22,
-                "ICAPUÍ": 19,
-                "SENADOR POMPEU": 20,
-                "BATURITÉ": 25,
-                "ARACOIABA": 21,
+                "LIMOEIRO DO NORTE": 27,
+                "MORADA NOVA": 22,
+                "OCARA": 23,
+                "PEDRA BRANCA": 24,
+                "QUIXADÁ": 28,
+                "QUIXERAMOBIM": 31,
+                "REDENÇÃO": 0,
+                "TABULEIRO DO NORTE": 27,
+                "JAGUARIBE": 24,
+                "JAGUARUANA": 23,
+                "ICAPUÍ": 18,
+                "SENADOR POMPEU": 0,
+                "BATURITÉ": 31,
+                "ARACOIABA": 26,
                 "SOBRAL": 67,
                 "ITAPIPOCA": 43,
-                "CAMOCIM": 37,
-                "CANINDÉ": 31,
-                "TIANGUÁ": 33,
+                "CAMOCIM": 33,
+                "CANINDÉ": 49,
+                "TIANGUÁ": 28,
                 "MASSAPÊ": 25,
                 "VIÇOSA DO CEARÁ": 25,
-                "SANTA QUITÉRIA": 28,
-                "GRANJA": 24,
-                "ITAPAJÉ": 26,
-                "SANTANA DO ACARAÚ": 20,
-                "SÃO BENEDITO": 23,
-                "BELA CRUZ": 22,
+                "SANTA QUITÉRIA": 24,
+                "GRANJA": 26,
+                "ITAPAJÉ": 27,
+                "SANTANA DO ACARAÚ": 17,
+                "SÃO BENEDITO": 26,
+                "BELA CRUZ": 18,
                 "ACARAÚ": 24,
-                "MARCO": 18,
-                "ITAREMA": 19,
-                "FORQUILHA": 14,
-                "GUARACIABA DO NORTE": 22,
+                "MARCO": 21,
+                "ITAREMA": 24,
+                "FORQUILHA": 22,
+                "FORTALEZA": 433,
+                "GUARACIABA DO NORTE": 24,
                 "IPU": 23,
-                "AMONTADA": 20,
-                "PENTECOSTE": 21,
-                "UBAJARA": 18,
-                "IBIAPINA": 17,
-                "CRUZ": 20,
+                "AMONTADA": 29,
+                "PENTECOSTE": 23,
+                "UBAJARA": 23,
+                "IBIAPINA": 22,
+                "CRUZ": 0,
                 "JUAZEIRO DO NORTE": 75,
                 "CRATO": 38,
-                "BARBALHA": 35,
+                "BARBALHA": 38,
+                "CARIRIAÇU": 23,
                 "IGUATU": 34,
-                "TAUÁ": 28,
+                "TAUÁ": 19,
                 "CRATEÚS": 31,
-                "BREJO SANTO": 27,
+                "BREJO SANTO": 31,
+                "AURORA": 22,
                 "ACOPIARA": 29,
-                "PARAMBU": 10,
+                "PARAMBU": 19,
                 "TAMBORIL": 19,
-                "MAURITI": 22,
-                "ICÓ": 24,
+                "MAURITI": 19,
+                "MESSEJANA": 138,
+                "ICÓ": 18,
                 "MOMBAÇA": 18,
-                "NOVA RUSSAS": 21,
-                "JARDIM": 17,
-                "VÁRZEA ALEGRE": 25,
-                "LAVRAS DA MANGABEIRA": 20,
-                "NOVO ORIENTE": 21,
-                "IPUEIRAS": 16,
+                "NOVA RUSSAS": 19,
+                "JARDIM": 19,
+                "VÁRZEA ALEGRE": 19,
+                "LAVRAS DA MANGABEIRA": 19,
+                "NOVO ORIENTE": 19,
+                "IPUEIRAS": 19,
                 "MISSÃO VELHA": 19,
-                "CAMPOS SALES": 23,
-                "CEDRO": 21,
-                "INDEPENDÊNCIA": 18,
-                "MILAGRES": 17,
+                "CAMPOS SALES": 18,
+                "CEDRO": 30,
+                "INDEPENDÊNCIA": 19,
+                "MILAGRES": 19,
             };
 
             const efetivoPorCidadeNormalizado = {};
@@ -11275,6 +11601,8 @@
                     sede: ["Juazeiro do Norte"],
                     companhias: ["Crato", "Barbalha", "Iguatu", "Tauá", "Brejo Santo"],
                     pelotoes: [
+                        "Aurora",
+                        "Caririaçu",
                         "Jardim",
                         "Missão Velha",
                         "Acopiara",
@@ -11296,16 +11624,18 @@
                     independentes: ["Crateús"],
                     subordinacao: {
                         "Crato": [],
-                        "Barbalha": ["Jardim", "Missão Velha"],
+                        "Barbalha": ["Caririaçu", "Jardim", "Missão Velha"],
                         "Iguatu": ["Acopiara", "Icó", "Lavras da Mangabeira", "Cedro", "Mombaça", "Várzea Alegre"],
                         "Tauá": ["Parambu", "Campos Sales"],
-                        "Brejo Santo": ["Mauriti", "Milagres"],
+                        "Brejo Santo": ["Aurora", "Mauriti", "Milagres"],
                         "Crateús": ["Tamboril", "Nova Russas", "Novo Oriente", "Ipueiras", "Independência"],
                     },
                     rotulosSubordinacao: {
                         "Crateús": "Cia. Independente Crateús",
                     },
                     observacoes: {
+                        "Aurora": "Subordinação à Companhia de Brejo Santo (eixo BR-116 / integração territorial).",
+                        "Caririaçu": "Subordinação à Companhia de Barbalha (integração metropolitana do Cariri).",
                         "Várzea Alegre": "Subordinado operacionalmente à Companhia de Iguatu.",
                         "Crateús": "Outlier por distância crítica (Análise de Outliers do 5º BPRAIO).",
                     },
@@ -11389,6 +11719,8 @@
             const layerRefsByBatalhaoCidade = {};
             const commandLayersByBatalhao = {};
             const subordinationLayersByBatalhao = {};
+            const spiderLinesByCidadeKey = {};
+            const highlightedSpiderLines = new Set();
             let municipioMetaByBatalhaoCidade = {};
             let municipiosData = [];
 
@@ -11398,6 +11730,7 @@
 
             map_475b15caff0728b3dc42d0d1917fd2d6.createPane("command-markers");
             map_475b15caff0728b3dc42d0d1917fd2d6.getPane("command-markers").style.zIndex = 650;
+            map_475b15caff0728b3dc42d0d1917fd2d6.getPane("command-markers").style.pointerEvents = "none";
 
             function clearObject(obj) {
                 Object.keys(obj).forEach((key) => delete obj[key]);
@@ -11547,14 +11880,158 @@
                 return "";
             }
 
+            function updateRiskLegendVisibility() {
+                const legend = document.getElementById("risk-legend");
+                if (!legend) return;
+
+                const show = modoVisualMapa === "risco";
+                legend.classList.toggle("visible", show);
+                legend.setAttribute("aria-hidden", show ? "false" : "true");
+            }
+
+            function registerSpiderLineForCity(batalhao, cidade, line) {
+                const key = keyByBatalhaoCidade(batalhao, cidade);
+                if (!spiderLinesByCidadeKey[key]) {
+                    spiderLinesByCidadeKey[key] = [];
+                }
+                spiderLinesByCidadeKey[key].push(line);
+            }
+
+            function resetSpiderLineStyle(line) {
+                if (!line || !line._defaultSpiderStyle || typeof line.setStyle !== "function") return;
+                line.setStyle(line._defaultSpiderStyle);
+            }
+
+            function clearHighlightedSpiderLinks() {
+                highlightedSpiderLines.forEach((line) => resetSpiderLineStyle(line));
+                highlightedSpiderLines.clear();
+            }
+
+            function highlightSpiderLinksForCity(batalhao, cidade) {
+                clearHighlightedSpiderLinks();
+
+                const key = keyByBatalhaoCidade(batalhao, cidade);
+                const lines = spiderLinesByCidadeKey[key] || [];
+                lines.forEach((line) => {
+                    if (!line || typeof line.setStyle !== "function") return;
+                    line.setStyle({
+                        color: "#111827",
+                        weight: 3.2,
+                        opacity: 0.88,
+                    });
+                    if (typeof line.bringToFront === "function") {
+                        line.bringToFront();
+                    }
+                    highlightedSpiderLines.add(line);
+                });
+            }
+
+            function isLeafletLatLng(value) {
+                return !!value && typeof value.lat === "number" && typeof value.lng === "number";
+            }
+
+            function getAverageLatLng(points) {
+                if (!points.length) return null;
+                const totals = points.reduce((acc, point) => {
+                    acc.lat += point.lat;
+                    acc.lng += point.lng;
+                    return acc;
+                }, { lat: 0, lng: 0 });
+                return L.latLng(totals.lat / points.length, totals.lng / points.length);
+            }
+
+            function getRingCentroid(ring) {
+                if (!Array.isArray(ring) || ring.length < 3) {
+                    return {
+                        center: getAverageLatLng(Array.isArray(ring) ? ring.filter(isLeafletLatLng) : []),
+                        weight: Array.isArray(ring) ? ring.length : 0,
+                    };
+                }
+
+                let areaTwice = 0;
+                let centroidLng = 0;
+                let centroidLat = 0;
+
+                for (let index = 0; index < ring.length; index += 1) {
+                    const current = ring[index];
+                    const next = ring[(index + 1) % ring.length];
+                    if (!isLeafletLatLng(current) || !isLeafletLatLng(next)) continue;
+
+                    const cross = (current.lng * next.lat) - (next.lng * current.lat);
+                    areaTwice += cross;
+                    centroidLng += (current.lng + next.lng) * cross;
+                    centroidLat += (current.lat + next.lat) * cross;
+                }
+
+                if (Math.abs(areaTwice) < 1e-9) {
+                    return {
+                        center: getAverageLatLng(ring.filter(isLeafletLatLng)),
+                        weight: ring.length,
+                    };
+                }
+
+                return {
+                    center: L.latLng(centroidLat / (3 * areaTwice), centroidLng / (3 * areaTwice)),
+                    weight: Math.abs(areaTwice) / 2,
+                };
+            }
+
+            function collectPolygonCentroidParts(latlngs, collector) {
+                if (!Array.isArray(latlngs) || !latlngs.length) return;
+
+                if (isLeafletLatLng(latlngs[0])) {
+                    collector.push(getRingCentroid(latlngs));
+                    return;
+                }
+
+                if (Array.isArray(latlngs[0]) && latlngs[0].length && isLeafletLatLng(latlngs[0][0])) {
+                    collector.push(getRingCentroid(latlngs[0]));
+                    return;
+                }
+
+                latlngs.forEach((entry) => collectPolygonCentroidParts(entry, collector));
+            }
+
+            function getGeometryCentroid(layer) {
+                const centroidParts = [];
+
+                function visit(candidate) {
+                    if (!candidate) return;
+
+                    if (typeof candidate.getLatLngs === "function") {
+                        collectPolygonCentroidParts(candidate.getLatLngs(), centroidParts);
+                    }
+
+                    if (typeof candidate.eachLayer === "function") {
+                        candidate.eachLayer((subLayer) => visit(subLayer));
+                    }
+                }
+
+                visit(layer);
+
+                if (!centroidParts.length) return null;
+
+                const aggregate = centroidParts.reduce((acc, item) => {
+                    if (!item || !item.center) return acc;
+                    const weight = item.weight > 0 ? item.weight : 1;
+                    acc.lat += item.center.lat * weight;
+                    acc.lng += item.center.lng * weight;
+                    acc.weight += weight;
+                    return acc;
+                }, { lat: 0, lng: 0, weight: 0 });
+
+                if (!aggregate.weight) return null;
+                return L.latLng(aggregate.lat / aggregate.weight, aggregate.lng / aggregate.weight);
+            }
+
             function getRiscoColor(distanciaKm) {
                 if (typeof distanciaKm !== "number" || Number.isNaN(distanciaKm)) {
                     return { fillColor: "#b4c3ca", borderColor: "#5f7480" };
                 }
-                if (distanciaKm < 40) return { fillColor: "#2ca25f", borderColor: "#13653a" };
-                if (distanciaKm <= 80) return { fillColor: "#e5b13e", borderColor: "#946e14" };
-                if (distanciaKm <= 150) return { fillColor: "#df7b32", borderColor: "#8a4716" };
-                return { fillColor: "#c3382a", borderColor: "#6e1e16" };
+                if (distanciaKm <= 40) return { fillColor: "#2ecc71", borderColor: "#1f9d57" };
+                if (distanciaKm <= 80) return { fillColor: "#f1c40f", borderColor: "#b68f00" };
+                if (distanciaKm <= 150) return { fillColor: "#e67e22", borderColor: "#b85f16" };
+                return { fillColor: "#e74c3c", borderColor: "#b9382c" };
             }
 
             function resolveMunicipioStyle(batalhao, cidade, classificacao) {
@@ -11562,22 +12039,15 @@
                 const distanciaKm = getDistanciaOperacionalDetalhe(batalhao, cidade, classificacao).distanciaKm;
 
                 if (modoVisualMapa === "risco") {
-                    if (classificacao === "Cia Independente") {
-                        return {
-                            color: "#0f6143",
-                            fillColor: "#2fa36f",
-                            fillOpacity: 0.84,
-                            weight: 3.1,
-                            dashArray: "10 4",
-                        };
-                    }
-                    const risco = getRiscoColor(distanciaKm);
+                    const risco = getRiscoColor(classificacao === "Cia Independente" ? 0 : distanciaKm);
                     return {
                         color: risco.borderColor,
                         fillColor: risco.fillColor,
-                        fillOpacity: 0.72,
+                        fillOpacity: classificacao === "Pelotão" ? 0.74 : 0.82,
                         weight: classificacao === "Sede" || classificacao === "Cia Independente" ? 2.3 : 1.5,
-                        dashArray: classificacao === "Pelotão" ? "4 5" : undefined,
+                        dashArray: classificacao === "Cia Independente"
+                            ? "10 4"
+                            : (classificacao === "Pelotão" ? "4 5" : undefined),
                     };
                 }
 
@@ -11816,6 +12286,22 @@
                             );
                         }
 
+                        if (layer && typeof layer.on === "function") {
+                            if (layer.__spiderHoverHandlers) {
+                                layer.off("mouseover", layer.__spiderHoverHandlers.mouseover);
+                                layer.off("mouseout", layer.__spiderHoverHandlers.mouseout);
+                            }
+
+                            const handlers = {
+                                mouseover: () => highlightSpiderLinksForCity(batalhao, cidade),
+                                mouseout: () => clearHighlightedSpiderLinks(),
+                            };
+
+                            layer.on("mouseover", handlers.mouseover);
+                            layer.on("mouseout", handlers.mouseout);
+                            layer.__spiderHoverHandlers = handlers;
+                        }
+
                         layerRefsByBatalhaoCidade[batalhao][normalizeCityKey(cidade)] = layer;
                     });
                 });
@@ -11829,6 +12315,8 @@
             function getLayerCenter(layer) {
                 if (!layer) return null;
                 if (typeof layer.getLatLng === "function") return layer.getLatLng();
+                const centroid = getGeometryCentroid(layer);
+                if (centroid) return centroid;
                 if (typeof layer.getBounds === "function") {
                     const bounds = layer.getBounds();
                     if (bounds && typeof bounds.isValid === "function" && bounds.isValid()) {
@@ -11840,7 +12328,17 @@
 
             function createCommandIcon(tipo, titulo) {
                 const isSede = tipo === "Sede";
-                const iconClass = isSede ? "fa-shield-halved" : "fa-star";
+                if (L.AwesomeMarkers && typeof L.AwesomeMarkers.icon === "function") {
+                    return L.AwesomeMarkers.icon({
+                        prefix: "fa",
+                        extraClasses: "fa-solid",
+                        icon: isSede ? "star" : "building",
+                        markerColor: isSede ? "darkred" : "blue",
+                        iconColor: "white",
+                    });
+                }
+
+                const iconClass = isSede ? "fa-star" : "fa-building";
                 const typeClass = isSede ? "command-pin-sede" : "command-pin-indep";
                 const safeTitle = escapeHtml(titulo || "");
                 return L.divIcon({
@@ -11853,6 +12351,8 @@
 
             function rebuildSubordinationVisuals() {
                 ensureAuxLayerGroups();
+                clearHighlightedSpiderLinks();
+                clearObject(spiderLinesByCidadeKey);
 
                 Object.keys(batalhaoLayers).forEach((batalhao) => {
                     subordinationLayersByBatalhao[batalhao].clearLayers();
@@ -11864,12 +12364,10 @@
                     const markerGroup = commandLayersByBatalhao[batalhao];
                     if (!lineGroup || !markerGroup) return;
 
-                    const baseColor = getBatalhaoBaseColor(batalhao);
-                    const spiderColor = colorToCss(adjustColor(baseColor, -16, -6));
                     const usedLinks = new Set();
 
                     function addSpiderLine(fromCidade, classificacao) {
-                        const polo = getPoloOperacionalDetalhe(batalhao, fromCidade);
+                        const polo = getPoloOperacionalDetalhe(batalhao, fromCidade, classificacao);
                         const toCidade = polo.referenciaCidade;
                         if (!toCidade) return;
                         if (normalizeCityKey(fromCidade) === normalizeCityKey(toCidade)) return;
@@ -11884,19 +12382,28 @@
                         if (usedLinks.has(key)) return;
                         usedLinks.add(key);
 
-                        L.polyline([fromPoint, toPoint], {
+                        const line = L.polyline([fromPoint, toPoint], {
                             pane: "command-lines",
-                            color: spiderColor,
-                            weight: classificacao === "Pelotão" ? 1.2 : 1.0,
-                            opacity: 0.34,
-                            dashArray: "4 6",
+                            color: "#1f2933",
+                            weight: 1.5,
+                            opacity: 0.4,
+                            dashArray: "5, 10",
                             lineCap: "round",
+                            lineJoin: "round",
                             interactive: false,
-                        }).addTo(lineGroup);
+                        });
+                        line._defaultSpiderStyle = {
+                            color: "#1f2933",
+                            weight: 1.5,
+                            opacity: 0.4,
+                            dashArray: "5, 10",
+                        };
+                        line.addTo(lineGroup);
+                        registerSpiderLineForCity(batalhao, fromCidade, line);
                     }
 
                     function addCommandMarker(cidade, tipo) {
-                        const layer = getLayerByBatalhaoCidade(batalhao, cidade);
+                        const layer = getLayerByBatalhaoCidadeAny(batalhao, cidade);
                         const center = getLayerCenter(layer);
                         if (!center) return;
 
@@ -11904,15 +12411,17 @@
                         L.marker(center, {
                             pane: "command-markers",
                             icon: createCommandIcon(tipo, `${labelTipo} · ${cidade}`),
-                            interactive: true,
+                            title: `${labelTipo} · ${cidade}`,
+                            interactive: false,
                             keyboard: false,
                         })
-                            .bindTooltip(`${escapeHtml(cidade)} | ${labelTipo} | ${escapeHtml(batalhao)}`, {
-                                sticky: false,
-                                direction: "top",
-                                offset: [0, -8],
-                                opacity: 0.95,
-                                className: "municipio-hover-tooltip-v3",
+                            .bindTooltip(cidade, {
+                                permanent: true,
+                                direction: "bottom",
+                                offset: [0, 18],
+                                opacity: 1,
+                                interactive: false,
+                                className: "polo-label",
                             })
                             .addTo(markerGroup);
                     }
@@ -11981,8 +12490,8 @@
                 if (!container) return;
 
                 const options = [
-                    { id: "hierarquia", label: "Hierarquia" },
-                    { id: "risco", label: "Risco Logístico" },
+                    { id: "territorial", label: "Visão Territorial (Batalhões)" },
+                    { id: "risco", label: "Visão de Risco Logístico" },
                 ];
 
                 container.innerHTML = "";
@@ -12033,6 +12542,7 @@
                 aplicarEsquemaVisualMunicipios();
                 rebuildSubordinationVisuals();
                 renderModeFilters(modoVisualMapa);
+                updateRiskLegendVisibility();
                 aplicarFiltroBatalhao(filtroAtual);
             }
 
@@ -12303,13 +12813,15 @@
             }
 
             function clearRowHoverHighlight() {
-                if (!highlightHoverState) return;
-                const { batalhao, cidade, layer } = highlightHoverState;
-                const meta = municipioMetaByBatalhaoCidade[keyByBatalhaoCidade(batalhao, cidade)];
-                if (layer && meta && typeof layer.setStyle === "function") {
-                    layer.setStyle(resolveMunicipioStyle(meta.batalhao, meta.cidade, meta.classificacao));
+                if (highlightHoverState) {
+                    const { batalhao, cidade, layer } = highlightHoverState;
+                    const meta = municipioMetaByBatalhaoCidade[keyByBatalhaoCidade(batalhao, cidade)];
+                    if (layer && meta && typeof layer.setStyle === "function") {
+                        layer.setStyle(resolveMunicipioStyle(meta.batalhao, meta.cidade, meta.classificacao));
+                    }
                 }
                 highlightHoverState = null;
+                clearHighlightedSpiderLinks();
             }
 
             function highlightMunicipioFromTable(batalhao, cidade) {
@@ -12330,6 +12842,7 @@
                 }
 
                 highlightHoverState = { batalhao, cidade, layer };
+                highlightSpiderLinksForCity(batalhao, cidade);
             }
 
             function bindDistanceTableHover() {
@@ -12593,6 +13106,7 @@
             rebuildSubordinationVisuals();
             renderScenarioFilters(cenarioAtivo);
             renderModeFilters(modoVisualMapa);
+            updateRiskLegendVisibility();
             updateScenarioCaption();
             aplicarFiltroBatalhao(filtroAtual);
             setTimeout(() => map_475b15caff0728b3dc42d0d1917fd2d6.invalidateSize(), 150);
