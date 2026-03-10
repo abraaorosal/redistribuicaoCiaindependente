@@ -1365,23 +1365,23 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Exo+2:wght@500;600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
         rel="stylesheet"
     />
     <style>
         :root {
-            --bg: #f1f6f4;
-            --ink: #11212a;
-            --ink-soft: #4f6673;
-            --line: #d8e5dd;
-            --panel: rgba(255, 255, 255, 0.84);
-            --panel-strong: rgba(255, 255, 255, 0.96);
-            --accent: #0a6c74;
-            --accent-2: #d48f12;
-            --ok: #0f8f4e;
-            --bad: #b43d2c;
-            --neutral: #6b7f8a;
-            --shadow: 0 18px 30px rgba(8, 35, 35, 0.12);
+            --bg: #eaf1f8;
+            --ink: #0d2138;
+            --ink-soft: #496179;
+            --line: #cad8e8;
+            --panel: rgba(255, 255, 255, 0.8);
+            --panel-strong: rgba(255, 255, 255, 0.94);
+            --accent: #145d94;
+            --accent-2: #d48a1d;
+            --ok: #158a55;
+            --bad: #be3d2d;
+            --neutral: #637990;
+            --shadow: 0 24px 40px rgba(8, 28, 58, 0.14);
         }
 
         html,
@@ -1390,7 +1390,7 @@
             height: 100%;
             margin: 0;
             padding: 0;
-            font-family: "Source Sans 3", "Segoe UI", sans-serif;
+            font-family: "Manrope", "Segoe UI", sans-serif;
             color: var(--ink);
             background: var(--bg);
         }
@@ -1404,9 +1404,9 @@
             position: fixed;
             inset: 0;
             background:
-                radial-gradient(1200px 500px at -10% -12%, #d6f0eb 0%, rgba(214, 240, 235, 0) 60%),
-                radial-gradient(900px 380px at 110% -8%, #fbe7bd 0%, rgba(251, 231, 189, 0) 55%),
-                linear-gradient(165deg, #f4f9f7 0%, #ebf2ef 100%);
+                radial-gradient(1200px 520px at -12% -14%, #cfe4f8 0%, rgba(207, 228, 248, 0) 62%),
+                radial-gradient(860px 370px at 108% -10%, #f6e3c2 0%, rgba(246, 227, 194, 0) 56%),
+                linear-gradient(152deg, #f5f8fc 0%, #e8f0f8 38%, #eef3ed 100%);
             z-index: 0;
         }
 
@@ -1429,9 +1429,9 @@
             gap: 14px;
             padding: 14px 16px;
             border: 1px solid var(--line);
-            border-radius: 16px;
+            border-radius: 20px;
             background: var(--panel);
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(10px);
             box-shadow: var(--shadow);
         }
 
@@ -1471,7 +1471,7 @@
 
         .title-block h1 {
             margin: 4px 0 2px;
-            font-family: "Exo 2", "Segoe UI", sans-serif;
+            font-family: "Space Grotesk", "Segoe UI", sans-serif;
             font-size: clamp(1.3rem, 1.2rem + 1.4vw, 2rem);
             font-weight: 800;
             line-height: 1.05;
@@ -1519,7 +1519,7 @@
 
         .kpi-mini span {
             display: block;
-            font-family: "Exo 2", "Segoe UI", sans-serif;
+            font-family: "Space Grotesk", "Segoe UI", sans-serif;
             font-size: 1.28rem;
             font-weight: 800;
             line-height: 1.1;
@@ -1556,9 +1556,9 @@
         .side-panel {
             background: var(--panel);
             border: 1px solid var(--line);
-            border-radius: 16px;
+            border-radius: 20px;
             box-shadow: var(--shadow);
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(10px);
         }
 
         .map-panel {
@@ -1578,7 +1578,7 @@
         }
 
         .toolbar-title {
-            font-family: "Exo 2", "Segoe UI", sans-serif;
+            font-family: "Space Grotesk", "Segoe UI", sans-serif;
             font-size: 1.02rem;
             font-weight: 700;
             letter-spacing: 0.01em;
@@ -1666,7 +1666,7 @@
         }
 
         .risk-legend-title {
-            font-family: "Exo 2", "Segoe UI", sans-serif;
+            font-family: "Space Grotesk", "Segoe UI", sans-serif;
             font-size: 0.8rem;
             font-weight: 800;
             letter-spacing: 0.04em;
@@ -1713,7 +1713,7 @@
             border-radius: 0;
             box-shadow: none;
             color: #143845;
-            font-family: "Exo 2", "Segoe UI", sans-serif;
+            font-family: "Space Grotesk", "Segoe UI", sans-serif;
             font-size: 0.8rem;
             font-weight: 800;
             letter-spacing: 0.01em;
@@ -1743,49 +1743,93 @@
 
         .hover-title {
             margin: 0 0 5px;
-            font-family: "Exo 2", "Segoe UI", sans-serif;
+            font-family: "Space Grotesk", "Segoe UI", sans-serif;
             font-size: 0.86rem;
             font-weight: 800;
             color: #133845;
         }
 
         .chip-btn {
-            border: 1px solid #c8d9d5;
-            background: #ffffff;
-            color: #29404c;
+            border: 1px solid #c5d4e5;
+            background: linear-gradient(180deg, #ffffff 0%, #f4f8fc 100%);
+            color: #1f3b54;
             border-radius: 999px;
             padding: 5px 11px;
             font-size: 0.81rem;
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.16s ease;
+            transition: all 0.2s ease;
         }
 
         .chip-btn:hover {
-            border-color: #89ada6;
-            transform: translateY(-1px);
+            border-color: #7ea3c8;
+            transform: translateY(-1px) scale(1.01);
         }
 
         .chip-btn.active {
-            background: var(--accent);
+            background: linear-gradient(135deg, #1d6ea7 0%, #0f4f80 100%);
             color: #fff;
-            border-color: #09535a;
-            box-shadow: 0 6px 12px rgba(10, 108, 116, 0.3);
+            border-color: #0b436d;
+            box-shadow: 0 8px 16px rgba(20, 93, 148, 0.34);
         }
 
         .map-wrap {
             position: relative;
             min-height: 0;
-            border-radius: 13px;
-            border: 1px solid #cddbd6;
+            border-radius: 16px;
+            border: 1px solid #b9cde1;
             overflow: hidden;
-            background: #dfe8e3;
+            background: linear-gradient(145deg, #dae5f1 0%, #e7eef5 100%);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), inset 0 -16px 24px rgba(14, 33, 56, 0.08);
+        }
+
+        .map-wrap::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 450;
+            background: radial-gradient(260px 180px at 8% 10%, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 62%);
+        }
+
+        .map-wrap::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 451;
+            background: linear-gradient(180deg, rgba(12, 36, 61, 0.06) 0%, rgba(12, 36, 61, 0) 30%, rgba(12, 36, 61, 0.09) 100%);
         }
 
         #map_475b15caff0728b3dc42d0d1917fd2d6 {
             position: relative;
             width: 100%;
             height: 100%;
+            filter: saturate(0.92) contrast(1.06);
+        }
+
+        .leaflet-container {
+            font-family: "Manrope", "Segoe UI", sans-serif;
+            background: #dbe6f3;
+        }
+
+        .leaflet-control-zoom {
+            border: 1px solid #b8cbe0 !important;
+            border-radius: 12px !important;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(11, 35, 60, 0.18) !important;
+        }
+
+        .leaflet-control-zoom a {
+            background: #ffffff !important;
+            color: #1d4464 !important;
+            border: 0 !important;
+            transition: background 0.18s ease, color 0.18s ease;
+        }
+
+        .leaflet-control-zoom a:hover {
+            background: #ecf4fb !important;
+            color: #113754 !important;
         }
 
         .side-panel {
@@ -1805,7 +1849,7 @@
 
         .section-title {
             margin: 0;
-            font-family: "Exo 2", "Segoe UI", sans-serif;
+            font-family: "Space Grotesk", "Segoe UI", sans-serif;
             font-size: 1.02rem;
             font-weight: 700;
         }
@@ -1917,6 +1961,32 @@
             background: #b65b1d;
         }
 
+        .critical-distance-pin {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            border: 1px solid #6f0d0d;
+            background: linear-gradient(145deg, #ff4d4f 0%, #c1121f 72%);
+            box-shadow: 0 8px 14px rgba(123, 14, 14, 0.42);
+            color: #fff;
+            font-size: 0.85rem;
+            animation: criticalPulse 1.5s ease-out infinite;
+        }
+
+        @keyframes criticalPulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(193, 18, 31, 0.5), 0 8px 14px rgba(123, 14, 14, 0.42);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(193, 18, 31, 0), 0 8px 14px rgba(123, 14, 14, 0.42);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(193, 18, 31, 0), 0 8px 14px rgba(123, 14, 14, 0.42);
+            }
+        }
+
         .effective-row {
             display: flex;
             justify-content: space-between;
@@ -1932,7 +2002,7 @@
         }
 
         .effective-row b {
-            font-family: "Exo 2", "Segoe UI", sans-serif;
+            font-family: "Space Grotesk", "Segoe UI", sans-serif;
             font-size: 0.9rem;
         }
 
@@ -1998,7 +2068,7 @@
         }
 
         .distance-metric b {
-            font-family: "Exo 2", "Segoe UI", sans-serif;
+            font-family: "Space Grotesk", "Segoe UI", sans-serif;
             font-size: 0.89rem;
             color: #17313c;
         }
@@ -2077,6 +2147,48 @@
             padding-top: 7px;
         }
 
+        .distance-status-banner {
+            border: 1px solid #d9e4de;
+            border-left-width: 5px;
+            border-radius: 8px;
+            padding: 7px 9px;
+            display: grid;
+            gap: 2px;
+            background: #f8fcf9;
+        }
+
+        .distance-status-banner strong {
+            font-family: "Space Grotesk", "Segoe UI", sans-serif;
+            font-size: 0.82rem;
+            letter-spacing: 0.01em;
+        }
+
+        .distance-status-banner span {
+            font-size: 0.74rem;
+            color: #42606c;
+            line-height: 1.3;
+        }
+
+        .distance-status-stable {
+            border-left-color: #1f9d63;
+            background: #f3fbf6;
+        }
+
+        .distance-status-moderate {
+            border-left-color: #d39c1c;
+            background: #fff9ed;
+        }
+
+        .distance-status-attention {
+            border-left-color: #cc5f3f;
+            background: #fff4f0;
+        }
+
+        .distance-status-critical {
+            border-left-color: #7a2b21;
+            background: #fff0ee;
+        }
+
         .distance-list-title {
             font-size: 0.73rem;
             color: #516a76;
@@ -2096,7 +2208,7 @@
         }
 
         .distance-list-item b {
-            font-family: "Exo 2", "Segoe UI", sans-serif;
+            font-family: "Space Grotesk", "Segoe UI", sans-serif;
             font-size: 0.83rem;
             color: #1b3641;
             white-space: nowrap;
@@ -2202,77 +2314,81 @@
 
         .city-structure-grid {
             display: grid;
-            gap: 8px;
+            gap: 10px;
             padding: 8px;
         }
 
-        .city-structure-card {
+        /* ESTILOS PARA A NOVA ÁRVORE DE SUBORDINAÇÃO (TREE-VIEW) */
+        .tree-batalhao {
+            margin-bottom: 12px;
             border: 1px solid #dde8e3;
             border-radius: 9px;
-            background: #fdfefe;
-            padding: 8px 9px;
+            background: #fff;
+            overflow: hidden;
         }
 
-        .city-structure-head {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 8px;
-            margin-bottom: 6px;
+        .tree-batalhao-head {
+            padding: 10px;
+            background: #eaf3ee;
+            border-bottom: 1px solid #dde8e3;
         }
 
-        .city-structure-head h3 {
+        .tree-batalhao-head h3 {
             margin: 0;
-            font-family: "Exo 2", "Segoe UI", sans-serif;
-            font-size: 0.9rem;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 1.05rem;
             font-weight: 700;
             color: #173843;
         }
 
-        .city-structure-meta {
-            display: grid;
-            gap: 1px;
-            text-align: right;
-            font-size: 0.74rem;
-            color: #4f6673;
-            white-space: nowrap;
+        .tree-cia-group {
+            margin: 8px 10px 8px 20px;
+            border-left: 2px solid #add3e8;
+            padding-left: 12px;
         }
 
-        .city-structure-meta strong {
-            font-family: "Exo 2", "Segoe UI", sans-serif;
-            font-size: 0.8rem;
-            color: #1a3f4a;
+        .tree-indep-group {
+            margin: 8px 10px 8px 20px;
+            border-left: 2px solid #ebbbb0;
+            padding-left: 12px;
         }
 
-        .city-group-row {
-            border-top: 1px dashed #e2ece7;
-            padding-top: 6px;
-            margin-top: 6px;
-        }
-
-        .city-group-row:first-of-type {
-            border-top: 0;
-            margin-top: 0;
-            padding-top: 0;
-        }
-
-        .city-group-head {
+        .tree-polo-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #2f4a56;
+            margin-bottom: 4px;
             display: flex;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 5px 7px;
+            justify-content: space-between;
+            gap: 8px;
         }
 
-        .city-group-head small {
-            color: #56707b;
-            font-size: 0.73rem;
-        }
-
-        .city-group-list {
-            margin-top: 2px;
+        .tree-pelotao-item {
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
             font-size: 0.8rem;
-            line-height: 1.3;
-            color: #2f4a56;
+            padding: 3px 0;
+            border-bottom: 1px dashed #f0f4f2;
+            color: #4f6673;
+        }
+
+        .tree-pelotao-item:last-child {
+            border-bottom: none;
+        }
+
+        .tree-distancia-critica {
+            color: #e74c3c !important;
+            font-weight: 800;
+            background: rgba(231, 76, 60, 0.08);
+            padding: 0 4px;
+            border-radius: 4px;
+        }
+
+        .tree-distancia-segura {
+            color: #2ecc71;
+            font-weight: 600;
         }
 
         .city-empty {
@@ -2310,6 +2426,12 @@
             background: #fce9c7;
             border-color: #f3d79f;
             color: #6b4d0d;
+        }
+
+        .badge-pelotao-indep {
+            background: #e2eef9;
+            border-color: #b8d2ec;
+            color: #174b7a;
         }
 
         .badge-indep {
@@ -2414,6 +2536,14 @@
                 justify-content: flex-start;
             }
 
+            .tree-polo-title {
+                flex-wrap: wrap;
+            }
+
+            .tree-pelotao-item {
+                align-items: baseline;
+            }
+
             .scenario-caption {
                 text-align: left;
             }
@@ -2460,7 +2590,7 @@
                     <small id="kpi-efetivo-label">Efetivo Geral (2º-5º)</small>
                 </div>
                 <div class="kpi-mini">
-                    <span id="kpi-realocado">+143</span>
+                    <span id="kpi-realocado">--</span>
                     <small>Efetivo Realocado</small>
                 </div>
             </div>
@@ -2509,7 +2639,7 @@
 
                 <section>
                     <h2 class="section-title">Estatística de Distância ao Polo Operacional</h2>
-                    <p class="muted-text">Faixas logísticas: próxima (&lt;40 km), moderada (40-80 km), distante (&gt;80 km).</p>
+                    <p class="muted-text">Faixas logísticas: próxima (&lt;40 km), moderada (40-80 km), distante (80,1-150 km) e crítica (&gt;150 km).</p>
                     <div class="distance-stats-card">
                         <div class="distance-head">
                             <strong id="distance-context">Consolidado (2º ao 5º BPRAIO)</strong>
@@ -2537,7 +2667,7 @@
 
                 <section class="city-section">
                     <h2 class="section-title">Cidades por Batalhão</h2>
-                    <p class="muted-text">Visão estrutural por status e efetivo, sincronizada com o filtro do mapa.</p>
+                    <p class="muted-text">Tree-view hierárquico por Batalhão &gt; Companhia/Cia Independente &gt; Pelotão, com destaque para distâncias críticas.</p>
                     <div class="city-list-wrap">
                         <div id="city-structure-view" class="city-structure-grid"></div>
                     </div>
@@ -2554,11 +2684,10 @@
                         centralidade regional).<br />
                         <strong>Diretriz territorial:</strong> Sede, Companhia, Pelotão e Companhia Independente, com
                         atenção a outliers de distância e tempo de resposta.<br />
-                        <strong>Síntese do anexo:</strong> o cenário ampliado não altera o total de policiais por
-                        batalhão, mas redistribui <strong>+143</strong> policiais para Companhias Independentes
-                        (3º: +33, 4º: +82, 5º: +28), reduzindo a massa de efetivo das Companhias convencionais.
-                        As Companhias Independentes (notavelmente em Itapipoca, Crateús e agora em formato exclusivo
-                        regional em Quixadá) concentram a autonomia operacional regional do cenário ampliado.
+                        <strong>Síntese do anexo:</strong> o cenário proposto preserva o efetivo global por
+                        batalhão e reorganiza a distribuição entre Sede, Companhias, Pelotões e Companhias
+                        Independentes conforme a nova estrutura territorial, com foco em reduzir outliers de
+                        distância e fortalecer polos regionais autônomos.
                     </p>
                 </section>
             </aside>
@@ -2587,7 +2716,7 @@
         
     
             var tile_layer_f2ab803eedc771bb3d1c7cf3924b7785 = L.tileLayer(
-                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
                 {
   "minZoom": 0,
   "maxZoom": 20,
@@ -11070,21 +11199,9 @@
                 "5º BPRAIO": feature_group_404e9fe4dce35e9dc83a79f0ee799c86,
             };
 
-            const efetivoAnexoProposto = {
-                "2º BPRAIO": { "Sede": 0, "Companhias": 0, "Pelotões": 0, "Cias Ind.": 0, "Outros": 0 },
-                "3º BPRAIO": { "Sede": 0, "Companhias": -33, "Pelotões": 0, "Cias Ind.": 33, "Outros": 0 },
-                "4º BPRAIO": { "Sede": 0, "Companhias": -82, "Pelotões": 0, "Cias Ind.": 82, "Outros": 0 },
-                "5º BPRAIO": { "Sede": 0, "Companhias": -28, "Pelotões": 0, "Cias Ind.": 28, "Outros": 0 },
-            };
-
-            const efetivoAnexoAtual = {
-                "2º BPRAIO": { "Sede": 0, "Companhias": 0, "Pelotões": 0, "Cias Ind.": 0, "Outros": 0 },
-                "3º BPRAIO": { "Sede": 0, "Companhias": 0, "Pelotões": 0, "Cias Ind.": 0, "Outros": 0 },
-                "4º BPRAIO": { "Sede": 0, "Companhias": 0, "Pelotões": 0, "Cias Ind.": 0, "Outros": 0 },
-                "5º BPRAIO": { "Sede": 0, "Companhias": 0, "Pelotões": 0, "Cias Ind.": 0, "Outros": 0 },
-            };
-
-            let efetivoAnexo = efetivoAnexoProposto;
+            let efetivoAnexoProposto = {};
+            let efetivoAnexoAtual = {};
+            let efetivoAnexo = {};
 
             const classOrder = {
                 "Sede": 0,
@@ -11100,6 +11217,7 @@
             let distanceTableSort = { key: "distanciaKm", dir: "desc" };
             let distanceTableRowsCache = [];
             let highlightHoverState = null;
+            const DISTANCIA_CRITICA_PADRAO_KM = 150;
             const cityKeyAliases = {
                 "ITAPAGE": "ITAPAJE",
             };
@@ -11125,12 +11243,45 @@
                 return "delta-zero";
             }
 
-            function getClassBadge(classificacao) {
+            function getClassBadge(classificacao, batalhao = "", cidade = "") {
                 if (classificacao === "Sede") return "badge-sede";
                 if (classificacao === "Companhia") return "badge-cia";
-                if (classificacao === "Pelotão") return "badge-pelotao";
+                if (classificacao === "Pelotão") {
+                    if (batalhao && cidade && getParentTipo(batalhao, cidade) === "Cia Independente") {
+                        return "badge-pelotao-indep";
+                    }
+                    return "badge-pelotao";
+                }
                 if (classificacao === "Cia Independente") return "badge-indep";
                 return "badge-cia";
+            }
+
+            function getClassificacaoLabel(item) {
+                if (!item) return "";
+                if (item.classificacao === "Pelotão" && getParentTipo(item.batalhao, item.cidade) === "Cia Independente") {
+                    return "Pelotão (Cia Ind.)";
+                }
+                return item.classificacao;
+            }
+
+            function isPelotaoDistanciaCritica(row) {
+                if (!row || row.classificacao !== "Pelotão") return false;
+                if (typeof row.distanciaKm !== "number" || Number.isNaN(row.distanciaKm)) return false;
+                return row.distanciaKm > DISTANCIA_CRITICA_PADRAO_KM;
+            }
+
+            function getPelotaoSubordinacaoNodo(row) {
+                if (!row || !row.batalhao || !row.cidade) return "";
+                const parentCidade = getParentCidade(row.batalhao, row.cidade);
+                const parentTipo = getParentTipo(row.batalhao, row.cidade);
+
+                if (!parentCidade || normalizeCityKey(parentCidade) === normalizeCityKey(row.cidade)) {
+                    return `Sede de ${row.batalhao}`;
+                }
+
+                return parentTipo === "Cia Independente"
+                    ? `Cia Independente de ${parentCidade}`
+                    : `Companhia de ${parentCidade}`;
             }
 
             function normalizeCityKey(value) {
@@ -11413,22 +11564,22 @@
                 "TRAIRI": 28,
                 "RUSSAS": 58,
                 "ARACATI": 33,
-                "BEBERIBE": 27,
+                "BEBERIBE": 30,
                 "BOA VIAGEM": 28,
-                "LIMOEIRO DO NORTE": 27,
-                "MORADA NOVA": 22,
-                "OCARA": 23,
-                "PEDRA BRANCA": 24,
-                "QUIXADÁ": 28,
-                "QUIXERAMOBIM": 31,
+                "LIMOEIRO DO NORTE": 37,
+                "MORADA NOVA": 33,
+                "OCARA": 22,
+                "PEDRA BRANCA": 22,
+                "QUIXADÁ": 42,
+                "QUIXERAMOBIM": 33,
                 "REDENÇÃO": 0,
-                "TABULEIRO DO NORTE": 27,
+                "TABULEIRO DO NORTE": 26,
                 "JAGUARIBE": 24,
-                "JAGUARUANA": 23,
-                "ICAPUÍ": 18,
+                "JAGUARUANA": 24,
+                "ICAPUÍ": 23,
                 "SENADOR POMPEU": 0,
                 "BATURITÉ": 31,
-                "ARACOIABA": 26,
+                "ARACOIABA": 23,
                 "SOBRAL": 67,
                 "ITAPIPOCA": 43,
                 "CAMOCIM": 33,
@@ -11456,31 +11607,31 @@
                 "CRUZ": 0,
                 "JUAZEIRO DO NORTE": 75,
                 "CRATO": 38,
-                "BARBALHA": 38,
+                "BARBALHA": 35,
                 "CARIRIAÇU": 23,
-                "IGUATU": 34,
-                "TAUÁ": 19,
+                "IGUATU": 44,
+                "TAUÁ": 28,
                 "CRATEÚS": 31,
-                "BREJO SANTO": 31,
+                "BREJO SANTO": 30,
                 "AURORA": 22,
                 "ACOPIARA": 29,
-                "PARAMBU": 19,
+                "PARAMBU": 10,
                 "TAMBORIL": 19,
-                "MAURITI": 19,
+                "MAURITI": 27,
                 "MESSEJANA": 138,
-                "ICÓ": 18,
-                "MOMBAÇA": 18,
+                "ICÓ": 31,
+                "MOMBAÇA": 26,
                 "NOVA RUSSAS": 19,
-                "JARDIM": 19,
-                "VÁRZEA ALEGRE": 19,
-                "LAVRAS DA MANGABEIRA": 19,
-                "NOVO ORIENTE": 19,
+                "JARDIM": 21,
+                "VÁRZEA ALEGRE": 25,
+                "LAVRAS DA MANGABEIRA": 22,
+                "NOVO ORIENTE": 21,
                 "IPUEIRAS": 19,
-                "MISSÃO VELHA": 19,
-                "CAMPOS SALES": 18,
-                "CEDRO": 30,
-                "INDEPENDÊNCIA": 19,
-                "MILAGRES": 19,
+                "MISSÃO VELHA": 25,
+                "CAMPOS SALES": 22,
+                "CEDRO": 23,
+                "INDEPENDÊNCIA": 0,
+                "MILAGRES": 0,
             };
 
             const efetivoPorCidadeNormalizado = {};
@@ -11493,7 +11644,7 @@
                 return typeof efetivo === "number" && !Number.isNaN(efetivo) ? efetivo : null;
             }
 
-            const distribuicaoOficialProposto = {
+            const distribuicaoOficialAtual = {
                 "2º BPRAIO": {
                     sede: ["Caucaia"],
                     companhias: [
@@ -11642,38 +11793,251 @@
                 },
             };
 
-            const distribuicaoOficialAtual = JSON.parse(JSON.stringify(distribuicaoOficialProposto));
-            distribuicaoOficialAtual["3º BPRAIO"] = {
-                ...distribuicaoOficialAtual["3º BPRAIO"],
-                companhias: ["Limoeiro do Norte", "Aracati", "Quixeramobim", "Quixadá"],
-                pelotoes: [
-                    "Morada Nova",
-                    "Tabuleiro do Norte",
-                    "Jaguaruana",
-                    "Jaguaribe",
-                    "Beberibe",
-                    "Icapuí",
-                    "Ocara",
-                    "Redenção",
-                    "Aracoiaba",
-                    "Senador Pompeu",
-                    "Baturité",
-                    "Pedra Branca",
-                ],
-                independentes: ["Boa Viagem"],
-                subordinacao: {
-                    "Limoeiro do Norte": ["Morada Nova", "Tabuleiro do Norte", "Jaguaruana", "Jaguaribe"],
-                    "Aracati": ["Beberibe", "Icapuí"],
-                    "Quixeramobim": ["Ocara", "Redenção", "Aracoiaba", "Senador Pompeu", "Baturité"],
-                    "Quixadá": ["Boa Viagem", "Pedra Branca"],
+            const distribuicaoOficialProposto = {
+                "2º BPRAIO": {
+                    sede: ["Caucaia"],
+                    companhias: ["Maracanaú", "Eusébio", "Horizonte"],
+                    pelotoes: [
+                        "São Gonçalo do Amarante",
+                        "Trairi",
+                        "Paracuru",
+                        "Paraipaba",
+                        "Maranguape",
+                        "Pacatuba",
+                        "Guaiúba",
+                        "Aquiraz",
+                        "Cascavel",
+                        "Pacajus",
+                        "Itaitinga",
+                        "Chorozinho",
+                    ],
+                    independentes: [],
+                    subordinacao: {
+                        "Caucaia": ["São Gonçalo do Amarante", "Trairi", "Paracuru", "Paraipaba"],
+                        "Maracanaú": ["Maranguape", "Pacatuba", "Guaiúba"],
+                        "Eusébio": ["Aquiraz", "Cascavel"],
+                        "Horizonte": ["Pacajus", "Itaitinga", "Chorozinho"],
+                    },
+                    observacoes: {
+                        "Caucaia": "Sede com foco no eixo oeste metropolitano e litoral próximo.",
+                        "Maracanaú": "Companhia orientada ao eixo industrial e área de influência metropolitana.",
+                        "Eusébio": "Companhia orientada ao corredor leste metropolitano.",
+                        "Horizonte": "Companhia para cobertura do eixo sul metropolitano.",
+                    },
                 },
-                observacoes: {
-                    "Boa Viagem": "Companhia Independente no cenário atual do 3º BPRAIO.",
-                    "Quixadá": "Companhia no cenário atual; torna-se Cia Independente no cenário proposto.",
+                "3º BPRAIO": {
+                    sede: ["Russas"],
+                    companhias: ["Aracati"],
+                    pelotoes: [
+                        "Limoeiro do Norte",
+                        "Morada Nova",
+                        "Jaguaribe",
+                        "Tabuleiro do Norte",
+                        "Beberibe",
+                        "Jaguaruana",
+                        "Icapuí",
+                        "Quixeramobim",
+                        "Baturité",
+                        "Boa Viagem",
+                        "Pedra Branca",
+                        "Ocara",
+                        "Aracoiaba",
+                        "Redenção",
+                    ],
+                    independentes: ["Quixadá"],
+                    subordinacao: {
+                        "Russas": ["Limoeiro do Norte", "Morada Nova", "Jaguaribe", "Tabuleiro do Norte"],
+                        "Aracati": ["Beberibe", "Jaguaruana", "Icapuí"],
+                        "Quixadá": ["Quixeramobim", "Baturité", "Boa Viagem", "Pedra Branca", "Ocara", "Aracoiaba", "Redenção"],
+                    },
+                    rotulosSubordinacao: {
+                        "Quixadá": "Cia. Independente Quixadá",
+                    },
+                    observacoes: {
+                        "Quixadá": "Companhia independente regional para reduzir tempos de resposta no sertão central.",
+                        "Limoeiro do Norte": "Reclassificado para pelotão sob a sede de Russas na nova estrutura.",
+                        "Quixeramobim": "Reclassificado para pelotão subordinado à Cia Independente de Quixadá.",
+                    },
+                },
+                "4º BPRAIO": {
+                    sede: ["Sobral"],
+                    companhias: ["Tianguá", "Canindé", "Camocim"],
+                    pelotoes: [
+                        "Massapê",
+                        "Santana do Acaraú",
+                        "Forquilha",
+                        "Viçosa do Ceará",
+                        "São Benedito",
+                        "Guaraciaba do Norte",
+                        "Ipu",
+                        "Ubajara",
+                        "Ibiapina",
+                        "Santa Quitéria",
+                        "Granja",
+                        "Bela Cruz",
+                        "Marco",
+                        "Cruz",
+                        "Itapajé",
+                        "Acaraú",
+                        "Itarema",
+                        "Amontada",
+                        "Pentecoste",
+                    ],
+                    independentes: ["Itapipoca"],
+                    subordinacao: {
+                        "Sobral": ["Massapê", "Santana do Acaraú", "Forquilha"],
+                        "Tianguá": ["Viçosa do Ceará", "São Benedito", "Guaraciaba do Norte", "Ipu", "Ubajara", "Ibiapina"],
+                        "Canindé": ["Santa Quitéria"],
+                        "Camocim": ["Granja", "Bela Cruz", "Marco", "Cruz"],
+                        "Itapipoca": ["Itapajé", "Acaraú", "Itarema", "Amontada", "Pentecoste"],
+                    },
+                    rotulosSubordinacao: {
+                        "Itapipoca": "Cia. Independente Itapipoca",
+                    },
+                    observacoes: {
+                        "Itapipoca": "Companhia independente para absorver demanda do litoral oeste e municípios mais distantes.",
+                        "Ipu": "Reclassificado para pelotão subordinado à Companhia de Tianguá.",
+                        "Acaraú": "Reclassificado para pelotão subordinado à Cia Independente de Itapipoca.",
+                    },
+                },
+                "5º BPRAIO": {
+                    sede: ["Juazeiro do Norte"],
+                    companhias: ["Iguatu", "Tauá", "Brejo Santo"],
+                    pelotoes: [
+                        "Crato",
+                        "Barbalha",
+                        "Lavras da Mangabeira",
+                        "Aurora",
+                        "Missão Velha",
+                        "Campos Sales",
+                        "Caririaçu",
+                        "Milagres",
+                        "Acopiara",
+                        "Icó",
+                        "Várzea Alegre",
+                        "Cedro",
+                        "Parambu",
+                        "Mombaça",
+                        "Senador Pompeu",
+                        "Tamboril",
+                        "Nova Russas",
+                        "Novo Oriente",
+                        "Ipueiras",
+                        "Independência",
+                        "Mauriti",
+                        "Jardim",
+                    ],
+                    independentes: ["Crateús"],
+                    subordinacao: {
+                        "Juazeiro do Norte": [
+                            "Crato",
+                            "Barbalha",
+                            "Lavras da Mangabeira",
+                            "Aurora",
+                            "Missão Velha",
+                            "Campos Sales",
+                            "Caririaçu",
+                            "Milagres",
+                        ],
+                        "Iguatu": ["Acopiara", "Icó", "Várzea Alegre", "Cedro"],
+                        "Tauá": ["Parambu", "Mombaça", "Senador Pompeu"],
+                        "Crateús": ["Tamboril", "Nova Russas", "Novo Oriente", "Ipueiras", "Independência"],
+                        "Brejo Santo": ["Mauriti", "Jardim"],
+                    },
+                    rotulosSubordinacao: {
+                        "Crateús": "Cia. Independente Crateús",
+                    },
+                    observacoes: {
+                        "Juazeiro do Norte": "Sede ampliada com eixo operacional do Cariri metropolitano.",
+                        "Crato": "Reclassificado para pelotão subordinado à sede de Juazeiro do Norte.",
+                        "Barbalha": "Reclassificado para pelotão subordinado à sede de Juazeiro do Norte.",
+                        "Senador Pompeu": "Reorganizado como pelotão da Companhia de Tauá no novo desenho territorial.",
+                    },
                 },
             };
 
+            function createEfetivoBucket() {
+                return { "Sede": 0, "Companhias": 0, "Pelotões": 0, "Cias Ind.": 0, "Outros": 0 };
+            }
+
+            function acumularEfetivoPorDistribuicao(distribuicao) {
+                const totals = {};
+                const mappings = [
+                    { key: "sede", bucket: "Sede" },
+                    { key: "companhias", bucket: "Companhias" },
+                    { key: "pelotoes", bucket: "Pelotões" },
+                    { key: "independentes", bucket: "Cias Ind." },
+                ];
+
+                Object.entries(distribuicao || {}).forEach(([batalhao, bloco]) => {
+                    if (!totals[batalhao]) totals[batalhao] = createEfetivoBucket();
+
+                    mappings.forEach(({ key, bucket }) => {
+                        (bloco[key] || []).forEach((cidade) => {
+                            const value = getEfetivoCidade(cidade);
+                            totals[batalhao][bucket] += typeof value === "number" ? value : 0;
+                        });
+                    });
+                });
+
+                return totals;
+            }
+
+            function calcularEfetivoAnexo(baseDistribuicao, alvoDistribuicao) {
+                const baseTotals = acumularEfetivoPorDistribuicao(baseDistribuicao);
+                const targetTotals = acumularEfetivoPorDistribuicao(alvoDistribuicao);
+                const batalhoes = new Set([...Object.keys(baseTotals), ...Object.keys(targetTotals)]);
+                const output = {};
+
+                batalhoes.forEach((batalhao) => {
+                    const base = baseTotals[batalhao] || createEfetivoBucket();
+                    const target = targetTotals[batalhao] || createEfetivoBucket();
+                    output[batalhao] = {
+                        "Sede": target["Sede"] - base["Sede"],
+                        "Companhias": target["Companhias"] - base["Companhias"],
+                        "Pelotões": target["Pelotões"] - base["Pelotões"],
+                        "Cias Ind.": target["Cias Ind."] - base["Cias Ind."],
+                        "Outros": target["Outros"] - base["Outros"],
+                    };
+                });
+
+                return output;
+            }
+
+            function calcularEfetivoSobEstruturaIndependente(distribuicao, filtro = "Todos") {
+                let total = 0;
+                const entries = Object.entries(distribuicao || {}).filter(([batalhao]) => filtro === "Todos" || batalhao === filtro);
+
+                entries.forEach(([, bloco]) => {
+                    const visitados = new Set();
+                    const subordinacao = bloco.subordinacao || {};
+
+                    (bloco.independentes || []).forEach((cidadeIndependente) => {
+                        const keyIndep = normalizeCityKey(cidadeIndependente);
+                        if (!visitados.has(keyIndep)) {
+                            visitados.add(keyIndep);
+                            const efetivoIndep = getEfetivoCidade(cidadeIndependente);
+                            total += typeof efetivoIndep === "number" ? efetivoIndep : 0;
+                        }
+
+                        (subordinacao[cidadeIndependente] || []).forEach((cidadeSubordinada) => {
+                            const keySub = normalizeCityKey(cidadeSubordinada);
+                            if (visitados.has(keySub)) return;
+                            visitados.add(keySub);
+                            const efetivoSub = getEfetivoCidade(cidadeSubordinada);
+                            total += typeof efetivoSub === "number" ? efetivoSub : 0;
+                        });
+                    });
+                });
+
+                return total;
+            }
+
+            efetivoAnexoAtual = calcularEfetivoAnexo(distribuicaoOficialAtual, distribuicaoOficialAtual);
+            efetivoAnexoProposto = calcularEfetivoAnexo(distribuicaoOficialAtual, distribuicaoOficialProposto);
+
             let distribuicaoOficial = distribuicaoOficialProposto;
+            efetivoAnexo = efetivoAnexoProposto;
 
             function keyByBatalhaoCidade(batalhao, cidade) {
                 return `${batalhao}::${normalizeCityKey(cidade)}`;
@@ -11701,10 +12065,10 @@
             }
 
             const baseColorByBatalhao = {
-                "2º BPRAIO": { h: 8, s: 66, l: 45 },
-                "3º BPRAIO": { h: 140, s: 56, l: 43 },
-                "4º BPRAIO": { h: 206, s: 60, l: 44 },
-                "5º BPRAIO": { h: 272, s: 52, l: 46 },
+                "2º BPRAIO": { h: 12, s: 64, l: 44 },
+                "3º BPRAIO": { h: 162, s: 57, l: 40 },
+                "4º BPRAIO": { h: 208, s: 60, l: 43 },
+                "5º BPRAIO": { h: 42, s: 64, l: 43 },
             };
 
             const hueShiftCycle = [0, 2, -2, 4, -4, 6, -6, 8, -8, 10, -10];
@@ -11747,6 +12111,43 @@
                 });
             }
 
+            function realocarLayersPorDistribuicao() {
+                const batalhaoByCidade = {};
+                Object.entries(distribuicaoOficial).forEach(([batalhao, bloco]) => {
+                    ["sede", "companhias", "pelotoes", "independentes"].forEach((key) => {
+                        (bloco[key] || []).forEach((cidade) => {
+                            batalhaoByCidade[normalizeCityKey(cidade)] = batalhao;
+                        });
+                    });
+                });
+
+                const pendencias = [];
+                Object.entries(batalhaoLayers).forEach(([batalhaoOrigem, group]) => {
+                    group.eachLayer((layer) => {
+                        const cidade = extrairCidadeDoLayer(layer);
+                        if (!cidade) return;
+
+                        const batalhaoDestino = batalhaoByCidade[normalizeCityKey(cidade)];
+                        if (!batalhaoDestino || batalhaoDestino === batalhaoOrigem) return;
+                        if (!batalhaoLayers[batalhaoDestino]) return;
+
+                        pendencias.push({
+                            layer,
+                            origem: batalhaoOrigem,
+                            destino: batalhaoDestino,
+                        });
+                    });
+                });
+
+                pendencias.forEach(({ layer, origem, destino }) => {
+                    const groupOrigem = batalhaoLayers[origem];
+                    const groupDestino = batalhaoLayers[destino];
+                    if (!groupOrigem || !groupDestino || groupOrigem === groupDestino) return;
+                    groupOrigem.removeLayer(layer);
+                    groupDestino.addLayer(layer);
+                });
+            }
+
             function rebuildScenarioCaches() {
                 clearObject(parentPaletteCache);
                 clearObject(distanciaOperacionalCache);
@@ -11785,6 +12186,7 @@
             }
 
             function rebuildMunicipiosData() {
+                realocarLayersPorDistribuicao();
                 rebuildScenarioCaches();
                 municipiosData = montarMunicipiosDaDistribuicao();
                 municipioMetaByBatalhaoCidade = {};
@@ -12034,8 +12436,25 @@
                 return { fillColor: "#e74c3c", borderColor: "#b9382c" };
             }
 
+            function isCadeiaIndependente(batalhao, cidade, classificacao) {
+                if (classificacao === "Cia Independente") return true;
+                if (classificacao !== "Pelotão") return false;
+                return getParentTipo(batalhao, cidade) === "Cia Independente";
+            }
+
+            function getIndependentStructureColor(batalhao) {
+                const baseColor = getBatalhaoBaseColor(batalhao);
+                return {
+                    h: wrapHue(baseColor.h + 20),
+                    s: clampNumber(baseColor.s + 10, 38, 86),
+                    l: clampNumber(baseColor.l + 2, 24, 66),
+                };
+            }
+
             function resolveMunicipioStyle(batalhao, cidade, classificacao) {
                 const baseColor = getBatalhaoBaseColor(batalhao);
+                const indepColor = getIndependentStructureColor(batalhao);
+                const integraCadeiaIndependente = isCadeiaIndependente(batalhao, cidade, classificacao);
                 const distanciaKm = getDistanciaOperacionalDetalhe(batalhao, cidade, classificacao).distanciaKm;
 
                 if (modoVisualMapa === "risco") {
@@ -12047,7 +12466,7 @@
                         weight: classificacao === "Sede" || classificacao === "Cia Independente" ? 2.3 : 1.5,
                         dashArray: classificacao === "Cia Independente"
                             ? "10 4"
-                            : (classificacao === "Pelotão" ? "4 5" : undefined),
+                            : (integraCadeiaIndependente ? "2 6" : (classificacao === "Pelotão" ? "4 5" : undefined)),
                     };
                 }
 
@@ -12071,15 +12490,24 @@
 
                 if (classificacao === "Cia Independente") {
                     return {
-                        color: colorToCss(adjustColor(baseColor, -28, 8)),
-                        fillColor: colorToCss(adjustColor(baseColor, 6, -4)),
-                        fillOpacity: 0.8,
+                        color: colorToCss(adjustColor(indepColor, -24, 7)),
+                        fillColor: colorToCss(adjustColor(indepColor, 6, -3)),
+                        fillOpacity: 0.86,
                         weight: 3.1,
-                        dashArray: "10 4",
+                        dashArray: "9 4",
                     };
                 }
 
                 if (classificacao === "Pelotão") {
+                    if (integraCadeiaIndependente) {
+                        return {
+                            color: colorToCss(adjustColor(indepColor, -10, -2)),
+                            fillColor: colorToCss(adjustColor(indepColor, 18, -16)),
+                            fillOpacity: 0.44,
+                            weight: 2.1,
+                            dashArray: "2 6",
+                        };
+                    }
                     return {
                         color: colorToCss(adjustColor(baseColor, -8, -6)),
                         fillColor: colorToCss(adjustColor(baseColor, 24, -20)),
@@ -12110,6 +12538,13 @@
                 if (!html) return;
 
                 let atualizado = html;
+                if (/Batalh[ãa]o:\s*[^<]+<br>/i.test(atualizado)) {
+                    atualizado = atualizado.replace(
+                        /Batalh[ãa]o:\s*[^<]+<br>/i,
+                        `Batalhão: ${batalhao}<br>`
+                    );
+                }
+
                 if (/Classifica[çc][ãa]o:\s*[^<]+<br>/i.test(atualizado)) {
                     atualizado = atualizado.replace(
                         /Classifica[çc][ãa]o:\s*[^<]+<br>/i,
@@ -12326,26 +12761,31 @@
                 return null;
             }
 
-            function createCommandIcon(tipo, titulo) {
+            function createCommandIcon(tipo, titulo, batalhao) {
                 const isSede = tipo === "Sede";
-                if (L.AwesomeMarkers && typeof L.AwesomeMarkers.icon === "function") {
-                    return L.AwesomeMarkers.icon({
-                        prefix: "fa",
-                        extraClasses: "fa-solid",
-                        icon: isSede ? "star" : "building",
-                        markerColor: isSede ? "darkred" : "blue",
-                        iconColor: "white",
-                    });
-                }
-
+                const baseColor = getBatalhaoBaseColor(batalhao);
+                const indepColor = getIndependentStructureColor(batalhao);
+                const iconColor = isSede
+                    ? colorToCss(adjustColor(baseColor, -9, 5))
+                    : colorToCss(adjustColor(indepColor, -7, 4));
                 const iconClass = isSede ? "fa-star" : "fa-building";
-                const typeClass = isSede ? "command-pin-sede" : "command-pin-indep";
+                const borderColor = colorToCss(adjustColor(baseColor, -22, 2));
                 const safeTitle = escapeHtml(titulo || "");
                 return L.divIcon({
                     className: "",
                     iconSize: [24, 24],
                     iconAnchor: [12, 12],
-                    html: `<div class="command-pin ${typeClass}" title="${safeTitle}"><i class="fa-solid ${iconClass}"></i></div>`,
+                    html: `<div class="command-pin" title="${safeTitle}" style="background:${iconColor}; border-color:${borderColor};"><i class="fa-solid ${iconClass}"></i></div>`,
+                });
+            }
+
+            function createCriticalDistanceIcon(cidade, distanciaKm) {
+                const safeTitle = escapeHtml(`Alerta logístico · ${cidade} · ${formatKm(distanciaKm)}`);
+                return L.divIcon({
+                    className: "",
+                    iconSize: [28, 28],
+                    iconAnchor: [14, 14],
+                    html: `<div class="critical-distance-pin" title="${safeTitle}"><i class="fa-solid fa-triangle-exclamation"></i></div>`,
                 });
             }
 
@@ -12365,6 +12805,7 @@
                     if (!lineGroup || !markerGroup) return;
 
                     const usedLinks = new Set();
+                    const rowsBatalhao = municipiosData.filter((item) => item.batalhao === batalhao);
 
                     function addSpiderLine(fromCidade, classificacao) {
                         const polo = getPoloOperacionalDetalhe(batalhao, fromCidade, classificacao);
@@ -12382,21 +12823,25 @@
                         if (usedLinks.has(key)) return;
                         usedLinks.add(key);
 
+                        const pertenceCadeiaIndep = isCadeiaIndependente(batalhao, fromCidade, classificacao);
+                        const lineBaseColor = pertenceCadeiaIndep
+                            ? colorToCss(adjustColor(getIndependentStructureColor(batalhao), -20, 3))
+                            : colorToCss(adjustColor(getBatalhaoBaseColor(batalhao), -26, -4));
                         const line = L.polyline([fromPoint, toPoint], {
                             pane: "command-lines",
-                            color: "#1f2933",
-                            weight: 1.5,
-                            opacity: 0.4,
-                            dashArray: "5, 10",
+                            color: lineBaseColor,
+                            weight: pertenceCadeiaIndep ? 1.9 : 1.5,
+                            opacity: pertenceCadeiaIndep ? 0.58 : 0.38,
+                            dashArray: pertenceCadeiaIndep ? "3, 7" : "5, 10",
                             lineCap: "round",
                             lineJoin: "round",
                             interactive: false,
                         });
                         line._defaultSpiderStyle = {
-                            color: "#1f2933",
-                            weight: 1.5,
-                            opacity: 0.4,
-                            dashArray: "5, 10",
+                            color: lineBaseColor,
+                            weight: pertenceCadeiaIndep ? 1.9 : 1.5,
+                            opacity: pertenceCadeiaIndep ? 0.58 : 0.38,
+                            dashArray: pertenceCadeiaIndep ? "3, 7" : "5, 10",
                         };
                         line.addTo(lineGroup);
                         registerSpiderLineForCity(batalhao, fromCidade, line);
@@ -12410,7 +12855,7 @@
                         const labelTipo = tipo === "Sede" ? "Sede" : "Cia Independente";
                         L.marker(center, {
                             pane: "command-markers",
-                            icon: createCommandIcon(tipo, `${labelTipo} · ${cidade}`),
+                            icon: createCommandIcon(tipo, `${labelTipo} · ${cidade}`, batalhao),
                             title: `${labelTipo} · ${cidade}`,
                             interactive: false,
                             keyboard: false,
@@ -12426,12 +12871,29 @@
                             .addTo(markerGroup);
                     }
 
+                    function addCriticalDistanceMarker(item) {
+                        if (!isPelotaoDistanciaCritica(item)) return;
+
+                        const layer = getLayerByBatalhaoCidadeAny(batalhao, item.cidade);
+                        const center = getLayerCenter(layer);
+                        if (!center) return;
+
+                        L.marker(center, {
+                            pane: "command-markers",
+                            icon: createCriticalDistanceIcon(item.cidade, item.distanciaKm),
+                            title: `Alerta logístico · ${item.cidade} · ${formatKm(item.distanciaKm)}`,
+                            interactive: false,
+                            keyboard: false,
+                        }).addTo(markerGroup);
+                    }
+
                     (bloco.sede || []).forEach((cidade) => addCommandMarker(cidade, "Sede"));
                     (bloco.independentes || []).forEach((cidade) => addCommandMarker(cidade, "Cia Independente"));
 
-                    municipiosData
-                        .filter((item) => item.batalhao === batalhao)
-                        .forEach((item) => addSpiderLine(item.cidade, item.classificacao));
+                    rowsBatalhao.forEach((item) => {
+                        addSpiderLine(item.cidade, item.classificacao);
+                        addCriticalDistanceMarker(item);
+                    });
                 });
             }
 
@@ -12514,11 +12976,11 @@
                 if (!el) return;
 
                 if (cenarioAtivo === "atual") {
-                    el.innerHTML = "<strong>Cenário Atual:</strong> Boa Viagem = Cia Independente | Quixadá = Companhia.";
+                    el.innerHTML = "<strong>Cenário Atual:</strong> configuração de referência anterior à nova reestruturação territorial.";
                     return;
                 }
 
-                el.innerHTML = "<strong>Cenário Proposto:</strong> Quixadá = Cia Independente | Boa Viagem = Pelotão (subordinado à Cia Quixeramobim).";
+                el.innerHTML = "<strong>Cenário Proposto:</strong> nova estrutura com revisão de subordinação, distâncias logísticas e distribuição do efetivo.";
             }
 
             function aplicarCenario(cenario) {
@@ -12622,89 +13084,79 @@
                     return;
                 }
 
-                const classSequence = ["Sede", "Companhia", "Pelotão", "Cia Independente"];
-                const groupedByBatalhao = new Map();
-
-                rows.forEach((row) => {
-                    if (!groupedByBatalhao.has(row.batalhao)) {
-                        groupedByBatalhao.set(row.batalhao, {
-                            totalMunicipios: 0,
-                            totalEfetivo: 0,
-                            byClass: {
-                                "Sede": [],
-                                "Companhia": [],
-                                "Pelotão": [],
-                                "Cia Independente": [],
-                                "Outro": [],
-                            },
-                        });
-                    }
-
-                    const bucket = groupedByBatalhao.get(row.batalhao);
-                    const rowClass = Object.prototype.hasOwnProperty.call(bucket.byClass, row.classificacao)
-                        ? row.classificacao
-                        : "Outro";
-
-                    bucket.byClass[rowClass].push(row);
-                    bucket.totalMunicipios += 1;
-                    if (typeof row.efetivo === "number") {
-                        bucket.totalEfetivo += row.efetivo;
-                    }
-                });
-
-                const batalhoes = [...groupedByBatalhao.keys()].sort((a, b) => {
+                const batalhoesSet = [...new Set(rows.map((r) => r.batalhao))].sort((a, b) => {
                     return a.localeCompare(b, "pt-BR", { numeric: true });
                 });
+                let html = "";
 
-                function renderCityGroup(classificacao, items) {
-                    if (!items.length) return "";
-
-                    const efetivoGrupo = items.reduce((acc, item) => {
-                        return acc + (typeof item.efetivo === "number" ? item.efetivo : 0);
+                batalhoesSet.forEach((batalhao) => {
+                    const rowsBat = rows.filter((r) => r.batalhao === batalhao);
+                    const totalEfBat = rowsBat.reduce((sum, r) => {
+                        return sum + (typeof r.efetivo === "number" ? r.efetivo : 0);
                     }, 0);
 
-                    const listaCidades = items
-                        .map((item) => item.cidade)
-                        .sort((a, b) => a.localeCompare(b, "pt-BR"))
-                        .map((cidade) => escapeHtml(cidade))
-                        .join(", ");
-
-                    const qtd = items.length;
-                    const qtdLabel = `${qtd} município${qtd > 1 ? "s" : ""}`;
-
-                    return `
-                        <div class="city-group-row">
-                            <div class="city-group-head">
-                                <span class="badge-class ${getClassBadge(classificacao)}">${escapeHtml(classificacao)}</span>
-                                <small>${qtdLabel} · efetivo ${efetivoGrupo.toLocaleString("pt-BR")}</small>
-                            </div>
-                            <div class="city-group-list">${listaCidades}</div>
-                        </div>
-                    `;
-                }
-
-                container.innerHTML = batalhoes
-                    .map((batalhao) => {
-                        const info = groupedByBatalhao.get(batalhao);
-                        const classBlocks = classSequence
-                            .map((classificacao) => renderCityGroup(classificacao, info.byClass[classificacao]))
-                            .join("");
-                        const outros = renderCityGroup("Outro", info.byClass["Outro"]);
-
-                        return `
-                            <article class="city-structure-card">
-                                <div class="city-structure-head">
+                    html += `<div class="tree-batalhao">
+                                <div class="tree-batalhao-head">
                                     <h3>${escapeHtml(batalhao)}</h3>
-                                    <div class="city-structure-meta">
-                                        <span>${info.totalMunicipios} municípios</span>
-                                        <strong>Efetivo ${info.totalEfetivo.toLocaleString("pt-BR")}</strong>
-                                    </div>
-                                </div>
-                                ${classBlocks}${outros}
-                            </article>
-                        `;
-                    })
-                    .join("");
+                                    <small>Efetivo Total: ${totalEfBat.toLocaleString("pt-BR")} | ${rowsBat.length} Cidades</small>
+                                </div>`;
+
+                    const polos = rowsBat.filter((r) => ["Sede", "Companhia", "Cia Independente"].includes(r.classificacao));
+
+                    polos.forEach((polo) => {
+                        const poloKey = normalizeCityKey(polo.cidade);
+                        const pelotoesSub = rowsBat
+                            .filter((r) => {
+                                if (r.classificacao !== "Pelotão") return false;
+                                return normalizeCityKey(getParentCidade(batalhao, r.cidade)) === poloKey;
+                            })
+                            .sort((a, b) => a.cidade.localeCompare(b.cidade, "pt-BR"));
+                        const totalEfPolo = (typeof polo.efetivo === "number" ? polo.efetivo : 0) + pelotoesSub.reduce((sum, r) => {
+                            return sum + (typeof r.efetivo === "number" ? r.efetivo : 0);
+                        }, 0);
+
+                        const groupClass = polo.classificacao === "Cia Independente" ? "tree-indep-group" : "tree-cia-group";
+                        const badgeClass = getClassBadge(polo.classificacao, batalhao, polo.cidade);
+
+                        html += `<div class="${groupClass}">
+                                    <div class="tree-polo-title">
+                                        <span><span class="badge-class ${badgeClass}">${escapeHtml(polo.classificacao)}</span> ${escapeHtml(polo.cidade)}</span>
+                                        <span>Efetivo: ${totalEfPolo.toLocaleString("pt-BR")}</span>
+                                    </div>`;
+
+                        pelotoesSub.forEach((pel) => {
+                            const isCritico = typeof pel.distanciaKm === "number" && pel.distanciaKm > DISTANCIA_CRITICA_PADRAO_KM;
+                            const distClass = isCritico ? "tree-distancia-critica" : "tree-distancia-segura";
+                            const distText = typeof pel.distanciaKm === "number" ? formatKm(pel.distanciaKm) : "n/d";
+                            const efetivoPel = typeof pel.efetivo === "number" ? pel.efetivo : 0;
+
+                            html += `<div class="tree-pelotao-item">
+                                        <span>↳ Pel. ${escapeHtml(pel.cidade)} (Ef: ${efetivoPel.toLocaleString("pt-BR")})</span>
+                                        <span class="${distClass}" title="Distância do polo">${escapeHtml(distText)}</span>
+                                     </div>`;
+                        });
+                        html += `</div>`;
+                    });
+
+                    const polosKeys = polos.map((p) => normalizeCityKey(p.cidade));
+                    const pelotoesOrfaos = rowsBat.filter((r) => {
+                        if (r.classificacao !== "Pelotão") return false;
+                        const parentKey = normalizeCityKey(getParentCidade(batalhao, r.cidade));
+                        return !polosKeys.includes(parentKey);
+                    });
+                    if (pelotoesOrfaos.length > 0) {
+                        html += `<div class="tree-cia-group"><div class="tree-polo-title">Outros Pelotões</div>`;
+                        pelotoesOrfaos.forEach((pel) => {
+                            const distText = typeof pel.distanciaKm === "number" ? formatKm(pel.distanciaKm) : "n/d";
+                            html += `<div class="tree-pelotao-item"><span>↳ Pel. ${escapeHtml(pel.cidade)}</span><span>${escapeHtml(distText)}</span></div>`;
+                        });
+                        html += `</div>`;
+                    }
+
+                    html += `</div>`;
+                });
+
+                container.innerHTML = html;
             }
 
             function renderKpis(rows, filtro) {
@@ -12713,10 +13165,7 @@
                 const totalEfetivoFiltrado = rows.reduce((acc, item) => {
                     return acc + (typeof item.efetivo === "number" ? item.efetivo : 0);
                 }, 0);
-
-                const totalRealocado = filtro === "Todos"
-                    ? Object.values(efetivoAnexo).reduce((acc, item) => acc + Math.max(0, item["Cias Ind."] || 0), 0)
-                    : Math.max(0, (efetivoAnexo[filtro] || {})["Cias Ind."] || 0);
+                const totalRealocado = calcularEfetivoSobEstruturaIndependente(distribuicaoOficial, filtro);
 
                 const kpiMunicipios = document.getElementById("kpi-municipios");
                 const kpiBatalhoes = document.getElementById("kpi-batalhoes");
@@ -12734,7 +13183,9 @@
                 if (kpiEfetivoLabel) {
                     kpiEfetivoLabel.textContent = filtro === "Todos" ? "Efetivo Geral (2º-5º)" : `Efetivo ${filtro}`;
                 }
-                if (kpiRealocado) kpiRealocado.textContent = totalRealocado > 0 ? "+" + totalRealocado : "0";
+                if (kpiRealocado) {
+                    kpiRealocado.textContent = totalRealocado.toLocaleString("pt-BR");
+                }
             }
 
             function formatKm(value) {
@@ -12880,7 +13331,7 @@
                         return `
                             <tr data-batalhao="${escapeHtml(item.batalhao)}" data-cidade="${escapeHtml(item.cidade)}">
                                 <td>${escapeHtml(item.cidade)}</td>
-                                <td><span class="badge-class ${getClassBadge(item.classificacao)}">${escapeHtml(item.classificacao)}</span></td>
+                                <td><span class="badge-class ${getClassBadge(item.classificacao, item.batalhao, item.cidade)}">${escapeHtml(getClassificacaoLabel(item))}</span></td>
                                 <td>${formatKm(item.distanciaKm)}</td>
                                 <td>${item.observacao ? escapeHtml(item.observacao) : "—"}</td>
                             </tr>
@@ -12927,7 +13378,9 @@
                 renderDistanceFullTable(distanceTableRowsCache);
 
                 const distRows = rows.filter((item) => typeof item.distanciaKm === "number" && !Number.isNaN(item.distanciaKm));
-                totalEl.textContent = `${rows.length} municípios`;
+                totalEl.textContent = distRows.length === rows.length
+                    ? `${rows.length} municípios`
+                    : `${rows.length} municípios (${distRows.length} com distância válida)`;
 
                 if (!distRows.length) {
                     metricsEl.innerHTML = "";
@@ -12949,7 +13402,7 @@
 
                 const countProxima = values.filter((v) => v < 40).length;
                 const countModerada = values.filter((v) => v >= 40 && v <= 80).length;
-                const countDistante = values.filter((v) => v > 80).length;
+                const countDistante = values.filter((v) => v > 80 && v <= 150).length;
                 const countCritica = values.filter((v) => v > 150).length;
                 const topDistantes = [...distRows]
                     .sort((a, b) => b.distanciaKm - a.distanciaKm)
@@ -12957,6 +13410,36 @@
 
                 const pct = (count) => total ? (count / total) * 100 : 0;
                 const pctText = (count) => pct(count).toFixed(1).replace(".", ",") + "%";
+                const countAltaExposicao = countDistante + countCritica;
+                const coberturaConferida = countProxima + countModerada + countDistante + countCritica;
+                const status = (() => {
+                    if (countCritica >= 3 || pct(countCritica) >= 10 || (p90 !== null && p90 > 170) || maximo > 300) {
+                        return {
+                            cls: "distance-status-critical",
+                            title: "Situação Geral: Crítica",
+                            detail: "Concentração relevante de municípios acima de 150 km ou extremo logístico elevado.",
+                        };
+                    }
+                    if (countCritica >= 1 || pct(countAltaExposicao) >= 25 || (p90 !== null && p90 > 120)) {
+                        return {
+                            cls: "distance-status-attention",
+                            title: "Situação Geral: Atenção",
+                            detail: "Há pressão logística em parte da malha (faixas distante/crítica) e necessidade de monitoramento.",
+                        };
+                    }
+                    if (pct(countModerada) >= 50 || pct(countAltaExposicao) >= 15) {
+                        return {
+                            cls: "distance-status-moderate",
+                            title: "Situação Geral: Moderada",
+                            detail: "Predomínio de cobertura moderada, com pontos que exigem gestão contínua.",
+                        };
+                    }
+                    return {
+                        cls: "distance-status-stable",
+                        title: "Situação Geral: Estável",
+                        detail: "Predomínio de cobertura próxima/moderada e baixa pressão de longas distâncias.",
+                    };
+                })();
 
                 metricsEl.innerHTML = `
                     <div class="distance-metric"><small>Média</small><b>${formatKm(media)}</b></div>
@@ -12989,10 +13472,15 @@
                 `;
 
                 listEl.innerHTML = `
+                    <div class="distance-status-banner ${status.cls}">
+                        <strong>${status.title}</strong>
+                        <span>${status.detail}</span>
+                    </div>
                     <div class="distance-list-title">Modelo Lista (Resumo)</div>
+                    <div class="distance-list-item"><span>Conferência de faixas</span><b>${coberturaConferida}/${total} com distância válida</b></div>
                     <div class="distance-list-item"><span>Próxima (&lt;40 km)</span><b>${countProxima} municípios (${pctText(countProxima)})</b></div>
                     <div class="distance-list-item"><span>Moderada (40-80 km)</span><b>${countModerada} municípios (${pctText(countModerada)})</b></div>
-                    <div class="distance-list-item"><span>Distante (&gt;80 km)</span><b>${countDistante} municípios (${pctText(countDistante)})</b></div>
+                    <div class="distance-list-item"><span>Distante (80,1-150 km)</span><b>${countDistante} municípios (${pctText(countDistante)})</b></div>
                     <div class="distance-list-item"><span>Crítica (&gt;150 km)</span><b>${countCritica} municípios (${pctText(countCritica)})</b></div>
                     <div class="distance-ranking">
                         <div class="distance-list-title">Top 5 Mais Distantes</div>
@@ -13099,17 +13587,30 @@
                 }
             }
 
-            ensureAuxLayerGroups();
-            rebuildMunicipiosData();
-            initDistanceTableSorting();
-            aplicarEsquemaVisualMunicipios();
-            rebuildSubordinationVisuals();
-            renderScenarioFilters(cenarioAtivo);
-            renderModeFilters(modoVisualMapa);
-            updateRiskLegendVisibility();
-            updateScenarioCaption();
-            aplicarFiltroBatalhao(filtroAtual);
-            setTimeout(() => map_475b15caff0728b3dc42d0d1917fd2d6.invalidateSize(), 150);
+            function reportDashboardInitError(error) {
+                const message = error && error.message ? error.message : String(error || "Erro desconhecido");
+                const target = document.getElementById("city-structure-view");
+                if (target) {
+                    target.innerHTML = `<p class="city-empty" style="color:#b1121e;">Falha ao inicializar o painel: ${escapeHtml(message)}</p>`;
+                }
+                console.error("Falha ao inicializar dashboard:", error);
+            }
+
+            try {
+                ensureAuxLayerGroups();
+                rebuildMunicipiosData();
+                initDistanceTableSorting();
+                aplicarEsquemaVisualMunicipios();
+                rebuildSubordinationVisuals();
+                renderScenarioFilters(cenarioAtivo);
+                renderModeFilters(modoVisualMapa);
+                updateRiskLegendVisibility();
+                updateScenarioCaption();
+                aplicarFiltroBatalhao(filtroAtual);
+                setTimeout(() => map_475b15caff0728b3dc42d0d1917fd2d6.invalidateSize(), 150);
+            } catch (error) {
+                reportDashboardInitError(error);
+            }
 
         
 </script>
